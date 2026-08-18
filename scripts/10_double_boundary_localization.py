@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit, least_squares
 
 SRC = Path(__file__).resolve().parents[1] / 'data' / 'checkpoints'
-OUT = Path(__file__).resolve().parents[1] / 'results' / 'generated'
+OUT = Path(__file__).resolve().parents[1] / 'results' / 'reproduced'
 OUT.mkdir(exist_ok=True)
 
 XI_B = 0.3336

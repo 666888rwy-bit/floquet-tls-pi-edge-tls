@@ -1,13 +1,13 @@
 # C. N=4 channel → time-domain validation
-通道寿命采用正确的单位关系：若一周期本征值为 \(\lambda\)，则 \(|\lambda|^n=\exp[-nT/	au]\)，故 \(	au=-T/\ln|\lambda|\)，或以周期为单位 \(	au/T=-1/\ln|\lambda|\)。
+通道寿命采用正确的单位关系：若一周期本征值为 \(\lambda\)，则 \(|\lambda|^n=\exp[-nT/\tau]\)，故 \(\tau=-T/\ln|\lambda|\)，或以周期为单位 \(\tau/T=-1/\ln|\lambda|\)。
 参数：N=4，g=0.08，γ₁=0.08，ω_d=Ω/2，T=2.591813939212。
 
 ## Channel pair
 \(\lambda_+=(-0.939373778674)+i(-0.097672201737)\)，\(\lambda_-=(-0.939373778674)+i(0.097672201737)\)。
-\(|\lambda|=0.944437904286\)，\(	au_{channel}/T=17.493118\)，\(	au_{channel}=45.338906\)，\(|\delta_{channel}|=0.103603584\) rad/period，\(\delta\omega_{channel}=0.039973388\)。
+\(|\lambda|=0.944437904286\)，\(\tau_{channel}/T=17.493118\)，\(\tau_{channel}=45.338906\)，\(|\delta_{channel}|=0.103603584\) rad/period，\(\delta\omega_{channel}=0.039973388\)。
 
 ## Independent raw-trace fit
-对原始 stroboscopic \(\langle Z_0angle\) 做非线性拟合 \(m(n)=m_\infty+A\exp[-n/(	au/T)]\cos[(\pi+\delta)n+\phi]\)。加入 \(m_\infty\) 是 CPTP 通道有非零非平衡稳态时的必要基线项；拟合初始化不使用通道本征值。主窗口预先固定为丢弃前 8 个周期。
+对原始 stroboscopic \(\langle Z_0\rangle\) 做非线性拟合 \(m(n)=m_\infty+A\exp[-n/(\tau/T)]\cos[(\pi+\delta)n+\phi]\)。加入 \(m_\infty\) 是 CPTP 通道有非零非平衡稳态时的必要基线项；拟合初始化不使用通道本征值。主窗口预先固定为丢弃前 8 个周期。
 | fit start | τ/T | δ [rad/period] | δω | RMSE | τ/τ_channel | δ/δ_channel |
 |---:|---:|---:|---:|---:|---:|---:|
 | 0 | 14.957662 | 0.106487171 | 0.041085963 | 0.0466202 | 0.855060 | 1.027833 |
@@ -18,6 +18,6 @@
 | 20 | 39.698468 | 0.111777856 | 0.043127268 | 0.0259375 | 2.269376 | 1.078900 |
 | 24 | 62.376937 | 0.093223846 | 0.035968572 | 0.0188323 | 3.565799 | 0.899813 |
 
-主窗口（n≥8）的比较：\(	au_{fit}/	au_{channel}=0.919881\)，\(\delta_{fit}/\delta_{channel}=1.126781\)。
+主窗口（n≥8）的比较：\(\tau_{fit}/\tau_{channel}=0.919881\)，\(\delta_{fit}/\delta_{channel}=1.126781\)。
 
 窗口敏感性用于诊断早期多模瞬态：只有当主窗口与相邻窗口均保持合理一致时，才可写成通道对时域衰减和劈裂的定量预测。

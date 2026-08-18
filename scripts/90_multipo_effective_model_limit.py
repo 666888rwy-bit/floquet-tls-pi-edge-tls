@@ -5,7 +5,7 @@ from scipy.signal import find_peaks
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data' / 'checkpoints'
-OUT = ROOT / 'results' / 'generated'
+OUT = ROOT / 'results' / 'reproduced'
 OUT.mkdir(exist_ok=True)
 B=np.asarray([.27267967049286684,.01359485,.00080765])
 def vertex(x,y,i):
@@ -45,11 +45,15 @@ axes[-1].set(xlabel=r'$\omega_d/(\Omega/2)$')
 fig.suptitle(r'Center-$|g_m|$ coarse scan: equal $|g_m|=0.02181$, but widely different bare $g$',y=.98)
 fig.tight_layout()
 fig.savefig(OUT/'multipo_center_coarse_spectra.png',dpi=220,bbox_inches='tight');plt.close(fig)
-lines=['# 多位置中心有效耦合粗扫描：峰对诊断\n','三处均瞄准相同 \(|g_m|=0.02181437\)，但所需 bare \(g\) 分别为 0.08、1.6046、27.0097。m=0 为已有 80-period/4-sample 生产参考；m=1、2 为 40-period/2-sample 粗扫描，仅用于决定是否值得进入高分辨生产计算。\n','| m | g | \|g_m\| | discard | peak pair | midpoint | half split (ratio) | all detected peaks | global max ratio |\n|---:|---:|---:|---:|---|---:|---:|---|---:|\n']
+lines=[
+    '# 多位置中心有效耦合粗扫描：峰对诊断\n',
+    r'三处均瞄准相同 \(|g_m|=0.02181437\)，但所需 bare \(g\) 分别为 0.08、1.6046、27.0097。m=0 为已有 80-period/4-sample 生产参考；m=1、2 为 40-period/2-sample 粗扫描，仅用于决定是否值得进入高分辨生产计算。' + '\n',
+    r'| m | g | \|g_m\| | discard | peak pair | midpoint | half split (ratio) | all detected peaks | global max ratio |' + '\n|---:|---:|---:|---:|---|---:|---:|---|---:|\n',
+]
 for rr in rows:
  p=rr['pair'];ptext='—' if p is None else f'({p["left"]:.4f},{p["right"]:.4f})';mid='—' if p is None else f'{p["midpoint"]:.4f}';half='—' if p is None else f'{p["half"]:.4f}'
  lines.append(f'| {rr["site"]} | {rr["g"]:.6g} | {rr["geff"]:.8f} | {rr["window"]}T | {ptext} | {mid} | {half} | {rr["peaks"]} | {rr["maxratio"]:.3f} |\n')
-lines.append('\n结论判据：若 m=1、2 也在共振附近、且跨窗口均给出相同的双峰半劈裂，则可继续在多个有效耦合点加密扫描并进行真正 collapse。若峰对中心大幅离开共振、随窗口消失或高裸耦合产生多峰结构，则 \(g|B_{0\pi}(m)|\) 的单参数有效模型在该位置不适用，完整坍缩图不应强行制造。\n')
+lines.append('\n' + r'结论判据：若 m=1、2 也在共振附近、且跨窗口均给出相同的双峰半劈裂，则可继续在多个有效耦合点加密扫描并进行真正 collapse。若峰对中心大幅离开共振、随窗口消失或高裸耦合产生多峰结构，则 \(g|B_{0\pi}(m)|\) 的单参数有效模型在该位置不适用，完整坍缩图不应强行制造。' + '\n')
 (OUT/'multipo_center_coarse_analysis.md').write_text(''.join(lines),encoding='utf-8')
 print(OUT/'multipo_center_coarse_analysis.md')
 print(OUT/'multipo_center_coarse_spectra.png')

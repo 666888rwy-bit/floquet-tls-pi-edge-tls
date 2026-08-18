@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 SRC = Path(__file__).resolve().parents[1] / 'data' / 'checkpoints'
-OUT = Path(__file__).resolve().parents[1] / 'results' / 'generated'
+OUT = Path(__file__).resolve().parents[1] / 'results' / 'reproduced'
 OUT.mkdir(exist_ok=True)
 
 B0PI_EDGE = 0.27267967049286684  # selected N=6 m=0 dressed 0-pi matrix element
@@ -91,20 +91,26 @@ axes[0].legend(fontsize=8)
 # Second panel documents that effective coupling is a rescaled bare coupling at fixed contact.
 profile=np.array([.27267967049286684,.01359485,.00080765,.00080765,.01359485,.27267967049286684])
 axes[1].semilogy(np.arange(6),profile/profile.max(),'o-',label=r'$|B_{0\pi}(m)|/|B_{0\pi}(0)|$')
-axes[1].set(xlabel='contact site $m$',ylabel='normalized dressed matrix element',xticks=np.arange(6),title='N=6 selected $0$–$\pi$ matrix-element profile')
+axes[1].set(xlabel='contact site $m$',ylabel='normalized dressed matrix element',xticks=np.arange(6),title=r'N=6 selected $0$–$\pi$ matrix-element profile')
 axes[1].legend()
 fig.suptitle('Response-splitting scaling with local effective coupling',y=1.03)
 fig.tight_layout()
 fig.savefig(OUT/'B_response_splitting_vs_geff.png',dpi=240,bbox_inches='tight')
 plt.close(fig)
 
-lines=['# B. 响应双峰劈裂对有效矩阵元的标度\n',f'采用已选 N=6 \(0\)–\(\pi\) 对的边界矩阵元 \(|B_{{0\pi}}(0)|={B0PI_EDGE:.12f}\)。生产频率扫描中 TLS 始终接触于 \(m=0\)，因此 \(|g_m|=g|B_{{0\pi}}(0)|\)。纵轴为全劈裂 \(\Delta\omega_{{response}}=2\delta\omega\)；每个误差条是三个舍弃窗口的标准差，表示窗口系统敏感性。\n']
+lines=[
+    '# B. 响应双峰劈裂对有效矩阵元的标度\n',
+    fr'采用已选 N=6 \(0\)–\(\pi\) 对的边界矩阵元 \(|B_{{0\pi}}(0)|={B0PI_EDGE:.12f}\)。生产频率扫描中 TLS 始终接触于 \(m=0\)，因此 \(|g_m|=g|B_{{0\pi}}(0)|\)。纵轴为全劈裂 \(\Delta\omega_{{response}}=2\delta\omega\)；每个误差条是三个舍弃窗口的标准差，表示窗口系统敏感性。' + '\n',
+]
 lines.append('| g | |g_m| | resolved windows | full splitting | window s.d. | midpoint | accepted |\n|---:|---:|---:|---:|---:|---:|---:|\n')
 for r in rows:
     fmt=lambda v: '—' if v is None else f'{v:.6f}'
     lines.append(f'| {r["g"]:.3f} | {r["g_eff"]:.8f} | {r["resolved_windows"]} | {fmt(r["full_split"])} | {fmt(r["full_split_window_std"])} | {fmt(r["midpoint"])} | {r["accepted"]} |\n')
 fit=output['accepted_fit']['full_split_vs_g_eff']
-lines += [f'\n接受点的自由截距拟合：\(\Delta\\omega_{{response}}=({fit["slope"]:.6f})|g_m|{fit["intercept"]:+.6f}\)，\(R^2={fit["R2"]:.6f}\)。强制过原点拟合给出斜率 {fit["origin_constrained_slope"]:.6f}，\(R^2={fit["origin_constrained_R2"]:.6f}\)。\n', '\n解释：在固定接触点 \(m=0\) 的现有数据中，横轴从 \(g\) 替换为 \(g|B_{0\pi}(0)|\) 是确定的物理重标定，因而不会独立改变线性相关系数。其价值在于使横轴成为局域有效耦合并可与未来的多位置数据直接比较。非零截距反映现有频率网格和线宽下的解析阈值，不能被写成严格的 \(g\to0\) 微扰定律。要检验真正的 \(m\)-collapse，下一步需在至少两个内侧接触点重复可分辨的 \(g\)–频率扫描。\n']
+lines += [
+    '\n' + fr'接受点的自由截距拟合：\(\Delta\omega_{{response}}=({fit["slope"]:.6f})|g_m|{fit["intercept"]:+.6f}\)，\(R^2={fit["R2"]:.6f}\)。强制过原点拟合给出斜率 {fit["origin_constrained_slope"]:.6f}，\(R^2={fit["origin_constrained_R2"]:.6f}\)。' + '\n',
+    '\n' + r'解释：在固定接触点 \(m=0\) 的现有数据中，横轴从 \(g\) 替换为 \(g|B_{0\pi}(0)|\) 是确定的物理重标定，因而不会独立改变线性相关系数。其价值在于使横轴成为局域有效耦合并可与未来的多位置数据直接比较。非零截距反映现有频率网格和线宽下的解析阈值，不能被写成严格的 \(g\to0\) 微扰定律。要检验真正的 \(m\)-collapse，下一步需在至少两个内侧接触点重复可分辨的 \(g\)–频率扫描。' + '\n',
+]
 (OUT/'B_geff_scaling_results.md').write_text(''.join(lines),encoding='utf-8')
 (OUT/'B_geff_scaling_results.json').write_text(json.dumps(output,indent=2),encoding='utf-8')
 print(OUT/'B_geff_scaling_results.md')

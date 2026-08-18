@@ -7,7 +7,7 @@ from scipy.sparse import csr_matrix, eye, kron
 from scipy.linalg import expm
 from scipy.optimize import least_squares
 
-OUT = Path(__file__).resolve().parents[1] / 'results' / 'generated'
+OUT = Path(__file__).resolve().parents[1] / 'results' / 'reproduced'
 OUT.mkdir(exist_ok=True)
 
 # Same conventions and working point as the executed v3 channel/position notebook.
@@ -167,11 +167,23 @@ fig.tight_layout()
 fig.savefig(OUT/'C_N4_channel_time_validation.png',dpi=240,bbox_inches='tight')
 plt.close(fig)
 
-lines=['# C. N=4 channel → time-domain validation\n', '通道寿命采用正确的单位关系：若一周期本征值为 \(\lambda\)，则 \(|\lambda|^n=\exp[-nT/\tau]\)，故 \(\tau=-T/\ln|\lambda|\)，或以周期为单位 \(\tau/T=-1/\ln|\lambda|\)。\n', f'参数：N=4，g={g}，γ₁={gamma1}，ω_d=Ω/2，T={T:.12f}。\n', '\n## Channel pair\n', f'\(\lambda_+=({lambda_plus.real:.12f})+i({lambda_plus.imag:.12f})\)，\(\lambda_-=({lambda_minus.real:.12f})+i({lambda_minus.imag:.12f})\)。\n', f'\(|\lambda|={r_pair:.12f}\)，\(\tau_{{channel}}/T={tau_channel_periods:.6f}\)，\(\tau_{{channel}}={tau_channel_time:.6f}\)，\(|\delta_{{channel}}|={delta_pair:.9f}\) rad/period，\(\delta\\omega_{{channel}}={delta_omega_channel:.9f}\)。\n', '\n## Independent raw-trace fit\n', '对原始 stroboscopic \(\langle Z_0\rangle\) 做非线性拟合 \(m(n)=m_\infty+A\exp[-n/(\tau/T)]\cos[(\pi+\delta)n+\phi]\)。加入 \(m_\infty\) 是 CPTP 通道有非零非平衡稳态时的必要基线项；拟合初始化不使用通道本征值。主窗口预先固定为丢弃前 8 个周期。\n']
+lines=[
+    '# C. N=4 channel → time-domain validation\n',
+    r'通道寿命采用正确的单位关系：若一周期本征值为 \(\lambda\)，则 \(|\lambda|^n=\exp[-nT/\tau]\)，故 \(\tau=-T/\ln|\lambda|\)，或以周期为单位 \(\tau/T=-1/\ln|\lambda|\)。' + '\n',
+    f'参数：N=4，g={g}，γ₁={gamma1}，ω_d=Ω/2，T={T:.12f}。\n',
+    '\n## Channel pair\n',
+    fr'\(\lambda_+=({lambda_plus.real:.12f})+i({lambda_plus.imag:.12f})\)，\(\lambda_-=({lambda_minus.real:.12f})+i({lambda_minus.imag:.12f})\)。' + '\n',
+    fr'\(|\lambda|={r_pair:.12f}\)，\(\tau_{{channel}}/T={tau_channel_periods:.6f}\)，\(\tau_{{channel}}={tau_channel_time:.6f}\)，\(|\delta_{{channel}}|={delta_pair:.9f}\) rad/period，\(\delta\omega_{{channel}}={delta_omega_channel:.9f}\)。' + '\n',
+    '\n## Independent raw-trace fit\n',
+    r'对原始 stroboscopic \(\langle Z_0\rangle\) 做非线性拟合 \(m(n)=m_\infty+A\exp[-n/(\tau/T)]\cos[(\pi+\delta)n+\phi]\)。加入 \(m_\infty\) 是 CPTP 通道有非零非平衡稳态时的必要基线项；拟合初始化不使用通道本征值。主窗口预先固定为丢弃前 8 个周期。' + '\n',
+]
 lines.append('| fit start | τ/T | δ [rad/period] | δω | RMSE | τ/τ_channel | δ/δ_channel |\n|---:|---:|---:|---:|---:|---:|---:|\n')
 for f in fits:
     lines.append(f'| {f["n_start"]} | {f["tau_periods"]:.6f} | {f["delta_per_period"]:.9f} | {f["delta_omega"]:.9f} | {f["rmse"]:.6g} | {f["tau_periods"]/tau_channel_periods:.6f} | {f["delta_per_period"]/delta_pair:.6f} |\n')
-lines += [f'\n主窗口（n≥8）的比较：\(\tau_{{fit}}/\tau_{{channel}}={primary["tau_periods"]/tau_channel_periods:.6f}\)，\(\delta_{{fit}}/\delta_{{channel}}={primary["delta_per_period"]/delta_pair:.6f}\)。\n', '\n窗口敏感性用于诊断早期多模瞬态：只有当主窗口与相邻窗口均保持合理一致时，才可写成通道对时域衰减和劈裂的定量预测。\n']
+lines += [
+    '\n' + fr'主窗口（n≥8）的比较：\(\tau_{{fit}}/\tau_{{channel}}={primary["tau_periods"]/tau_channel_periods:.6f}\)，\(\delta_{{fit}}/\delta_{{channel}}={primary["delta_per_period"]/delta_pair:.6f}\)。' + '\n',
+    '\n' + r'窗口敏感性用于诊断早期多模瞬态：只有当主窗口与相邻窗口均保持合理一致时，才可写成通道对时域衰减和劈裂的定量预测。' + '\n',
+]
 (OUT/'C_N4_channel_time_validation_results.md').write_text(''.join(lines),encoding='utf-8')
 (OUT/'C_N4_channel_time_validation_results.json').write_text(json.dumps(summary, indent=2, default=lambda value: value.tolist() if isinstance(value, np.ndarray) else float(value) if isinstance(value, np.floating) else int(value) if isinstance(value, np.integer) else str(value)),encoding='utf-8')
 print(OUT/'C_N4_channel_time_validation_results.md')
