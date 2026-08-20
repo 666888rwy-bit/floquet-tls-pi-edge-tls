@@ -15,6 +15,7 @@ SCRIPTS = {
     "channel": ROOT / "scripts" / "30_channel_time_validation.py",
     "limit": ROOT / "scripts" / "90_multipo_effective_model_limit.py",
     "reference": ROOT / "scripts" / "00_reproduce_n6_reference.py",
+    "prb_controls": ROOT / "scripts" / "41_plot_prb_controls.py",
 }
 
 
@@ -38,6 +39,11 @@ def main() -> None:
         action="store_true",
         help="Also run the slower direct N=6 propagation/reference-point check.",
     )
+    parser.add_argument(
+        "--include-prb-controls",
+        action="store_true",
+        help="Also regenerate the fast JSON-based PRB multichannel-control audit.",
+    )
     args = parser.parse_args()
 
     for label in ("localization", "scaling", "channel"):
@@ -46,6 +52,8 @@ def main() -> None:
         run("limit")
     if args.include_reference:
         run("reference")
+    if args.include_prb_controls:
+        run("prb_controls")
     print("\nReviewer checks completed. Inspect results/reproduced/ and docs/REVIEWER_GUIDE.md.")
 
 
