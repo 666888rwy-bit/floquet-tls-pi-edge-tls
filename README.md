@@ -14,17 +14,19 @@ A reviewer can examine the evidence hierarchy without running the long productio
 | The resolved edge-response doublet versus local effective coupling | `python scripts/20_effective_coupling_scaling.py` | `floquet_tls_N6_g_frequency_checkpoint.npz` | `B_response_splitting_vs_geff.png` |
 | Independent channel–time-domain validation at \(N=4\) | `python scripts/30_channel_time_validation.py` | Exact channel construction | `C_N4_channel_time_validation.png` |
 | The limits of a single-parameter effective-coupling description away from the edge | `python scripts/90_multipo_effective_model_limit.py` | `multipo_center_coarse_checkpoint.npz` | `multipo_center_coarse_spectra.png` |
+| Formal PRB multichannel controls: matched N=6/N=8 convergence and N=8 strong-coupling counterexample | `python scripts/41_plot_prb_controls.py` | `data/prb_controls/*.json` | `PRB_F6_matched_positive_controls.png`, `PRB_three_control_K_convergence.png`, and a Markdown audit |
 
-The complete protocol, output checks, numerical conventions, and known boundaries of inference are in [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). The shortest manuscript-claim-to-file map is in [docs/REVIEWER_GUIDE.md](docs/REVIEWER_GUIDE.md).
+The complete protocol, output checks, numerical conventions, and known boundaries of inference are in [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). The PRB-specific control documentation is in [docs/PRB_MULTICHANNEL_CONTROLS.md](docs/PRB_MULTICHANNEL_CONTROLS.md). The shortest manuscript-claim-to-file map is in [docs/REVIEWER_GUIDE.md](docs/REVIEWER_GUIDE.md).
 
 ## Repository map
 
 | Path | Purpose |
 |---|---|
-| `scripts/` | Ordered, standalone analysis entry points. Prefixes `00`, `10`, `20`, `30`, and `90` indicate the recommended reading/execution order. |
+| `scripts/` | Ordered, standalone analysis entry points. Prefixes `00`, `10`, `20`, `30`, `40`, `41`, and `90` indicate the recommended reading/execution order. |
 | `notebooks/` | Cleaned, output-free research notebooks retaining the full numerical workflow and model definitions. |
-| `data/checkpoints/` | Compact `.npz` checkpoints used by the public scripts. See [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md). |
-| `results/manuscript_figures/` | Frozen reference images corresponding to the reviewed analysis state. |
+| `data/checkpoints/` | Compact `.npz` checkpoints used by the original public scripts. See [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md). |
+| `data/prb_controls/` | Compact JSON/CSV records for the formal multichannel K-convergence controls. See [data/prb_controls/README.md](data/prb_controls/README.md). |
+| `results/manuscript_figures/` | Frozen reference images corresponding to the reviewed analysis state, including `prb_controls/`. |
 | `results/reproduced/` | Regenerated analysis products. These files are intentionally versioned so output comparisons are direct. |
 | `docs/` | Reproducibility protocol, reviewer guide, data dictionary, and public-release checklist. |
 
@@ -50,13 +52,14 @@ The scripts may also be run individually when auditing a specific conclusion:
 python scripts/10_double_boundary_localization.py
 python scripts/20_effective_coupling_scaling.py
 python scripts/30_channel_time_validation.py
+python scripts/41_plot_prb_controls.py
 ```
 
-The first N=6 reference propagation may be added with `python scripts/run_reviewer_checks.py --include-reference`. It provides a direct numerical implementation check against a saved production checkpoint. The `90_` diagnostic may be added with `--include-limit`; it records an **effective-model limitation**, not a positive multi-position collapse claim.
+The first N=6 reference propagation may be added with `python scripts/run_reviewer_checks.py --include-reference`. The JSON-based PRB multichannel audit may be added with `python scripts/run_reviewer_checks.py --include-prb-controls`. The `90_` diagnostic may be added with `--include-limit`; it records an **effective-model limitation**, not a positive multi-position collapse claim.
 
 ## What this repository establishes—and what it does not
 
-The included evidence supports boundary-selective TLS spectroscopy, a resolved boundary-response doublet in the stated finite-window regime, a nonmonotonic dissipation crossover, and targeted Floquet-channel evidence. It does **not** establish a thermodynamic-limit time-crystal phase, a sharp dissipative phase boundary, or a universal position-independent \(|g_m|\) collapse. These scope boundaries are deliberate and are described in the reproducibility protocol.
+The included evidence supports boundary-selective TLS spectroscopy, a resolved boundary-response doublet in the stated finite-window regime, a nonmonotonic dissipation crossover, targeted Floquet-channel evidence, and formal finite-system multichannel truncation controls. The new controls show that a single Floquet pair is insufficient at the stated predictive anchor, while a minimal resonance-weighted local manifold is predictive at matched N=6/N=8 controls and loses predictivity in the tested N=8 strong-coupling control. The repository does **not** establish a thermodynamic-limit time-crystal phase, a sharp dissipative phase boundary, a universal effective theory, or a size-independent minimum retained dimension. These scope boundaries are deliberate and are described in the reproducibility protocol.
 
 ## Citation and data availability
 
