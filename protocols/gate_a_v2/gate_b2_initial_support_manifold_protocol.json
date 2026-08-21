@@ -1,0 +1,62 @@
+{
+  "protocol_version": "gate_b2.0",
+  "status": "prospectively_frozen_public_commit_required_for_run",
+  "scope": "Finite-N=6 static local Floquet-manifold benchmark under the same common physical product preparation as Gate A v2. This is a test of a preparation-compatible reduction, not a claim of a universal effective theory.",
+  "source_full_model_protocol": "gate_a_v2.0",
+  "source_full_results": {
+    "production_topological_obc_m0": "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json",
+    "heldout_topological_obc_m0": "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json"
+  },
+  "fixed_preparation": {
+    "chain": "|up_z>^{tensor N}",
+    "TLS": "|0_d>",
+    "full_model_pair_selection": "none",
+    "reduced_initial_state": "Project the fixed chain product state into the declared K-state Floquet subspace and normalize by p_K=Tr(P_K rho_chain(0)); declare undefined if p_K<=1e-12."
+  },
+  "common_channel_construction": {
+    "contact_site": 0,
+    "B0_quadrature_points": 241,
+    "local_near_pi_pair": "Among a<b with circular pi mismatch <=0.02 rad, select max(max(|B0_ab|,|B0_ba|)). This pair is used only to define a local mechanism anchor, never the full-model initial state.",
+    "initial_support_order": "Sort all Floquet states by descending |<phi_a|up_z^{tensor N}>|^2; exact ties are resolved by ascending numerical Schur index.",
+    "hybrid_order": "Start with the selected local near-pi pair, then append initial-support-ranked states excluding already selected entries until K states are present.",
+    "index_disclaimer": "All numerical Floquet indices are backend-specific Schur ordering metadata, not physical labels."
+  },
+  "benchmark_manifolds": {
+    "legacy_resonance_ranked": [4],
+    "initial_support_ranked": [8, 16],
+    "hybrid_pair_plus_initial_support": [4, 8, 16, 32],
+    "purpose": {
+      "legacy_resonance_ranked": "records the failure of the existing local-pair mechanism under the common preparation",
+      "initial_support_ranked": "tests whether preparation support alone accounts for the full response",
+      "hybrid_pair_plus_initial_support": "tests whether local near-pi channels add predictive value once physical initial support is included"
+    }
+  },
+  "fixed_static_reduction": {
+    "Hamiltonian": "H_K=diag(eps_a-mean(eps_K)) tensor I_d -(omega_d/2) I_K tensor Z_d + g[(B_K^(0))^dagger tensor sigma_d^- + B_K^(0) tensor sigma_d^+]",
+    "damping": "sqrt(gamma1) I_K tensor sigma_d^-",
+    "readout": "Same 80-period, four-samples-per-half-step, 20-period-discard Omega/2 phasor used by the linked full-model source JSON."
+  },
+  "reported_metrics": [
+    "p_K",
+    "raw A_TLS spectrum",
+    "normalized shape error epsilon_spec=||a_hat_K-a_hat_full||_2",
+    "raw peak ratio max(A_K)/max(A_full)",
+    "spectral-weight ratio W_r(K)/W_r(full)",
+    "K=16 to K=32 shape change"
+  ],
+  "prospective_success_rule": {
+    "for_each_of_production_and_heldout": [
+      "hybrid p_16 >= 0.90",
+      "hybrid epsilon_spec(K=16) <= 0.35",
+      "hybrid epsilon_spec(K=16) <= 0.60 * legacy epsilon_spec(K=4), provided the legacy value is defined",
+      "hybrid raw peak ratio(K=16) is in [0.50, 2.00]",
+      "||a_hat_hybrid,K32-a_hat_hybrid,K16||_2 <= 0.05"
+    ],
+    "interpretation_if_pass": "The data support a finite-system, preparation-compatible extended manifold at the declared K scale. They do not establish asymptotic convergence or universality.",
+    "interpretation_if_fail": "The current static B^(0)-only local Floquet reduction remains inadequate for the common physical preparation; do not pursue larger N. Proceed instead to the small-N micromotion/Sambe feasibility route."
+  },
+  "provenance_requirements": {
+    "before_run": "Commit this protocol and the executable benchmark script to the public repository; record protocol/script SHA-256, source-result SHA-256 and Git commit in every result JSON.",
+    "manuscript_language": "prospectively frozen numerical protocol; not preregistration absent a separate external timestamp."
+  }
+}
