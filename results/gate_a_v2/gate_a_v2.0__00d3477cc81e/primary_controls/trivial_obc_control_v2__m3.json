@@ -1,0 +1,95 @@
+{
+  "schema": "gate_a_v2_full_model_result_v1",
+  "case": {
+    "case_id": "trivial_obc_control_v2",
+    "boundary_condition": "OBC",
+    "alpha_over_pi": 0.5,
+    "beta_over_pi": 0.04,
+    "closed_chain_classifier": {
+      "nu0": 0,
+      "nupi": 0,
+      "minimum_bulk_gap_margin_rad": 1.4451326206513047
+    }
+  },
+  "contact_site_m": 3,
+  "preparation": {
+    "chain": "|up_z>^{tensor N}",
+    "TLS": "|0_d><0_d|, the Z_d=+1 basis state used in the production scripts",
+    "independence_declaration": "The full-model initial state is fixed before and is independent of alpha, beta, boundary condition, Floquet eigensystem, B^(0), any selected pair, and any numerical Floquet index.",
+    "floquet_pair_selected_for_full_model": false,
+    "B0_constructed_for_full_model": false
+  },
+  "timing": {
+    "T1": 0.06283185307179587,
+    "T2": 0.7853981633974483,
+    "T": 0.8482300164692441,
+    "Omega": 7.407407407407407,
+    "Omega_over_2": 3.7037037037037037
+  },
+  "detuning_ratios_omega_d_over_Omega_over_2": [
+    0.88,
+    0.904,
+    0.928,
+    0.952,
+    0.976,
+    1.0,
+    1.024,
+    1.048,
+    1.072,
+    1.096,
+    1.12
+  ],
+  "raw_A_TLS": [
+    0.000536944501993289,
+    0.00047396983508811186,
+    0.0006410944451355954,
+    0.0010755214625705288,
+    0.0017361778768211886,
+    0.00343360871363593,
+    0.001469957243692548,
+    0.0007316976513136576,
+    0.0004226750064512907,
+    0.0003815293729960819,
+    0.00031836214250041754
+  ],
+  "normalized_shape": [
+    0.1200451846950319,
+    0.10596587949370108,
+    0.14333008492975208,
+    0.24045533968306407,
+    0.38815891235074584,
+    0.7676551127141402,
+    0.3286397163166733,
+    0.1635863285065668,
+    0.09449784666209911,
+    0.08529887889319857,
+    0.07117652206977315
+  ],
+  "spectral_weight_ratio_grid": 4.7547803586445407e-07,
+  "spectral_weight_angular_frequency": 1.7610297624609417e-06,
+  "provenance": {
+    "repository_url": "https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls.git",
+    "git_commit": "15e1f98d3021db15ab96311f0942b0404b009e13",
+    "git_commit_short": "15e1f98",
+    "git_status_before_run": "",
+    "protocol_version": "gate_a_v2.0",
+    "protocol_path": "protocols/gate_a_v2/gate_a_v2_protocol.json",
+    "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+    "script_path": "scripts/gate_a_v2/10_full_model_common_preparation.py",
+    "script_sha256": "387be70b7d467590da013ef6cdd1bacd9395b447543466e3bbb0d168f90882ca",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/gate_a_v2/10_full_model_common_preparation.py"
+    ],
+    "run_started_utc": "2026-08-21T11:51:28Z",
+    "environment": {
+      "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+      "numpy": "2.5.1",
+      "scipy": "1.18.0",
+      "matplotlib": "3.11.1",
+      "platform": "Linux-6.18.38+-x86_64-with-glibc2.39"
+    },
+    "run_finished_utc": "2026-08-21T11:52:48Z"
+  },
+  "result_sha256_excluding_self": "7352f6e378e9909c761db02937896f40c6e03aace20ddfc8e56aa6867aa132da"
+}

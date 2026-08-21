@@ -1,0 +1,127 @@
+{
+  "schema": "gate_a_v2_projected_manifold_result_v1",
+  "source_case": {
+    "case_id": "topological_obc_production_v2",
+    "boundary_condition": "OBC",
+    "alpha_over_pi": 0.75,
+    "beta_over_pi": 0.9,
+    "closed_chain_classifier": {
+      "nu0": 1,
+      "nupi": 1,
+      "minimum_bulk_gap_margin_rad": 0.47123889803846913
+    }
+  },
+  "contact_site_m": 0,
+  "selection_for_manifold_only": {
+    "indices": [
+      27,
+      55
+    ],
+    "local_B0_score": 0.2726782323129712,
+    "pi_mismatch_rad": 0.004936958548043435,
+    "eligible_pair_count": 64,
+    "floquet_index_disclaimer": "Schur numerical ordering metadata, not cross-platform physical labels."
+  },
+  "timing": {
+    "T1": 1.413716694115407,
+    "T2": 1.1780972450961724,
+    "T": 2.5918139392115793,
+    "Omega": 2.4242424242424243,
+    "Omega_over_2": 1.2121212121212122
+  },
+  "results": [
+    {
+      "K": 2,
+      "indices": [
+        27,
+        55
+      ],
+      "p_K": 0.004657886993176218,
+      "status": "completed",
+      "raw_A_TLS": [
+        3.730410117332162e-05,
+        4.61913647189485e-05,
+        5.375079399160335e-05,
+        9.161983593122985e-05,
+        0.00016679328304361422,
+        0.00021209310002807998,
+        0.00015248311132393054,
+        8.416006328443319e-05,
+        5.696380897566568e-05,
+        4.949595241358375e-05,
+        3.7678984995593615e-05
+      ],
+      "normalized_shape": [
+        0.1054864032396571,
+        0.1306172986796886,
+        0.15199342032411567,
+        0.25907733074412476,
+        0.47164850403600583,
+        0.5997447350349562,
+        0.4311830190900545,
+        0.23798301240523606,
+        0.16107900028887964,
+        0.13996182271680438,
+        0.10654647826627345
+      ],
+      "epsilon_spec_normalized_shape": 0.8751610184512152,
+      "raw_peak_ratio_reduced_over_full": 0.0013560925651320223
+    },
+    {
+      "K": 4,
+      "indices": [
+        27,
+        55,
+        26,
+        11
+      ],
+      "p_K": 0.011158550989156659,
+      "status": "completed",
+      "raw_A_TLS": [
+        0.013273111145653183,
+        0.017640812201193293,
+        0.02542733399628444,
+        0.03987130269901251,
+        0.0635886115484576,
+        0.08489512415084709,
+        0.08048513378264016,
+        0.06442293051328156,
+        0.050826157737909224,
+        0.04094112371855576,
+        0.03369527209019365
+      ],
+      "normalized_shape": [
+        0.07663572331639346,
+        0.1018537694811549,
+        0.14681125709181914,
+        0.23020722785903616,
+        0.36714521465429995,
+        0.49016384884758857,
+        0.4647016344520928,
+        0.3719623699274107,
+        0.2934579028906414,
+        0.23638411485652266,
+        0.1945483256064153
+      ],
+      "epsilon_spec_normalized_shape": 0.7172604666034236,
+      "raw_peak_ratio_reduced_over_full": 0.5428071288584198
+    }
+  ],
+  "provenance": {
+    "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+    "script_sha256": "ee24eb69ab8930465896d769b049c8f66b743d0207f1667bb03f4ccdcb6e48d4",
+    "source_full_result": "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json",
+    "source_full_result_sha256": "4d27037f68da3a253e8ba1654d74ef74f144a85b9de0d82f275e786be28533ab",
+    "git_commit": "15e1f98d3021db15ab96311f0942b0404b009e13",
+    "run_started_utc": "2026-08-21T11:54:25Z",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/gate_a_v2/20_projected_manifold_validity.py",
+      "--full-result",
+      "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json",
+      "--output",
+      "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/GATE_B_TOPOLOGICAL_OBC_M0.json"
+    ],
+    "run_finished_utc": "2026-08-21T11:54:25Z"
+  }
+}

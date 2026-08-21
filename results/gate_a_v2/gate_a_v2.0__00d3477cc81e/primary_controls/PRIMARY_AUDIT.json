@@ -1,0 +1,350 @@
+{
+  "schema": "gate_a_v2_primary_audit_v1",
+  "manifest_sha256": "ec12c22ec5fce7f5499a9df035f2ffd6e754c363f69421369191b002550d4cb9",
+  "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+  "integrity": {
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json": {
+      "expected": "4d27037f68da3a253e8ba1654d74ef74f144a85b9de0d82f275e786be28533ab",
+      "actual": "4d27037f68da3a253e8ba1654d74ef74f144a85b9de0d82f275e786be28533ab",
+      "matches": true
+    },
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m3.json": {
+      "expected": "bd8751d8988331adc64b3482b008d93d4bca8c5f829203b5625941bfe60c6f31",
+      "actual": "bd8751d8988331adc64b3482b008d93d4bca8c5f829203b5625941bfe60c6f31",
+      "matches": true
+    },
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_pbc_same_drive_v2__m0.json": {
+      "expected": "3dc97ee5ba245c6527f21e911e6e4f8062484284648fbe163d34335725d9629c",
+      "actual": "3dc97ee5ba245c6527f21e911e6e4f8062484284648fbe163d34335725d9629c",
+      "matches": true
+    },
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_pbc_same_drive_v2__m3.json": {
+      "expected": "106f2186733a76113f9004c5bae4c466e91cd57369acf1565eb586bc7767c14f",
+      "actual": "106f2186733a76113f9004c5bae4c466e91cd57369acf1565eb586bc7767c14f",
+      "matches": true
+    },
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/trivial_obc_control_v2__m0.json": {
+      "expected": "d5639013eb2ea0366abf78a9084b53553e3351f4a983f710a6a7856317658914",
+      "actual": "d5639013eb2ea0366abf78a9084b53553e3351f4a983f710a6a7856317658914",
+      "matches": true
+    },
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/trivial_obc_control_v2__m3.json": {
+      "expected": "38e998409c34679059ec47dfde477c8d59b106eeb07314da7b989275c132f3c7",
+      "actual": "38e998409c34679059ec47dfde477c8d59b106eeb07314da7b989275c132f3c7",
+      "matches": true
+    }
+  },
+  "metric_table": {
+    "topological_obc_production_v2": {
+      "m0": {
+        "spectral_weight_ratio_grid": 0.0033246564032931537,
+        "spectral_weight_angular_frequency": 0.0040298865494462445,
+        "features": {
+          "raw_peak": 0.15640016432612155,
+          "peak_ratio_grid_locations": [
+            1.096
+          ],
+          "splitting": {
+            "status": "resolved_by_protocol_rule",
+            "peak_ratios": [
+              0.928,
+              1.096
+            ],
+            "separation_in_ratio": 0.16800000000000004
+          },
+          "linewidth": {
+            "status": "censored_by_grid"
+          }
+        },
+        "raw_A_TLS": [
+          0.10506338528687652,
+          0.127378849709519,
+          0.13386593817221507,
+          0.11389075153052149,
+          0.062301225182367054,
+          0.015587867215165358,
+          0.07712793343337714,
+          0.1295834159939458,
+          0.15431808764465332,
+          0.15640016432612155,
+          0.14663929198932332
+        ],
+        "normalized_shape": [
+          0.2670352839819766,
+          0.3237535818268336,
+          0.3402415476878445,
+          0.2894714375977034,
+          0.15834846091787358,
+          0.03961904080198113,
+          0.1960328952954221,
+          0.32935683725413173,
+          0.3922239345822117,
+          0.3975158632250019,
+          0.3727070555775834
+        ]
+      },
+      "m3": {
+        "spectral_weight_ratio_grid": 3.387479399055191e-06,
+        "spectral_weight_angular_frequency": 4.106035635218415e-06,
+        "features": {
+          "raw_peak": 0.006819924265308571,
+          "peak_ratio_grid_locations": [
+            0.88
+          ],
+          "splitting": {
+            "status": "not_resolved_on_frozen_grid"
+          },
+          "linewidth": {
+            "status": "censored_by_grid"
+          }
+        },
+        "raw_A_TLS": [
+          0.006819924265308571,
+          0.006405196432275998,
+          0.006325504962388628,
+          0.004977011600573482,
+          0.0022343198223815667,
+          0.0004100653872319486,
+          9.414638503529639e-05,
+          0.0008284291293828829,
+          0.0013092297625338994,
+          0.0015281812861466814,
+          0.0020857492474991527
+        ],
+        "normalized_shape": [
+          0.5284130740968401,
+          0.4962796367387425,
+          0.49010507922984387,
+          0.3856227572866861,
+          0.17311684997234064,
+          0.03177218740538919,
+          0.007294535657040002,
+          0.06418733784997122,
+          0.10144014751581883,
+          0.11840468306923266,
+          0.16160548545568512
+        ]
+      },
+      "R_EB_m0_over_m3": 981.4543534111058
+    },
+    "topological_pbc_same_drive_v2": {
+      "m0": {
+        "spectral_weight_ratio_grid": 2.075586130910204e-06,
+        "spectral_weight_angular_frequency": 2.5158619768608528e-06,
+        "features": {
+          "raw_peak": 0.004301392762528529,
+          "peak_ratio_grid_locations": [
+            1.072
+          ],
+          "splitting": {
+            "status": "resolved_by_protocol_rule",
+            "peak_ratios": [
+              1.0,
+              1.072
+            ],
+            "separation_in_ratio": 0.07200000000000006
+          },
+          "linewidth": {
+            "status": "censored_by_grid"
+          }
+        },
+        "raw_A_TLS": [
+          0.002125225654759067,
+          0.001200587967408831,
+          0.0009558704014034649,
+          0.00034821380919593606,
+          0.0025480710180381286,
+          0.0037871456959612426,
+          0.0028529193858841066,
+          0.003774615488344105,
+          0.004301392762528529,
+          0.0038417783765724504,
+          0.0032449531673820037
+        ],
+        "normalized_shape": [
+          0.21919340115035896,
+          0.12382730246420447,
+          0.09858740594129392,
+          0.03591438348876525,
+          0.26280519979877315,
+          0.39060197861379425,
+          0.29424692008558706,
+          0.3893096269905348,
+          0.44364084688647065,
+          0.3962367322929228,
+          0.33468084659119507
+        ]
+      },
+      "m3": {
+        "spectral_weight_ratio_grid": 2.075586130910108e-06,
+        "spectral_weight_angular_frequency": 2.515861976860736e-06,
+        "features": {
+          "raw_peak": 0.004301392762528724,
+          "peak_ratio_grid_locations": [
+            1.072
+          ],
+          "splitting": {
+            "status": "resolved_by_protocol_rule",
+            "peak_ratios": [
+              1.0,
+              1.072
+            ],
+            "separation_in_ratio": 0.07200000000000006
+          },
+          "linewidth": {
+            "status": "censored_by_grid"
+          }
+        },
+        "raw_A_TLS": [
+          0.0021252256547590075,
+          0.0012005879674084983,
+          0.0009558704014021192,
+          0.0003482138091966647,
+          0.0025480710180376775,
+          0.0037871456959615198,
+          0.0028529193858836894,
+          0.003774615488344211,
+          0.004301392762528724,
+          0.003841778376572198,
+          0.003244953167382318
+        ],
+        "normalized_shape": [
+          0.21919340115035646,
+          0.12382730246417221,
+          0.09858740594115677,
+          0.035914383488841004,
+          0.26280519979873096,
+          0.39060197861382934,
+          0.2942469200855489,
+          0.3893096269905522,
+          0.4436408468864982,
+          0.3962367322929033,
+          0.3346808465912331
+        ]
+      },
+      "R_EB_m0_over_m3": 1.0000000000000464
+    },
+    "trivial_obc_control_v2": {
+      "m0": {
+        "spectral_weight_ratio_grid": 4.7676067296912543e-07,
+        "spectral_weight_angular_frequency": 1.765780270256021e-06,
+        "features": {
+          "raw_peak": 0.003422654694489308,
+          "peak_ratio_grid_locations": [
+            1.0
+          ],
+          "splitting": {
+            "status": "not_resolved_on_frozen_grid"
+          },
+          "linewidth": {
+            "status": "reported_FWHM_linear_interpolation",
+            "FWHM_in_ratio": 0.04612436948337617,
+            "crossings": [
+              0.9752214075589323,
+              1.0213457770423084
+            ]
+          }
+        },
+        "raw_A_TLS": [
+          0.0005320923974138044,
+          0.00043129887630064516,
+          0.0006592429935290822,
+          0.0011156855053861916,
+          0.0017312986704505217,
+          0.003422654694489308,
+          0.0014985337663794898,
+          0.0007139407049287221,
+          0.00041182255520410405,
+          0.000405638793212014,
+          0.0003366809108423036
+        ],
+        "normalized_shape": [
+          0.11879173784559545,
+          0.09628918453943114,
+          0.14717861267044033,
+          0.24908121356016338,
+          0.38651929400269736,
+          0.7641212337931108,
+          0.33455360609124696,
+          0.15939009365554993,
+          0.0919410186172301,
+          0.09056046922950292,
+          0.07516534852365402
+        ]
+      },
+      "m3": {
+        "spectral_weight_ratio_grid": 4.7547803586445407e-07,
+        "spectral_weight_angular_frequency": 1.7610297624609417e-06,
+        "features": {
+          "raw_peak": 0.00343360871363593,
+          "peak_ratio_grid_locations": [
+            1.0
+          ],
+          "splitting": {
+            "status": "not_resolved_on_frozen_grid"
+          },
+          "linewidth": {
+            "status": "reported_FWHM_linear_interpolation",
+            "FWHM_in_ratio": 0.04568679460678604,
+            "crossings": [
+              0.9752962083315202,
+              1.0209830029383062
+            ]
+          }
+        },
+        "raw_A_TLS": [
+          0.000536944501993289,
+          0.00047396983508811186,
+          0.0006410944451355954,
+          0.0010755214625705288,
+          0.0017361778768211886,
+          0.00343360871363593,
+          0.001469957243692548,
+          0.0007316976513136576,
+          0.0004226750064512907,
+          0.0003815293729960819,
+          0.00031836214250041754
+        ],
+        "normalized_shape": [
+          0.1200451846950319,
+          0.10596587949370108,
+          0.14333008492975208,
+          0.24045533968306407,
+          0.38815891235074584,
+          0.7676551127141402,
+          0.3286397163166733,
+          0.1635863285065668,
+          0.09449784666209911,
+          0.08529887889319857,
+          0.07117652206977315
+        ]
+      },
+      "R_EB_m0_over_m3": 1.0026975738266004
+    }
+  },
+  "control_comparisons": {
+    "topological_pbc_same_drive_v2": {
+      "directional_W_topological_OBC_over_control": 1601.791587340775,
+      "frozen_symmetric_C_W": 1601.791587340775,
+      "shape_distance_D": 0.5624759186457221,
+      "directional_C_EB": 981.4543534110602,
+      "passes_frozen_symmetric_weight_threshold": true,
+      "passes_shape_threshold": true,
+      "passes_edge_reference_threshold": true,
+      "passes_directional_weight_threshold_requested_for_interpretation": true
+    },
+    "trivial_obc_control_v2": {
+      "directional_W_topological_OBC_over_control": 6973.428371489138,
+      "frozen_symmetric_C_W": 6973.428371489138,
+      "shape_distance_D": 1.0052787757672712,
+      "directional_C_EB": 978.8139305708859,
+      "passes_frozen_symmetric_weight_threshold": true,
+      "passes_shape_threshold": true,
+      "passes_edge_reference_threshold": true,
+      "passes_directional_weight_threshold_requested_for_interpretation": true
+    }
+  },
+  "frozen_protocol_decision": "pass_to_heldout",
+  "directional_interpretation_decision": "pass_to_heldout",
+  "critical_protocol_note": "The committed v2 protocol defined C_W symmetrically as max(W_top/W_control,W_control/W_top), whereas the owner requested directional W_top/W_control ratios. Both are reported without retroactive protocol modification; the directional decision is the conservative manuscript-relevant interpretation."
+}
