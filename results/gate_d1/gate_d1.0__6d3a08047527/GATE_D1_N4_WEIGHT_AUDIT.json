@@ -1,0 +1,150 @@
+{
+  "schema": "gate_d1_n4_weight_audit_v1",
+  "manifest_integrity": {
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu00_a.json": {
+      "expected": "6136c7670aee2f7ed6c294296e604b56d454809613e41a70f6cb90c7b059c84b",
+      "actual": "6136c7670aee2f7ed6c294296e604b56d454809613e41a70f6cb90c7b059c84b",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu00_b.json": {
+      "expected": "9d768e2480557a981715c148c29814bb3682fa48c2dc8a47725c1e4ded44827b",
+      "actual": "9d768e2480557a981715c148c29814bb3682fa48c2dc8a47725c1e4ded44827b",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu10_a.json": {
+      "expected": "6ec9e01a051896ef0a657d0373e933e5e4909ead12b73045d0a9261f12846757",
+      "actual": "6ec9e01a051896ef0a657d0373e933e5e4909ead12b73045d0a9261f12846757",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu10_b.json": {
+      "expected": "4834f89630c161aee082a44bfddaa2d44af7cb5fdbdfd5203332ffa2a8fd34d6",
+      "actual": "4834f89630c161aee082a44bfddaa2d44af7cb5fdbdfd5203332ffa2a8fd34d6",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu01_a.json": {
+      "expected": "247b6f61e68aec750772677d8e6ba2dea16ccffa6c7b02943e653e5052d27a68",
+      "actual": "247b6f61e68aec750772677d8e6ba2dea16ccffa6c7b02943e653e5052d27a68",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu01_b.json": {
+      "expected": "942af20954a26ed92517dcf23c3dfd6b5e0aea063b13b0743516f275c029ba5d",
+      "actual": "942af20954a26ed92517dcf23c3dfd6b5e0aea063b13b0743516f275c029ba5d",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu11_a.json": {
+      "expected": "fcebeeabfefcebc38755d3477c5fa38f58d1d9967dabab793ec8675a65d460aa",
+      "actual": "fcebeeabfefcebc38755d3477c5fa38f58d1d9967dabab793ec8675a65d460aa",
+      "matches": true
+    },
+    "results/gate_d1/gate_d1.0__6d3a08047527/nu11_b.json": {
+      "expected": "02be336b9f2db1423af15a18deca78647de563b05a666e23cf8c2678ddbb9198",
+      "actual": "02be336b9f2db1423af15a18deca78647de563b05a666e23cf8c2678ddbb9198",
+      "matches": true
+    }
+  },
+  "records": [
+    {
+      "id": "nu00_a",
+      "nu0": 0,
+      "nupi": 0,
+      "alpha_over_pi": 0.5106666666666667,
+      "beta_over_pi": 0.2613333333333333,
+      "T": 1.2126547642856602,
+      "margin_rad": 0.7162886112549507,
+      "W_r": 0.0002797244307533867,
+      "raw_peak": 0.05575602610085331
+    },
+    {
+      "id": "nu00_b",
+      "nu0": 0,
+      "nupi": 0,
+      "alpha_over_pi": 0.6426666666666666,
+      "beta_over_pi": 0.12933333333333333,
+      "T": 1.21265476428566,
+      "margin_rad": 0.7162857967218086,
+      "W_r": 3.686110620068454e-07,
+      "raw_peak": 0.002184194826539597
+    },
+    {
+      "id": "nu10_a",
+      "nu0": 1,
+      "nupi": 0,
+      "alpha_over_pi": 0.2613333333333333,
+      "beta_over_pi": 0.5106666666666667,
+      "T": 1.2126547642856602,
+      "margin_rad": 0.7162886112549507,
+      "W_r": 1.175303004244847e-06,
+      "raw_peak": 0.0031305475138032135
+    },
+    {
+      "id": "nu10_b",
+      "nu0": 1,
+      "nupi": 0,
+      "alpha_over_pi": 0.12933333333333333,
+      "beta_over_pi": 0.6426666666666666,
+      "T": 1.21265476428566,
+      "margin_rad": 0.7162857967218086,
+      "W_r": 1.0653984674621033e-07,
+      "raw_peak": 0.001183053916492579
+    },
+    {
+      "id": "nu01_a",
+      "nu0": 0,
+      "nupi": 1,
+      "alpha_over_pi": 0.98,
+      "beta_over_pi": 0.496,
+      "T": 2.3184953783492674,
+      "margin_rad": 1.4953984132050866,
+      "W_r": 0.035755191574616256,
+      "raw_peak": 0.578471630397878
+    },
+    {
+      "id": "nu01_b",
+      "nu0": 0,
+      "nupi": 1,
+      "alpha_over_pi": 0.98,
+      "beta_over_pi": 0.6866666666666666,
+      "T": 2.617993877991494,
+      "margin_rad": 0.9215338450530058,
+      "W_r": 0.031215856841881134,
+      "raw_peak": 0.5487909379369837
+    },
+    {
+      "id": "nu11_a",
+      "nu0": 1,
+      "nupi": 1,
+      "alpha_over_pi": 0.496,
+      "beta_over_pi": 0.98,
+      "T": 2.3184953783492674,
+      "margin_rad": 1.4953984132050866,
+      "W_r": 0.0019592681345683687,
+      "raw_peak": 0.11889811356520454
+    },
+    {
+      "id": "nu11_b",
+      "nu0": 1,
+      "nupi": 1,
+      "alpha_over_pi": 0.6866666666666666,
+      "beta_over_pi": 0.98,
+      "T": 2.617993877991494,
+      "margin_rad": 0.9215338450530058,
+      "W_r": 0.003522754112941908,
+      "raw_peak": 0.15386898787580888
+    }
+  ],
+  "class_median_W_r": {
+    "nu00": 0.00014004652090769679,
+    "nu01": 0.0334855242082487,
+    "nu10": 6.409214254955287e-07,
+    "nu11": 0.0027410111237551383
+  },
+  "frozen_weight_screen": {
+    "nu0_0_median_ratio": 239.1028637570987,
+    "nu0_1_median_ratio": 4276.672638359569,
+    "min_nupi1_over_max_nupi0": 7.004279637968831,
+    "frozen_condition_1_both_fixed_nu0_median_ratios_gt_10": true,
+    "frozen_condition_2_all_nupi1_weights_exceed_all_nupi0_by_factor_10": false,
+    "screen_pass": false
+  },
+  "interpretation": "This is a response-blind-selected N=4 stratified screen with common gT, gamma1T, common product state, 80-period readout and fixed ratio grid. It is a candidate-screen result, not a common-period four-class causal proof or universal nu_pi law."
+}
