@@ -24,7 +24,7 @@ def dop(o,j,n,i):return dkron([o if q==j else i for q in range(n)])
 def prop(e,v,t):return (v*np.exp(-1j*e*t))@v.conj().T
 def pierr(a,b):return float(abs(np.angle(np.exp(1j*(b-a-np.pi)))))
 def loadmod(path,name):
- s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
+ s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);sys.modules[name]=m;s.loader.exec_module(m);return m
 def liouv(H,C):
  d=H.shape[0];I=eye(d,format='csr',dtype=complex);cd=C.getH()@C
  return (-1j*(kron(I,H)-kron(H.T,I))+kron(C.conjugate(),C)-.5*kron(I,cd)-.5*kron(cd.T,I)).tocsr()
