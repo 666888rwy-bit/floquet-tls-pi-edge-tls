@@ -22,6 +22,16 @@ def uniq(seq):
         if int(q) not in out:out.append(int(q))
     return out
 
+def hybrid_to_k(pair, support, k):
+    """Apply the frozen hybrid order and keep appending support states until K."""
+    selected = uniq(pair)
+    for q in support:
+        if q not in selected:
+            selected.append(int(q))
+        if len(selected) == k:
+            return selected
+    raise RuntimeError(f"Cannot fill hybrid manifold to K={k}.")
+
 def evaluate_selection(name,indices,channel,psi,ratios,full_a,protocol,helper):
     coeff=channel['vectors'][:,indices].conj().T@psi;p=float(np.vdot(coeff,coeff).real)
     row={'selection_family':name,'K':len(indices),'indices':[int(q) for q in indices],'p_K':p}
@@ -43,7 +53,7 @@ def main():
         pair=channel['indices'][2];families={}
         families['legacy_resonance_ranked']={4:channel['indices'][4]}
         families['initial_support_ranked']={K:support[:K] for K in [8,16]}
-        families['hybrid_pair_plus_initial_support']={K:uniq(pair+support[:max(0,K-2)])[:K] for K in [4,8,16,32]}
+        families['hybrid_pair_plus_initial_support']={K:hybrid_to_k(pair, support, K) for K in [4,8,16,32]}
         ratios=np.asarray(full['detuning_ratios_omega_d_over_Omega_over_2'],float);full_a=np.asarray(full['raw_A_TLS'],float);rows=[]
         for family,ks in families.items():
             for _,indices in ks.items():rows.append(evaluate_selection(family,indices,channel,psi,ratios,full_a,json.loads((REPO/'protocols/gate_a_v2/gate_a_v2_protocol.json').read_text()),helper))
