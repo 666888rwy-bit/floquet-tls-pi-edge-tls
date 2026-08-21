@@ -1,0 +1,109 @@
+{
+  "schema": "gate_a_v3_selected_controls_v1",
+  "selection_rule": "For each required class on its declared common-period line, maximize closed-chain bulk-gap margin subject to margin>=0.18 rad. The (0,1) candidate additionally remains >=0.10 in Euclidean alpha/pi,beta/pi distance from production.",
+  "groups": {
+    "pi_matched": {
+      "S_over_pi": 1.65,
+      "g": 0.08,
+      "gamma1": 0.08,
+      "periods": 80,
+      "discard_periods": 20,
+      "drives": {
+        "nu11_production": {
+          "alpha_over_pi": 0.75,
+          "beta_over_pi": 0.9,
+          "nu0": 1,
+          "nupi": 1,
+          "classified": true,
+          "wA": 2,
+          "wB": 0,
+          "gap0_rad": 0.47123889803846913,
+          "gappi_rad": 2.042035300432899,
+          "margin_rad": 0.47123889803846913,
+          "qmin_A": 0.45399049973954686,
+          "qmin_B": 0.4539904997395467,
+          "S_over_pi": 1.65,
+          "T": 2.5918139392115793,
+          "Omega": 2.4242424242424243,
+          "gT": 0.20734511513692636,
+          "gamma1T": 0.20734511513692636,
+          "total_time": 207.34511513692635,
+          "discard_time": 51.83627878423159
+        },
+        "nu01_same_period": {
+          "nu0": 0,
+          "nupi": 1,
+          "classified": true,
+          "wA": 1,
+          "wB": -1,
+          "gap0_rad": 0.8482300164692442,
+          "gappi_rad": 2.0420352606979497,
+          "margin_rad": 0.8482300164692442,
+          "qmin_A": 0.7501110696304594,
+          "qmin_B": 0.7501110696304594,
+          "alpha_over_pi": 0.96,
+          "beta_over_pi": 0.69,
+          "S_over_pi": 1.65,
+          "T": 2.5918139392115793,
+          "Omega": 2.4242424242424243,
+          "gT": 0.20734511513692636,
+          "gamma1T": 0.20734511513692636,
+          "total_time": 207.34511513692635,
+          "discard_time": 51.83627878423159
+        }
+      }
+    },
+    "zero_matched": {
+      "S_over_pi": 0.825,
+      "g": 0.16,
+      "gamma1": 0.16,
+      "periods": 160,
+      "discard_periods": 40,
+      "drives": {
+        "nu10_same_period": {
+          "nu0": 1,
+          "nupi": 0,
+          "classified": true,
+          "wA": 1,
+          "wB": 1,
+          "gap0_rad": 0.5500143338272333,
+          "gappi_rad": 0.5497792173941809,
+          "margin_rad": 0.5497792173941809,
+          "qmin_A": 0.5224989936074996,
+          "qmin_B": 0.5224989936074994,
+          "alpha_over_pi": 0.32496249999999993,
+          "beta_over_pi": 0.5000375,
+          "S_over_pi": 0.825,
+          "T": 1.2959069696057897,
+          "Omega": 4.848484848484849,
+          "gT": 0.20734511513692636,
+          "gamma1T": 0.20734511513692636,
+          "total_time": 207.34511513692635,
+          "discard_time": 51.83627878423159
+        },
+        "nu00_same_period": {
+          "nu0": 0,
+          "nupi": 0,
+          "classified": true,
+          "wA": 0,
+          "wB": 0,
+          "gap0_rad": 0.5500143338272329,
+          "gappi_rad": 0.5497792173941809,
+          "margin_rad": 0.5497792173941809,
+          "qmin_A": 0.5224989936074995,
+          "qmin_B": 0.5224989936074995,
+          "alpha_over_pi": 0.5000374999999999,
+          "beta_over_pi": 0.32496250000000004,
+          "S_over_pi": 0.825,
+          "T": 1.2959069696057897,
+          "Omega": 4.848484848484849,
+          "gT": 0.20734511513692636,
+          "gamma1T": 0.20734511513692636,
+          "total_time": 207.34511513692635,
+          "discard_time": 51.83627878423159
+        }
+      }
+    }
+  },
+  "pairwise_matching_statement": "Within each group, T, Omega, gT, gamma1*T, total physical propagation time, discard time, detuning ratio grid and common product initial state are identical by construction. Across groups, g and gamma1 are rescaled to preserve gT and gamma1*T while periods are rescaled to preserve physical time."
+}

@@ -1,0 +1,675 @@
+{
+  "schema": "gate_a_v3_common_period_fourclass_search_v1",
+  "safe_margin_threshold_rad": 0.18,
+  "coarse_S_grid": 85,
+  "coarse_alpha_samples_per_line": 161,
+  "four_class_lines": [],
+  "chosen_coarse_line": null,
+  "all_line_summary": [
+    {
+      "S_over_pi": 0.16,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 46
+    },
+    {
+      "S_over_pi": 0.18,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 70
+    },
+    {
+      "S_over_pi": 0.2,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 84
+    },
+    {
+      "S_over_pi": 0.22,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 96
+    },
+    {
+      "S_over_pi": 0.24,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 104
+    },
+    {
+      "S_over_pi": 0.26,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 110
+    },
+    {
+      "S_over_pi": 0.28,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 116
+    },
+    {
+      "S_over_pi": 0.30000000000000004,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 120
+    },
+    {
+      "S_over_pi": 0.32,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 122
+    },
+    {
+      "S_over_pi": 0.33999999999999997,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 126
+    },
+    {
+      "S_over_pi": 0.36,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 128
+    },
+    {
+      "S_over_pi": 0.38,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 130
+    },
+    {
+      "S_over_pi": 0.4,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 132
+    },
+    {
+      "S_over_pi": 0.42000000000000004,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 134
+    },
+    {
+      "S_over_pi": 0.44000000000000006,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 136
+    },
+    {
+      "S_over_pi": 0.45999999999999996,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 136
+    },
+    {
+      "S_over_pi": 0.48,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 138
+    },
+    {
+      "S_over_pi": 0.5,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 140
+    },
+    {
+      "S_over_pi": 0.52,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 140
+    },
+    {
+      "S_over_pi": 0.54,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 0.56,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 0.58,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 0.6,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 0.62,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 0.64,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 0.66,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 0.68,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 0.7000000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 0.7200000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 0.74,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.76,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.78,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.8,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.8200000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.8400000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 0.8600000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 0.88,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 0.9,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 0.92,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 0.9400000000000001,
+      "class_keys": [
+        "(1, 0)",
+        "(0, 0)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 0.9600000000000001,
+      "class_keys": [],
+      "safe_count": 0
+    },
+    {
+      "S_over_pi": 0.9800000000000001,
+      "class_keys": [],
+      "safe_count": 0
+    },
+    {
+      "S_over_pi": 1.0,
+      "class_keys": [],
+      "safe_count": 0
+    },
+    {
+      "S_over_pi": 1.02,
+      "class_keys": [],
+      "safe_count": 0
+    },
+    {
+      "S_over_pi": 1.04,
+      "class_keys": [],
+      "safe_count": 0
+    },
+    {
+      "S_over_pi": 1.06,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 1.08,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 1.1,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 1.1199999999999999,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 1.14,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 150
+    },
+    {
+      "S_over_pi": 1.16,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.18,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.2,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.22,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.24,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.26,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 148
+    },
+    {
+      "S_over_pi": 1.28,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 1.3,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 1.3199999999999998,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 1.3399999999999999,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 146
+    },
+    {
+      "S_over_pi": 1.3599999999999999,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 1.38,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 1.4,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 144
+    },
+    {
+      "S_over_pi": 1.42,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 1.44,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 1.46,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 142
+    },
+    {
+      "S_over_pi": 1.48,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 140
+    },
+    {
+      "S_over_pi": 1.5,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 140
+    },
+    {
+      "S_over_pi": 1.52,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 138
+    },
+    {
+      "S_over_pi": 1.54,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 136
+    },
+    {
+      "S_over_pi": 1.56,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 136
+    },
+    {
+      "S_over_pi": 1.5799999999999998,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 134
+    },
+    {
+      "S_over_pi": 1.5999999999999999,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 132
+    },
+    {
+      "S_over_pi": 1.6199999999999999,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 130
+    },
+    {
+      "S_over_pi": 1.64,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 128
+    },
+    {
+      "S_over_pi": 1.66,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 126
+    },
+    {
+      "S_over_pi": 1.68,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 122
+    },
+    {
+      "S_over_pi": 1.7,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 120
+    },
+    {
+      "S_over_pi": 1.72,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 116
+    },
+    {
+      "S_over_pi": 1.74,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 110
+    },
+    {
+      "S_over_pi": 1.76,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 104
+    },
+    {
+      "S_over_pi": 1.78,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 96
+    },
+    {
+      "S_over_pi": 1.8,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 84
+    },
+    {
+      "S_over_pi": 1.82,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 70
+    },
+    {
+      "S_over_pi": 1.84,
+      "class_keys": [
+        "(1, 1)",
+        "(0, 1)"
+      ],
+      "safe_count": 46
+    }
+  ]
+}

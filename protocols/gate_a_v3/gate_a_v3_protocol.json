@@ -1,0 +1,97 @@
+{
+  "protocol_version": "gate_a_v3.0",
+  "status": "prospectively_frozen_public_commit_required_for_run",
+  "scope": "Exact finite-N=6 Floquet-Lindblad topology-control campaign with a common physical product preparation. Closed-chain BDI invariants classify drive controls only; no dissipative phase-boundary or thermodynamic-limit claim is permitted.",
+  "selection_source": "results/gate_a_v3/control_search/GATE_A_V3_SELECTED_CONTROLS.json",
+  "common_model": {
+    "N_chain": 6,
+    "J": 1.0,
+    "h": 1.0,
+    "boundary_condition_default": "OBC",
+    "initial_chain_state": "|up_z>^{tensor N}",
+    "initial_TLS_state": "|0_d>",
+    "full_model_declaration": "No Floquet pair selection, B^(0) construction, numerical Floquet index, or phase convention is used in any full-model preparation."
+  },
+  "readout": {
+    "detuning_ratios_omega_d_over_Omega_over_2": [0.88,0.904,0.928,0.952,0.976,1.0,1.024,1.048,1.072,1.096,1.12],
+    "phasor": "A_TLS=|2/(t_f-t_dis) integral[c_d(t)-mean(c_d)] exp(+i Omega t/2) dt|",
+    "spectral_weight": "W_r=integral |A_TLS(r)|^2 dr on the fixed ratio grid",
+    "normalized_shape_distance": "D(a,b)=||a/||a||_2-b/||b||_2||_2"
+  },
+  "matched_groups": {
+    "pi_matched": {
+      "purpose": "Strictly same-period comparison (1,1) versus (0,1), isolating the change of nu0 at fixed nupi=1.",
+      "S_over_pi": 1.65,
+      "T": 2.5918139392115793,
+      "Omega": 2.4242424242424243,
+      "g": 0.08,
+      "gamma1": 0.08,
+      "gT": 0.20734511513692636,
+      "gamma1T": 0.20734511513692636,
+      "periods": 80,
+      "discard_periods": 20,
+      "total_time": 207.34511513692635,
+      "drives": {
+        "nu11_production": {"alpha_over_pi":0.75,"beta_over_pi":0.9,"nu0":1,"nupi":1,"margin_rad":0.47123889803846913,"source_result":"results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json"},
+        "nu01_same_period": {"alpha_over_pi":0.96,"beta_over_pi":0.69,"nu0":0,"nupi":1,"margin_rad":0.8482300164692442}
+      }
+    },
+    "zero_matched": {
+      "purpose": "Strictly same-period comparison (1,0) versus (0,0), isolating the change of nu0 at fixed nupi=0.",
+      "S_over_pi": 0.825,
+      "T": 1.2959069696057897,
+      "Omega": 4.848484848484849,
+      "g": 0.16,
+      "gamma1": 0.16,
+      "gT": 0.20734511513692636,
+      "gamma1T": 0.20734511513692636,
+      "periods": 160,
+      "discard_periods": 40,
+      "total_time": 207.34511513692635,
+      "drives": {
+        "nu10_same_period": {"alpha_over_pi":0.3249625,"beta_over_pi":0.5000375,"nu0":1,"nupi":0,"margin_rad":0.5497792173941809},
+        "nu00_same_period": {"alpha_over_pi":0.5000375,"beta_over_pi":0.3249625,"nu0":0,"nupi":0,"margin_rad":0.5497792173941809}
+      }
+    }
+  },
+  "primary_full_model_runs": [
+    {"run_id":"nu01_OBC_m0","group":"pi_matched","drive":"nu01_same_period","boundary":"OBC","contacts":[0]},
+    {"run_id":"nu10_OBC_m0","group":"zero_matched","drive":"nu10_same_period","boundary":"OBC","contacts":[0]},
+    {"run_id":"nu00_OBC_m0","group":"zero_matched","drive":"nu00_same_period","boundary":"OBC","contacts":[0]}
+  ],
+  "spatial_profile": {
+    "purpose":"Production (1,1) OBC full-model edge-to-interior profile without pair preparation.",
+    "group":"pi_matched","drive":"nu11_production","boundary":"OBC","contacts":[0,1,2,3,4,5],
+    "reuse_existing_m0_source":"results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json",
+    "new_contacts_to_run":[1,2,3,4,5],
+    "report":"W_r(m) for all m=0..5 and the directional W_r(0)/W_r(3) reference ratio. No localization-length fit is claimed from N=6."
+  },
+  "numerical_convergence": {
+    "purpose":"Check that weak PBC/trivial signals are not artifacts of sampling or phasor-window discard.",
+    "group":"pi_matched","drive":"nu11_production","boundary":"OBC","contact":0,
+    "baseline_source":"results/gate_a_v2/gate_a_v2.0__00d3477cc81e/primary_controls/topological_obc_production_v2__m0.json",
+    "new_variants":[
+      {"samples_per_half_step":2,"periods":80,"discard_periods":20},
+      {"samples_per_half_step":8,"periods":80,"discard_periods":20},
+      {"samples_per_half_step":4,"periods":80,"discard_periods":8},
+      {"samples_per_half_step":4,"periods":80,"discard_periods":40}
+    ],
+    "acceptance":"Each variant must have normalized-shape distance D<=0.10 relative to the 4-samples, 20-period-discard baseline. Otherwise mark all v3 spectral conclusions sampling/window-sensitive."
+  },
+  "heldout_same_drive_PBC": {
+    "purpose":"Second independent boundary-condition control at the predeclared held-out (1,1) drive.",
+    "alpha_over_pi":0.5,"beta_over_pi":0.96,"nu0":1,"nupi":1,"margin_rad":1.4451326206513049,
+    "g":0.08,"gamma1":0.08,"periods":80,"discard_periods":20,"boundary":"PBC","contacts":[0],
+    "OBC_source":"results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json"
+  },
+  "directional_metrics_and_interpretation": {
+    "primary_directional_ratios":["W_nu11_OBC/W_nu01_OBC","W_nu10_OBC/W_nu00_OBC","W_heldout_OBC/W_heldout_PBC"],
+    "report_all":"For each matched pair report W ratio in declared numerator/denominator order, D, peak locations/splitting under the frozen grid rule, and raw peak ratio. Do not replace a directional ratio with max(Wa/Wb,Wb/Wa).",
+    "pi_specificity_rule":"Do not claim pi-specificity from one ratio. A finite-system pi-associated pattern requires the two nupi=1 cases to be mutually more similar in normalized shape than either is to its matched nupi=0 reference trend, together with a held-out OBC/PBC boundary contrast. If this qualitative pattern is absent or ambiguous, report four-class data without a pi-specific causal claim.",
+    "stop_rule":"No additional parameter search, N>6 run, reduced-model expansion, or retuning is authorized after these declared controls."
+  },
+  "provenance": {
+    "before_run":"Publicly commit this protocol, candidate-search scripts, selected-control JSON, and v3 production script. Every new JSON records protocol/script SHA-256, Git commit, UTC timestamps, exact command and result self-hash.",
+    "language":"Prospectively frozen numerical protocol; never formal preregistration."
+  }
+}
