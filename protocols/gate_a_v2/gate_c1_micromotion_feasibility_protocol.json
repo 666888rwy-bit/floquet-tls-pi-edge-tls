@@ -1,0 +1,61 @@
+{
+  "protocol_version": "gate_c1.0",
+  "status": "prospectively_frozen_public_commit_required_for_run",
+  "scope": "Minimal N=4 time-domain Fourier-micromotion feasibility test for the Floquet-manifold reduction. It is not a topological control, a Sambe density-matrix formalism, or a larger-system result.",
+  "motivation": "Gate B2 showed that an initial-support-compatible static B^(0)-only K=16 reduction remains quantitatively inaccurate. Gate C1 tests whether retaining nonzero Fourier harmonics of B(t) materially repairs the error before scaling N.",
+  "full_model": {
+    "N_chain": 4,
+    "boundary_condition": "OBC",
+    "J": 1.0,
+    "h": 1.0,
+    "alpha_over_pi": 0.75,
+    "beta_over_pi": 0.9,
+    "TLS_contact_site": 0,
+    "g": 0.08,
+    "gamma1": 0.08,
+    "chain_initial_state": "|up_z>^{tensor N}",
+    "TLS_initial_state": "|0_d>"
+  },
+  "common_readout": {
+    "detuning_ratio_r": [0.88,0.904,0.928,0.952,0.976,1.0,1.024,1.048,1.072,1.096,1.12],
+    "periods": 80,
+    "samples_per_half_step": 4,
+    "discard_periods": 20,
+    "phasor": "A_TLS=|2/(t_f-t_dis) integral[c_d(t)-mean(c_d)] exp(+i Omega t/2) dt|"
+  },
+  "basis_and_initial_projection": {
+    "micromotion_quadrature_points": 241,
+    "local_near_pi_pair": "At m=0, select the maximum local B^(0) pair among circular pi mismatch <=0.02 rad; mechanism anchor only.",
+    "initial_support_order": "Descending |<phi_a|up_z^{tensor N}>|^2, exact ties resolved by ascending numerical Schur index.",
+    "hybrid_rule": "Begin with the local near-pi pair and append initial-support states excluding existing entries until K is reached.",
+    "K_rule": "Use the smallest K in [4,6,8] whose hybrid p_K>=0.90. If none qualifies, stop without dynamic reduction.",
+    "projection": "For every reduced calculation c_K=P_K|up_z^{tensor N}>/sqrt(p_K), with undefined status if p_K<=1e-12."
+  },
+  "reduced_models": {
+    "static_M0": "H_K uses B^(0) only, reproducing the existing static reduction.",
+    "Fourier_M1": "Use B_M(t)=sum_{n=-1}^{1} B^(n) exp(+in Omega t) in the time-dependent K-state Lindblad Hamiltonian.",
+    "Fourier_M2": "Use B_M(t)=sum_{n=-2}^{2} B^(n) exp(+in Omega t).",
+    "full_micromotion": "Use exact piecewise B(t)=<u_a(t)|sigma_m^-|u_b(t)> evaluated at propagation midpoints. This is the within-K micromotion reference.",
+    "sambe_statement": "The M=1 and M=2 reconstructions are a time-domain Fourier realization of a Floquet/Sambe harmonic truncation. No claim is made that a density matrix in replica space is itself a physical Sambe observable."
+  },
+  "metrics": [
+    "p_K",
+    "epsilon_spec(M)=||a_hat_M-a_hat_full||_2",
+    "raw_peak_ratio(M)=max(A_M)/max(A_full)",
+    "epsilon_Fourier_vs_full_micromotion(M)=||a_hat_M-a_hat_fullmicro||_2"
+  ],
+  "prospective_decision": {
+    "success_to_N6_test": [
+      "p_K>=0.90",
+      "epsilon_spec(Fourier_M1)<=0.35",
+      "epsilon_spec(Fourier_M1)<=0.75*epsilon_spec(static_M0)",
+      "epsilon_Fourier_vs_full_micromotion(M1)<=0.10",
+      "raw_peak_ratio(Fourier_M1) in [0.50,2.00]"
+    ],
+    "failure": "Do not scale this reduction to N=6. Report whether the obstruction is harmonic truncation (M1 differs materially from full micromotion) or finite-manifold/other approximation (full micromotion remains inaccurate)."
+  },
+  "provenance_requirements": {
+    "before_run": "Publicly commit this protocol and executable script. Each result records protocol/script/source SHA-256, Git commit, UTC timestamps and exact command.",
+    "language": "prospectively frozen numerical protocol; not preregistration absent an external timestamp."
+  }
+}
