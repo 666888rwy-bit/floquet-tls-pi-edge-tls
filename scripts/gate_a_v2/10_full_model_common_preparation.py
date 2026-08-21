@@ -301,7 +301,8 @@ def main() -> None:
         raise SystemExit("Contacts must be distinct valid chain-site integers.")
 
     run_tag = f"{protocol['protocol_version']}__{sha256_path(PROTOCOL)[:12]}"
-    output_dir = RESULTS_ROOT / run_tag / "primary_controls"
+    stage_dir = "heldout_controls" if "heldout_topological_obc_v2" in case_ids else "primary_controls"
+    output_dir = RESULTS_ROOT / run_tag / stage_dir
     command = [sys.executable, str(Path(__file__).relative_to(REPO)), *sys.argv[1:]]
     print(json.dumps({"planned_cases": case_ids, "contacts": contacts, "output_dir": str(output_dir.relative_to(REPO)), "protocol_sha256": sha256_path(PROTOCOL)}, indent=2))
     base_provenance = git_provenance()
