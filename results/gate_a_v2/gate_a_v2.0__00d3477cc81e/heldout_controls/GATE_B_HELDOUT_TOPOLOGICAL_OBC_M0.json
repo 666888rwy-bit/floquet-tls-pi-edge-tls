@@ -1,0 +1,72 @@
+{
+  "schema": "gate_a_v2_projected_manifold_result_v1",
+  "source_case": {
+    "case_id": "heldout_topological_obc_v2",
+    "boundary_condition": "OBC",
+    "alpha_over_pi": 0.5,
+    "beta_over_pi": 0.96,
+    "closed_chain_classifier": {
+      "nu0": 1,
+      "nupi": 1,
+      "minimum_bulk_gap_margin_rad": 1.4451326206513049
+    },
+    "execution_gate": "Run only after the three primary controls are complete and the prospectively fixed primary criterion passes."
+  },
+  "contact_site_m": 0,
+  "selection_for_manifold_only": {
+    "indices": [
+      11,
+      15
+    ],
+    "local_B0_score": 0.2839048521246897,
+    "pi_mismatch_rad": 1.963663446957753e-06,
+    "eligible_pair_count": 144,
+    "floquet_index_disclaimer": "Schur numerical ordering metadata, not cross-platform physical labels."
+  },
+  "timing": {
+    "T1": 1.5079644737231006,
+    "T2": 0.7853981633974483,
+    "T": 2.293362637120549,
+    "Omega": 2.7397260273972606,
+    "Omega_over_2": 1.3698630136986303
+  },
+  "results": [
+    {
+      "K": 2,
+      "indices": [
+        11,
+        15
+      ],
+      "p_K": 8.078757261254494e-30,
+      "status": "undefined_retained_weight_at_or_below_1e-12"
+    },
+    {
+      "K": 4,
+      "indices": [
+        11,
+        15,
+        10,
+        14
+      ],
+      "p_K": 1.6472341233331356e-29,
+      "status": "undefined_retained_weight_at_or_below_1e-12"
+    }
+  ],
+  "provenance": {
+    "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+    "script_sha256": "ee24eb69ab8930465896d769b049c8f66b743d0207f1667bb03f4ccdcb6e48d4",
+    "source_full_result": "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json",
+    "source_full_result_sha256": "64a7deca8d889cb7525a85c60ddb6aa7b62f871106670514202d37a3a42b63d5",
+    "git_commit": "ec51f6159e48c8b4896d301c306afc53319a81f1",
+    "run_started_utc": "2026-08-21T11:59:00Z",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/gate_a_v2/20_projected_manifold_validity.py",
+      "--full-result",
+      "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json",
+      "--output",
+      "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/GATE_B_HELDOUT_TOPOLOGICAL_OBC_M0.json"
+    ],
+    "run_finished_utc": "2026-08-21T11:59:00Z"
+  }
+}

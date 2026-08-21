@@ -1,0 +1,15 @@
+{
+  "schema": "gate_a_v2_full_model_manifest_v1",
+  "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+  "git_commit": "ec51f6159e48c8b4896d301c306afc53319a81f1",
+  "run_directory": "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls",
+  "result_files": [
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json",
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m3.json"
+  ],
+  "result_file_sha256": {
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m0.json": "64a7deca8d889cb7525a85c60ddb6aa7b62f871106670514202d37a3a42b63d5",
+    "results/gate_a_v2/gate_a_v2.0__00d3477cc81e/heldout_controls/heldout_topological_obc_v2__m3.json": "aac65f0e703653d1ff13cf0f6c6b7051cbddc89a6d52a2adfe43190af54e1483"
+  },
+  "manifest_created_utc": "2026-08-21T11:58:49Z"
+}

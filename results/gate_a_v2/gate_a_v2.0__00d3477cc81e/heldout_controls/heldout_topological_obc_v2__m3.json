@@ -1,0 +1,99 @@
+{
+  "schema": "gate_a_v2_full_model_result_v1",
+  "case": {
+    "case_id": "heldout_topological_obc_v2",
+    "boundary_condition": "OBC",
+    "alpha_over_pi": 0.5,
+    "beta_over_pi": 0.96,
+    "closed_chain_classifier": {
+      "nu0": 1,
+      "nupi": 1,
+      "minimum_bulk_gap_margin_rad": 1.4451326206513049
+    },
+    "execution_gate": "Run only after the three primary controls are complete and the prospectively fixed primary criterion passes."
+  },
+  "contact_site_m": 3,
+  "preparation": {
+    "chain": "|up_z>^{tensor N}",
+    "TLS": "|0_d><0_d|, the Z_d=+1 basis state used in the production scripts",
+    "independence_declaration": "The full-model initial state is fixed before and is independent of alpha, beta, boundary condition, Floquet eigensystem, B^(0), any selected pair, and any numerical Floquet index.",
+    "floquet_pair_selected_for_full_model": false,
+    "B0_constructed_for_full_model": false
+  },
+  "timing": {
+    "T1": 1.5079644737231006,
+    "T2": 0.7853981633974483,
+    "T": 2.293362637120549,
+    "Omega": 2.7397260273972606,
+    "Omega_over_2": 1.3698630136986303
+  },
+  "detuning_ratios_omega_d_over_Omega_over_2": [
+    0.88,
+    0.904,
+    0.928,
+    0.952,
+    0.976,
+    1.0,
+    1.024,
+    1.048,
+    1.072,
+    1.096,
+    1.12
+  ],
+  "raw_A_TLS": [
+    0.001183920482216931,
+    0.0018198630108243316,
+    0.002221684751409663,
+    0.002221875102916092,
+    0.0029070403404707636,
+    0.0046196926145213235,
+    0.0037690015909843757,
+    0.001913204845730589,
+    0.0012434942539811997,
+    0.0013070216906215168,
+    0.0011783698363078718
+  ],
+  "normalized_shape": [
+    0.14476050389996623,
+    0.22251856474560827,
+    0.27165017326054225,
+    0.2716734479486676,
+    0.35545007529227707,
+    0.5648597526489314,
+    0.46084393141760116,
+    0.23393167167207618,
+    0.15204471711306017,
+    0.1598123534346357,
+    0.14408181448557153
+  ],
+  "spectral_weight_ratio_grid": 1.5718170696776195e-06,
+  "spectral_weight_angular_frequency": 2.153174068051535e-06,
+  "provenance": {
+    "repository_url": "https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls.git",
+    "git_commit": "ec51f6159e48c8b4896d301c306afc53319a81f1",
+    "git_commit_short": "ec51f61",
+    "git_status_before_run": "",
+    "protocol_version": "gate_a_v2.0",
+    "protocol_path": "protocols/gate_a_v2/gate_a_v2_protocol.json",
+    "protocol_sha256": "00d3477cc81e29ddbd6f794365b4e360604b78b70604a529a908d77612c4bbcf",
+    "script_path": "scripts/gate_a_v2/10_full_model_common_preparation.py",
+    "script_sha256": "43ecb788a271a78b737fc4747ddd9d60ea51b539cdea6b2c4f04a3ace402fa05",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/gate_a_v2/10_full_model_common_preparation.py",
+      "--case",
+      "heldout_topological_obc_v2",
+      "--include-heldout"
+    ],
+    "run_started_utc": "2026-08-21T11:57:02Z",
+    "environment": {
+      "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+      "numpy": "2.5.1",
+      "scipy": "1.18.0",
+      "matplotlib": "3.11.1",
+      "platform": "Linux-6.18.38+-x86_64-with-glibc2.39"
+    },
+    "run_finished_utc": "2026-08-21T11:58:49Z"
+  },
+  "result_sha256_excluding_self": "699ff25ea49c5d9c706825cb90886b194749a6dd468fa147d5a5017915140bbb"
+}
