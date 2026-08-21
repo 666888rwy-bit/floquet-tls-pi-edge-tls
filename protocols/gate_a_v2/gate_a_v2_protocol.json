@@ -1,0 +1,132 @@
+{
+  "protocol_version": "gate_a_v2.0",
+  "status": "prospectively_frozen_public_commit_required_for_run",
+  "supersedes": "gate_a_topological_specificity_v1_for_full_model_topology_controls_only",
+  "scope": "Finite N=6 full Floquet-Lindblad topology controls. This protocol tests whether a fixed physical preparation produces boundary-condition and drive-class-dependent TLS spectra. It does not claim a thermodynamic-limit phase diagram or universal edge spectroscopy.",
+  "scientific_separation": {
+    "gate_A_question": "With a common physical initial state independent of Floquet eigenvectors, does the full chain-TLS response at an edge contact differ reproducibly between topological OBC, same-drive PBC, and trivial OBC?",
+    "gate_B_question": "Conditional on a fixed physical initial state, how much of that state is retained by a Floquet manifold and when does a K=2/K=4 local reduction reproduce the full response?",
+    "prohibited_in_gate_A": [
+      "Selecting a Floquet pair to define the full-model initial state",
+      "Using arg(<phi_a|Z_m|phi_b>) to set a full-model initial-state phase",
+      "Copying numerical Floquet indices across drives or boundary conditions",
+      "Calling the absence of a selected pair an absence of physical response"
+    ]
+  },
+  "fixed_chain_TLS_model": {
+    "N_chain": 6,
+    "J": 1.0,
+    "h": 1.0,
+    "H1_chain": "-J sum_j Z_j Z_{j+1}",
+    "H2_chain": "-h sum_j X_j",
+    "T1": "beta/(2J)",
+    "T2": "alpha/(2h)",
+    "Floquet_operator": "U_F=U2 U1",
+    "TLS_exchange": "g(sigma_m^+ sigma_d^- + sigma_m^- sigma_d^+)",
+    "g": 0.08,
+    "TLS_hamiltonian": "-(omega_d/2) Z_d",
+    "TLS_amplitude_damping_gamma1": 0.08,
+    "TLS_collapse_operator": "sqrt(gamma1) sigma_d^-"
+  },
+  "physical_initial_state": {
+    "chain_pure_state": "|up_z>^{tensor N}",
+    "chain_density_matrix": "|up_z><up_z|^{tensor N}",
+    "TLS_state": "|0_d><0_d|, the Z_d=+1 basis state used in the production scripts",
+    "full_initial_state": "rho_chain(0) tensor rho_d(0)",
+    "independence_declaration": "The full-model initial state is fixed before and is independent of alpha, beta, boundary condition, Floquet eigensystem, B^(0), any selected pair, and any numerical Floquet index."
+  },
+  "controls": [
+    {
+      "case_id": "topological_obc_production_v2",
+      "boundary_condition": "OBC",
+      "alpha_over_pi": 0.75,
+      "beta_over_pi": 0.9,
+      "closed_chain_classifier": {"nu0": 1, "nupi": 1, "minimum_bulk_gap_margin_rad": 0.47123889803846913}
+    },
+    {
+      "case_id": "topological_pbc_same_drive_v2",
+      "boundary_condition": "PBC",
+      "alpha_over_pi": 0.75,
+      "beta_over_pi": 0.9,
+      "closed_chain_classifier": {"nu0": 1, "nupi": 1, "minimum_bulk_gap_margin_rad": 0.47123889803846913}
+    },
+    {
+      "case_id": "trivial_obc_control_v2",
+      "boundary_condition": "OBC",
+      "alpha_over_pi": 0.5,
+      "beta_over_pi": 0.04,
+      "closed_chain_classifier": {"nu0": 0, "nupi": 0, "minimum_bulk_gap_margin_rad": 1.4451326206513047}
+    },
+    {
+      "case_id": "heldout_topological_obc_v2",
+      "boundary_condition": "OBC",
+      "alpha_over_pi": 0.5,
+      "beta_over_pi": 0.96,
+      "closed_chain_classifier": {"nu0": 1, "nupi": 1, "minimum_bulk_gap_margin_rad": 1.4451326206513049},
+      "execution_gate": "Run only after the three primary controls are complete and the prospectively fixed primary criterion passes."
+    }
+  ],
+  "full_model_measurement_protocol": {
+    "probe_contacts": {
+      "edge_contact_m": 0,
+      "bulk_reference_m": 3,
+      "boundary_note": "For PBC, m=0 is a reference contact with the same numerical location as OBC; m=3 is the fixed diametrically separated bulk reference."
+    },
+    "matched_detuning_ratios_omega_d_over_Omega_over_2": [0.88, 0.904, 0.928, 0.952, 0.976, 1.0, 1.024, 1.048, 1.072, 1.096, 1.12],
+    "periods": 80,
+    "samples_per_half_step": 4,
+    "discard_periods": 20,
+    "observable": "c_d(t)=Tr[rho(t) sigma_d^-]",
+    "phasor_readout": "A_TLS(r)=abs[2/(t_f-t_dis) integral_{t_dis}^{t_f}(c_d(t)-mean(c_d)) exp(+i Omega t/2) dt]",
+    "full_model_pair_selection": "none",
+    "full_model_B0_requirement": "none"
+  },
+  "frozen_analysis_definitions": {
+    "raw_spectrum": "a_i=A_TLS(r_i) on the listed ratio grid",
+    "normalized_shape": "a_hat=a/max(||a||_2, 1e-15)",
+    "shape_distance": "D(a,b)=||a_hat-b_hat||_2",
+    "ratio_grid_spectral_weight": "W_r(a)=trapezoid(|a_i|^2,r_i)",
+    "angular_frequency_spectral_weight": "W_omega(a)=trapezoid(|a_i|^2,omega_i), with omega_i=r_i*Omega/2; it is reported but not used for cross-drive decisions because the matched drive periods differ.",
+    "edge_to_bulk_ratio": "R_EB=W_r(a_at_m0)/max(W_r(a_at_m3),1e-15)",
+    "weight_contrast": "C_W(a,b)=max(W_r(a)/max(W_r(b),1e-15), W_r(b)/max(W_r(a),1e-15))",
+    "edge_ratio_contrast": "C_EB=R_EB(topological_OBC)/max(R_EB(control),1e-15)",
+    "peak_position": "r_i at the largest raw-spectrum grid value; ties are reported, not broken.",
+    "resolved_splitting": "Reported only if two strict interior local maxima are separated by >=2 grid intervals and both are >=0.70 of the global maximum; otherwise status=not_resolved_on_frozen_grid.",
+    "linewidth": "For the global maximum, linear-interpolation FWHM is reported only when half-height crossings occur on both sides inside the frozen grid; otherwise status=censored_by_grid."
+  },
+  "prospective_primary_decision_rule": {
+    "purpose": "A finite-system, deterministic criterion for whether the three primary controls justify proceeding to the held-out drive. These values are protocol choices, not universal physical constants.",
+    "required_for_each_control_in_[same_drive_PBC,trivial_OBC]": [
+      "C_W(topological_OBC, control) >= 1.50",
+      "D(topological_OBC, control) >= 0.30",
+      "C_EB(topological_OBC, control) >= 1.50"
+    ],
+    "pass": "All six inequalities pass, every full-model output has valid finite readout values, and no full-model response was conditioned on a Floquet pair.",
+    "inconclusive_or_fail": "If any inequality fails, or a diagnostic is undefined, Gate A v2 does not authorize a topological-TLS-spectroscopy claim. The result must be reported as finite-system evidence against, or insufficient for, the proposed specificity under this fixed preparation.",
+    "heldout_requirement": "A held-out topological OBC point must reproduce the direction of all three primary contrasts against its predeclared matching controls before any stronger manuscript language is considered."
+  },
+  "gate_B_reduced_model_protocol": {
+    "separation_from_gate_A": "Gate B is executed only after Gate A full-model outputs. It never changes Gate A initial states or full-model spectra.",
+    "Floquet_manifold": "Use the pre-existing physical local near-pi channel ranking only to construct P_K; report all numerical Floquet indices as backend-specific metadata.",
+    "retained_weight": "p_K=Tr(P_K rho_chain(0)) for K=2 and K=4, evaluated before reduced propagation.",
+    "projected_initial_state": "rho_K(0)=P_K rho_chain(0) P_K/p_K if p_K>1e-12; otherwise the reduced response is declared undefined rather than normalized artificially.",
+    "required_outputs": ["p_2", "p_4", "K=2 raw and normalized spectra", "K=4 raw and normalized spectra", "normalized-shape error versus full model", "amplitude-ratio diagnostic versus full model"],
+    "interpretation": "Small p_K or failure of K=4 after projection is physical evidence that the existing reduced model is restricted to selected pair-coherence preparations; it is not a software failure."
+  },
+  "provenance_requirements": {
+    "before_any_v2_full_run": [
+      "Commit this finalized protocol and implementation to the public repository.",
+      "Record immutable protocol_sha256, git_commit, repository URL and UTC run start time in every result JSON."
+    ],
+    "after_each_run": [
+      "Record UTC finish time, Python/NumPy/SciPy versions, script_sha256, exact command, and output-file sha256 in the result JSON.",
+      "Do not overwrite prior output directories; use a protocol-hash-qualified directory."
+    ],
+    "manuscript_language_before_external_timestamp": "prospectively frozen numerical protocol",
+    "prohibited_language_before_external_timestamp": "preregistered"
+  },
+  "documentation_delivery": {
+    "canonical_format": "Markdown with embedded/linked PNG and PDF figures plus JSON data and source scripts.",
+    "docx_policy": "No DOCX is a deliverable for this protocol. If a DOCX is later requested, create it from the verified Markdown source and perform a visual validation before release."
+  }
+}
