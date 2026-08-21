@@ -1,0 +1,161 @@
+{
+  "schema": "gate_d_n4_stratified_bdi_selection_v1",
+  "candidate_complete": true,
+  "selection_stop_note": "If candidate_complete is false, do not run TLS screening; revise the pre-response geometric selection constraints transparently.",
+  "closed_chain_convention_source": "scripts/gate_a_v3/01_iso_period_bdi_control_search.py",
+  "selection_is_response_blind": true,
+  "grid": "alpha/pi,beta/pi in [0.10,0.98], 61x61; retain 1.20<=T<=2.85 and margin>=0.30 rad",
+  "selection_rule": "Within each BDI class, rank safe points by the smaller zero/pi bulk gap margin and greedily retain two points separated by Euclidean distance >=0.18 in (alpha/pi,beta/pi). No TLS response, Floquet-pair selection, or local matrix element enters selection.",
+  "classes_with_safe_candidate_counts": {
+    "nu00": 190,
+    "nu10": 190,
+    "nu01": 698,
+    "nu11": 698
+  },
+  "selected_points_by_class": {
+    "nu00": [
+      {
+        "nu0": 0,
+        "nupi": 0,
+        "classified": true,
+        "wA": 0,
+        "wB": 0,
+        "gap0_rad": 0.7833037682950552,
+        "gappi_rad": 0.7162886112549507,
+        "margin_rad": 0.7162886112549507,
+        "qmin_A": 0.6565898937445137,
+        "qmin_B": 0.6565898937445136,
+        "alpha_over_pi": 0.5106666666666667,
+        "beta_over_pi": 0.2613333333333333,
+        "T": 1.2126547642856602,
+        "Omega": 5.181347150259067,
+        "selection_score": 0.7162886112549507
+      },
+      {
+        "nu0": 0,
+        "nupi": 0,
+        "classified": true,
+        "wA": 0,
+        "wB": 0,
+        "gap0_rad": 1.61268422884276,
+        "gappi_rad": 0.7162857967218086,
+        "margin_rad": 0.7162857967218086,
+        "qmin_A": 0.6565877708865432,
+        "qmin_B": 0.6565877708865427,
+        "alpha_over_pi": 0.6426666666666666,
+        "beta_over_pi": 0.12933333333333333,
+        "T": 1.21265476428566,
+        "Omega": 5.181347150259068,
+        "selection_score": 0.7162857967218086
+      }
+    ],
+    "nu10": [
+      {
+        "nu0": 1,
+        "nupi": 0,
+        "classified": true,
+        "wA": 1,
+        "wB": 1,
+        "gap0_rad": 0.7833037682950552,
+        "gappi_rad": 0.7162886112549507,
+        "margin_rad": 0.7162886112549507,
+        "qmin_A": 0.6565898937445136,
+        "qmin_B": 0.6565898937445137,
+        "alpha_over_pi": 0.2613333333333333,
+        "beta_over_pi": 0.5106666666666667,
+        "T": 1.2126547642856602,
+        "Omega": 5.181347150259067,
+        "selection_score": 0.7162886112549507
+      },
+      {
+        "nu0": 1,
+        "nupi": 0,
+        "classified": true,
+        "wA": 1,
+        "wB": 1,
+        "gap0_rad": 1.61268422884276,
+        "gappi_rad": 0.7162857967218086,
+        "margin_rad": 0.7162857967218086,
+        "qmin_A": 0.6565877708865429,
+        "qmin_B": 0.656587770886543,
+        "alpha_over_pi": 0.12933333333333333,
+        "beta_over_pi": 0.6426666666666666,
+        "T": 1.21265476428566,
+        "Omega": 5.181347150259068,
+        "selection_score": 0.7162857967218086
+      }
+    ],
+    "nu01": [
+      {
+        "nu0": 0,
+        "nupi": 1,
+        "classified": true,
+        "wA": 1,
+        "wB": -1,
+        "gap0_rad": 1.5205308443374599,
+        "gappi_rad": 1.4953984132050866,
+        "margin_rad": 1.4953984132050866,
+        "qmin_A": 0.9971589236191329,
+        "qmin_B": 0.9971589236191329,
+        "alpha_over_pi": 0.98,
+        "beta_over_pi": 0.496,
+        "T": 2.3184953783492674,
+        "Omega": 2.7100271002710024,
+        "selection_score": 1.4953984132050866
+      },
+      {
+        "nu0": 0,
+        "nupi": 1,
+        "classified": true,
+        "wA": 1,
+        "wB": -1,
+        "gap0_rad": 0.9215338450530058,
+        "gappi_rad": 2.09439539981216,
+        "margin_rad": 0.9215338450530058,
+        "qmin_A": 0.796529918024196,
+        "qmin_B": 0.796529918024196,
+        "alpha_over_pi": 0.98,
+        "beta_over_pi": 0.6866666666666666,
+        "T": 2.617993877991494,
+        "Omega": 2.4000000000000004,
+        "selection_score": 0.9215338450530058
+      }
+    ],
+    "nu11": [
+      {
+        "nu0": 1,
+        "nupi": 1,
+        "classified": true,
+        "wA": 2,
+        "wB": 0,
+        "gap0_rad": 1.5205308443374599,
+        "gappi_rad": 1.4953984132050866,
+        "margin_rad": 1.4953984132050866,
+        "qmin_A": 0.9971589236191328,
+        "qmin_B": 0.9971589236191332,
+        "alpha_over_pi": 0.496,
+        "beta_over_pi": 0.98,
+        "T": 2.3184953783492674,
+        "Omega": 2.7100271002710024,
+        "selection_score": 1.4953984132050866
+      },
+      {
+        "nu0": 1,
+        "nupi": 1,
+        "classified": true,
+        "wA": 2,
+        "wB": 0,
+        "gap0_rad": 0.9215338450530058,
+        "gappi_rad": 2.09439539981216,
+        "margin_rad": 0.9215338450530058,
+        "qmin_A": 0.796529918024196,
+        "qmin_B": 0.796529918024196,
+        "alpha_over_pi": 0.6866666666666666,
+        "beta_over_pi": 0.98,
+        "T": 2.617993877991494,
+        "Omega": 2.4000000000000004,
+        "selection_score": 0.9215338450530058
+      }
+    ]
+  }
+}

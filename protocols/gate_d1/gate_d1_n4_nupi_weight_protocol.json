@@ -1,0 +1,49 @@
+{
+  "protocol_version": "gate_d1.0",
+  "status": "prospectively_frozen_public_commit_required_for_run",
+  "purpose": "Low-cost N=4 exploratory screen of whether the raw TLS integrated spectral weight systematically separates sampled nupi=1 from nupi=0 BDI-labelled drives. This protocol is motivated by, but is independent from, the exploratory Gate A v3 four-point amplitude hierarchy.",
+  "selection_provenance": {
+    "response_blind_selection_file": "results/gate_a_v3/gate_d_n4_weight_screen/N4_BDI_STRATIFIED_CANDIDATES.json",
+    "closed_chain_BDI_convention": "scripts/gate_a_v3/01_iso_period_bdi_control_search.py",
+    "rule": "For each (nu0,nupi) class retain two safe, mutually separated points from a fixed alpha/pi,beta/pi grid. No TLS response, Floquet-pair selection, or local matrix element entered candidate selection."
+  },
+  "common_physical_protocol": {
+    "N_chain": 4,
+    "J": 1.0,
+    "h": 1.0,
+    "boundary": "OBC",
+    "TLS_contact_site": 0,
+    "initial_chain_state": "|up_z>^{tensor 4}",
+    "initial_TLS_state": "|0_d>",
+    "full_model_pair_independence": "No Floquet pair, B^(0) matrix, numerical Floquet index, matrix-element ranking, or phase convention enters the full-model preparation.",
+    "gT_target": 0.20734511513692636,
+    "gamma1T_target": 0.20734511513692636,
+    "periods": 80,
+    "discard_periods": 20,
+    "samples_per_half_step": 4,
+    "detuning_ratios_omega_d_over_Omega_over_2": [0.88,0.904,0.928,0.952,0.976,1.0,1.024,1.048,1.072,1.096,1.12],
+    "readout": "A_TLS=|2/(t_f-t_dis) integral[c_d(t)-mean(c_d)] exp(+i Omega t/2) dt|; W_r=integral |A_TLS(r)|^2 dr on the fixed ratio grid."
+  },
+  "selected_drives": [
+    {"id":"nu00_a","nu0":0,"nupi":0,"alpha_over_pi":0.5106666666666667,"beta_over_pi":0.2613333333333333,"T":1.2126547642856602,"Omega":5.181347150259067,"bulk_margin_rad":0.7162886112549507},
+    {"id":"nu00_b","nu0":0,"nupi":0,"alpha_over_pi":0.6426666666666666,"beta_over_pi":0.12933333333333333,"T":1.21265476428566,"Omega":5.181347150259068,"bulk_margin_rad":0.7162857967218086},
+    {"id":"nu10_a","nu0":1,"nupi":0,"alpha_over_pi":0.2613333333333333,"beta_over_pi":0.5106666666666667,"T":1.2126547642856602,"Omega":5.181347150259067,"bulk_margin_rad":0.7162886112549507},
+    {"id":"nu10_b","nu0":1,"nupi":0,"alpha_over_pi":0.12933333333333333,"beta_over_pi":0.6426666666666666,"T":1.21265476428566,"Omega":5.181347150259068,"bulk_margin_rad":0.7162857967218086},
+    {"id":"nu01_a","nu0":0,"nupi":1,"alpha_over_pi":0.98,"beta_over_pi":0.496,"T":2.3184953783492674,"Omega":2.7100271002710024,"bulk_margin_rad":1.4953984132050866},
+    {"id":"nu01_b","nu0":0,"nupi":1,"alpha_over_pi":0.98,"beta_over_pi":0.6866666666666666,"T":2.617993877991494,"Omega":2.4000000000000004,"bulk_margin_rad":0.9215338450530058},
+    {"id":"nu11_a","nu0":1,"nupi":1,"alpha_over_pi":0.496,"beta_over_pi":0.98,"T":2.3184953783492674,"Omega":2.7100271002710024,"bulk_margin_rad":1.4953984132050866},
+    {"id":"nu11_b","nu0":1,"nupi":1,"alpha_over_pi":0.6866666666666666,"beta_over_pi":0.98,"T":2.617993877991494,"Omega":2.4000000000000004,"bulk_margin_rad":0.9215338450530058}
+  ],
+  "predeclared_analysis": {
+    "primary_endpoint": "W_r",
+    "secondary_endpoints": ["normalized spectral shape distance", "raw peak height", "peak location on the fixed detuning-ratio grid"],
+    "nupi_weight_screen": "Compute medians within each sampled BDI class. Report median(W_nu11)/median(W_nu10), median(W_nu01)/median(W_nu00), and pooled median(W_nupi1)/pooled median(W_nupi0).",
+    "screening_success_condition": "Both fixed-nu0 median ratios must exceed 10 and the smaller of all four nupi=1 weights must exceed the larger of all four nupi=0 weights. This is a candidate-screen criterion only, not evidence of a universal invariant law.",
+    "screening_failure_condition": "If any primary weight condition fails, do not schedule N=6 confirmation or modify candidate selection. Report the descriptive N=4 screen and stop.",
+    "interpretation_boundary": "This cross-period stratified design fixes gT, gamma1T, common state, measurement ratio grid, periods, discard periods, and time-step density. It does not provide a single common-T causal comparison across all four BDI classes."
+  },
+  "provenance": {
+    "before_run": "Publicly commit this protocol, response-blind candidate selection JSON, and N=4 production/audit scripts. Every result records protocol/script SHA-256, Git commit, UTC timing, command, and self-hash.",
+    "language": "Prospectively frozen numerical protocol; never formal preregistration."
+  }
+}
