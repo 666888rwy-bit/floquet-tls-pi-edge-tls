@@ -60,10 +60,10 @@ def chain_data(p):
  ov=float(np.sum(np.abs((V[:,selected].conj().T@psi))**2));valid=[K for K in [4,6,8] if float(np.sum(np.abs((V[:,selected[:K]].conj().T@psi))**2))>=.90]
  if not valid:raise RuntimeError('Gate C K rule not satisfied through K=8')
  K=min(valid);inds=selected[:K];coeff=V[:,inds].conj().T@psi;pk=float(np.vdot(coeff,coeff).real)
- return {'n':n,'T':T,'omega':omega,'t1':t1,'t2':t2,'eps':eps[inds]-np.mean(eps[inds]),'V':V,'e1':e1,'v1':v1,'e2':e2,'v2':v2,'u1':u1,'sm':opsm,'indices':inds,'pair':pair,'pair_score':score,'pair_pi_error':err,'pK':pk,'c0':coeff/np.sqrt(pk),'Bn':{q:Bn[q][np.ix_(inds,inds)] for q in Bn},'K':K}
+ return {'n':n,'T':T,'omega':omega,'t1':t1,'t2':t2,'eps':eps[inds]-np.mean(eps[inds]),'eps_full':eps,'V':V,'e1':e1,'v1':v1,'e2':e2,'v2':v2,'u1':u1,'sm':opsm,'indices':inds,'pair':pair,'pair_score':score,'pair_pi_error':err,'pK':pk,'c0':coeff/np.sqrt(pk),'Bn':{q:Bn[q][np.ix_(inds,inds)] for q in Bn},'K':K}
 
 def b_exact(d,t):
- ev=prop(d['e1'],d['v1'],t) if t<=d['t1']+1e-14 else prop(d['e2'],d['v2'],t-d['t1'])@d['u1'];modes=ev@d['V']*np.exp(1j*(d['eps']+np.mean(d['eps']))*t)[None,:];return (modes.conj().T@d['sm']@modes)[np.ix_(d['indices'],d['indices'])]
+ ev=prop(d['e1'],d['v1'],t) if t<=d['t1']+1e-14 else prop(d['e2'],d['v2'],t-d['t1'])@d['u1'];modes=ev@d['V']*np.exp(1j*d['eps_full']*t)[None,:];return (modes.conj().T@d['sm']@modes)[np.ix_(d['indices'],d['indices'])]
 
 def reduced_response(d,p,ratio,kind):
  K=d['K'];I=np.eye(K);z=np.diag([1.,-1.]).astype(complex);sm=np.array([[0.,1.],[0.,0.]],complex);g=p['full_model']['g'];gamma=p['full_model']['gamma1'];dim=2*K;obs=sparse(np.kron(I,sm));collapse=sparse(np.sqrt(gamma)*np.kron(I,sm));rho=np.outer(np.kron(d['c0'],np.array([1.,0.])),np.kron(d['c0'],np.array([1.,0.])).conj()).reshape(-1,order='F');base=np.kron(np.diag(d['eps']),np.eye(2))-.5*ratio*(d['omega']/2)*np.kron(I,z)
