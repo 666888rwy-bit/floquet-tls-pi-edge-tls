@@ -214,12 +214,12 @@ def code_environment() -> dict[str, str]:
     }
 
 
-def run_one(case: dict[str, Any], contact: int, protocol: dict[str, Any], output_dir: Path, command: list[str]) -> Path:
+def run_one(case: dict[str, Any], contact: int, protocol: dict[str, Any], output_dir: Path, command: list[str], base_provenance: dict[str, Any]) -> Path:
     fixed = protocol["fixed_chain_TLS_model"]
     measurement = protocol["full_model_measurement_protocol"]
     run_start = utc_now()
     provenance = {
-        **git_provenance(),
+        **base_provenance,
         "protocol_version": protocol["protocol_version"],
         "protocol_path": str(PROTOCOL.relative_to(REPO)),
         "protocol_sha256": sha256_path(PROTOCOL),
@@ -229,10 +229,6 @@ def run_one(case: dict[str, Any], contact: int, protocol: dict[str, Any], output
         "run_started_utc": run_start,
         "environment": code_environment(),
     }
-    if provenance["git_status_before_run"]:
-        raise RuntimeError(
-            "Refusing to run with a dirty working tree. Commit protocol and implementation first; generated results must be written after this clean preflight."
-        )
     timing = make_timing(case["alpha_over_pi"], case["beta_over_pi"], fixed["J"], fixed["h"])
     system = build_system(
         n_chain=int(fixed["N_chain"]), jcoupling=float(fixed["J"]), hfield=float(fixed["h"]),
@@ -308,16 +304,16 @@ def main() -> None:
     output_dir = RESULTS_ROOT / run_tag / "primary_controls"
     command = [sys.executable, str(Path(__file__).relative_to(REPO)), *sys.argv[1:]]
     print(json.dumps({"planned_cases": case_ids, "contacts": contacts, "output_dir": str(output_dir.relative_to(REPO)), "protocol_sha256": sha256_path(PROTOCOL)}, indent=2))
+    base_provenance = git_provenance()
+    if base_provenance["git_status_before_run"]:
+        raise SystemExit("Run preflight failed: working tree is dirty; commit protocol and implementation first.")
     if args.dry_run:
-        git = git_provenance()
-        if git["git_status_before_run"]:
-            raise SystemExit("Dry-run preflight failed: working tree is dirty; commit protocol and implementation first.")
         return
     output_dir.mkdir(parents=True, exist_ok=False)
     written: list[str] = []
     for case_id in case_ids:
         for contact in contacts:
-            written.append(str(run_one(all_cases[case_id], contact, protocol, output_dir, command).relative_to(REPO)))
+            written.append(str(run_one(all_cases[case_id], contact, protocol, output_dir, command, base_provenance).relative_to(REPO)))
     manifest = {
         "schema": "gate_a_v2_full_model_manifest_v1",
         "protocol_sha256": sha256_path(PROTOCOL),
