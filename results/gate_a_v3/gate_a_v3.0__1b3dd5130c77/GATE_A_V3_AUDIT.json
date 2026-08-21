@@ -1,0 +1,149 @@
+{
+  "schema": "gate_a_v3_audit_v1",
+  "v3_manifest_sha256": "e3564edd172c27ef7852ac7baf7255ea1504d23e42b29d8ea9847d52ce490ca1",
+  "v3_integrity": {
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu01_OBC_m0.json": {
+      "expected": "26bc4e9f864e928df95b1c49a784cc320f147a4ed4591df452b11f801bffe4e9",
+      "actual": "26bc4e9f864e928df95b1c49a784cc320f147a4ed4591df452b11f801bffe4e9",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu10_OBC_m0.json": {
+      "expected": "c61b9d97d1fe4df7f0bce7bb1f0c569bde43e93bef1cf814e838507667ee3fc1",
+      "actual": "c61b9d97d1fe4df7f0bce7bb1f0c569bde43e93bef1cf814e838507667ee3fc1",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu00_OBC_m0.json": {
+      "expected": "44fe814d93425680fb43f46452b2c1467f9c03aa67be1958be8177c7bc9ce01e",
+      "actual": "44fe814d93425680fb43f46452b2c1467f9c03aa67be1958be8177c7bc9ce01e",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m1.json": {
+      "expected": "cec6f0d83a6298a7e817d5ae85c2af649a1098bd8eed46d7b37024e7f4b2ed22",
+      "actual": "cec6f0d83a6298a7e817d5ae85c2af649a1098bd8eed46d7b37024e7f4b2ed22",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m2.json": {
+      "expected": "a859b6a7b7972ab9daf405db690d04fccb20714b3fc8b9816668987a69635d9b",
+      "actual": "a859b6a7b7972ab9daf405db690d04fccb20714b3fc8b9816668987a69635d9b",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m3.json": {
+      "expected": "f6990828823f8f0762f3affa08c3cad25400bf62e4624d40ca7292080ed427b3",
+      "actual": "f6990828823f8f0762f3affa08c3cad25400bf62e4624d40ca7292080ed427b3",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m4.json": {
+      "expected": "17f2ed4118090d1b9146d8591819869c8bd889d76906c8ac77538f3cd5b8e6c2",
+      "actual": "17f2ed4118090d1b9146d8591819869c8bd889d76906c8ac77538f3cd5b8e6c2",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m5.json": {
+      "expected": "3fed49016b756b42c1e732df559612849a399a87d4b5a432e798dc374d3bb329",
+      "actual": "3fed49016b756b42c1e732df559612849a399a87d4b5a432e798dc374d3bb329",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s2_d20.json": {
+      "expected": "b0fda64b1ca91db84e8dd2bc6aa4732d166faca35c809ffb213cfc8e74c641b3",
+      "actual": "b0fda64b1ca91db84e8dd2bc6aa4732d166faca35c809ffb213cfc8e74c641b3",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s8_d20.json": {
+      "expected": "ae8f425fbed8c8920270dbff2913c981a688f4d14fc03d39b31735d814d7ccea",
+      "actual": "ae8f425fbed8c8920270dbff2913c981a688f4d14fc03d39b31735d814d7ccea",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d8.json": {
+      "expected": "3098c293642ea1803b15a1354095751df3aed24a6ec3519bcd7da2fce5fd0bcc",
+      "actual": "3098c293642ea1803b15a1354095751df3aed24a6ec3519bcd7da2fce5fd0bcc",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d40.json": {
+      "expected": "3fb49fc8e4ce85986f3941e53640aa2aa9a1648de3d9dbb5afa3f3215137ba1c",
+      "actual": "3fb49fc8e4ce85986f3941e53640aa2aa9a1648de3d9dbb5afa3f3215137ba1c",
+      "matches": true
+    },
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/heldout_PBC_m0.json": {
+      "expected": "a20261202478d8dfa0ac90a2a99f7d2855f8abda7847662753dcfbcc13ffde8f",
+      "actual": "a20261202478d8dfa0ac90a2a99f7d2855f8abda7847662753dcfbcc13ffde8f",
+      "matches": true
+    }
+  },
+  "source_sha256": {
+    "nu11_v2": "4d27037f68da3a253e8ba1654d74ef74f144a85b9de0d82f275e786be28533ab",
+    "heldout_obc_v2": "64a7deca8d889cb7525a85c60ddb6aa7b62f871106670514202d37a3a42b63d5"
+  },
+  "directional_pairs": {
+    "nu11_over_nu01": {
+      "W_numerator": 0.0033246564032931537,
+      "W_denominator": 0.03173173997601468,
+      "directional_W_ratio": 0.10477384492013951,
+      "shape_distance": 0.6864652257483909,
+      "raw_peak_ratio": 0.2832261048236307
+    },
+    "nu10_over_nu00": {
+      "W_numerator": 1.267659868791911e-07,
+      "W_denominator": 2.800483007315479e-05,
+      "directional_W_ratio": 0.004526575828100024,
+      "shape_distance": 0.46605454597987434,
+      "raw_peak_ratio": 0.058345223333763234
+    },
+    "heldout_OBC_over_PBC": {
+      "W_numerator": 0.0025260841178027242,
+      "W_denominator": 2.648598424982471e-07,
+      "directional_W_ratio": 9537.437211982948,
+      "shape_distance": 0.8992668206061857,
+      "raw_peak_ratio": 55.21053900375102
+    }
+  },
+  "spatial_W_r": {
+    "0": 0.0033246564032931537,
+    "1": 0.0006375886452475452,
+    "2": 3.3874793990550822e-06,
+    "3": 3.387479399055191e-06,
+    "4": 0.0006375886452475465,
+    "5": 0.0033246564032931546
+  },
+  "spatial_directional_ratios": {
+    "W_m0_over_m1": 5.214422226735779,
+    "W_m0_over_m2": 981.4543534111373,
+    "W_m0_over_m3": 981.4543534111058,
+    "W_m0_over_m4": 5.214422226735769,
+    "W_m0_over_m5": 0.9999999999999998
+  },
+  "convergence": {
+    "convergence_s2_d20": {
+      "shape_distance_to_baseline": 0.0010628915000084494,
+      "raw_peak_ratio_to_baseline": 1.0014891733682056,
+      "W_ratio_to_baseline": 1.0018709251197824
+    },
+    "convergence_s8_d20": {
+      "shape_distance_to_baseline": 0.0003111039422112292,
+      "raw_peak_ratio_to_baseline": 0.9995681375995824,
+      "W_ratio_to_baseline": 0.999109686423342
+    },
+    "convergence_s4_d8": {
+      "shape_distance_to_baseline": 0.1768764082548433,
+      "raw_peak_ratio_to_baseline": 0.937970261786358,
+      "W_ratio_to_baseline": 1.0412188378110216
+    },
+    "convergence_s4_d40": {
+      "shape_distance_to_baseline": 0.04621610206845394,
+      "raw_peak_ratio_to_baseline": 1.0035445448339504,
+      "W_ratio_to_baseline": 0.9322913128132292
+    }
+  },
+  "pi_pattern": {
+    "within_nupi1_D": 0.6864652257483909,
+    "within_nupi0_D": 0.46605454597987434,
+    "cross_nupi_D_values": [
+      0.33917598453560893,
+      0.7114488695200415,
+      0.46173622769651707,
+      0.15321670186942038
+    ],
+    "cross_nupi_min": 0.15321670186942038,
+    "qualitative_support_for_pi_grouping": false,
+    "note": "This is descriptive only: two matched-period pairs lie on different period lines, so it cannot by itself establish a universal pi-invariant response."
+  },
+  "protocol_interpretation": "All directional ratios use the declared numerator/denominator order. V3 resolves the unequal-period v2 trivial control, but has no single common-period line containing all four BDI classes; its two pairwise matched lines preserve gT, gamma1T and physical propagation time within each pair."
+}

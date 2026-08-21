@@ -1,39 +1,49 @@
-# Reviewer guide: claim-to-evidence map
+# Reviewer guide: current claim-to-evidence map
 
-This guide is a concise audit map for the associated manuscript. It is designed to make the strongest claims reproducible while making the limits of each inference equally visible.
+This guide prioritizes the **current exact full-model evidence** and makes the numerical limitations as easy to audit as the positive results. The intended scientific standard is a conservative finite-system statement, not a universal Floquet-spectroscopy claim.
 
 ## Recommended 15-minute audit path
 
-Begin with the repository root `README.md`, then run scripts `10`, `20`, and `30` in that order. The sequence first establishes a spatially selective response, then the resolved boundary response splitting, and finally a channel-to-time-domain mechanism check. All three commands use bundled data or exact N=4 construction and avoid a full N=6 production sweep.
+Begin with the Gate A v3 audit, then inspect the two figures and the matching protocol. These artifacts are versioned in the repository; no long propagation is required to check their hashes and stated numerical comparisons.
 
-| Manuscript-level statement | Evidence artifact | Public command or source | What a reviewer should verify | Boundary of interpretation |
-|---|---|---|---|---|
-| The TLS acts as a local probe with boundary-enhanced response. | Position–frequency response and two-boundary fit. | `scripts/10_double_boundary_localization.py` using `floquet_tls_N6_position_frequency_checkpoint.npz`. | Response decreases rapidly away from both boundaries; inspect all discard windows. | The fitted response length is not the same as the bare closed-chain edge-mode length. |
-| The boundary TLS spectrum has a coupling-resolved doublet. | Peak-pair extraction and \(\Delta\omega_{\rm response}\) versus \(|gB_{0\pi}(0)|\) plot. | `scripts/20_effective_coupling_scaling.py` using `floquet_tls_N6_g_frequency_checkpoint.npz`. | Accepted points show the reported empirical relation; rejected/ambiguous points are not silently included. | The fit has a nonzero intercept and is not a zero-coupling theorem. |
-| TLS damping produces a loading-to-elimination crossover. | N=6 damping checkpoint. | `data/checkpoints/floquet_tls_N6_gamma_checkpoint.npz`; associated production notebook. | Compare edge response, TLS response, and emission across damping. | The figure should be called a crossover, not a dissipative phase diagram. |
-| A slow \(\pi\)-sector channel pair controls the visible late-time response. | Exact N=4 channel, direct trace fit, and targeted N=6 Arnoldi checkpoint. | `scripts/30_channel_time_validation.py` and `floquet_tls_N6_edge_seeded_pi_arnoldi_v2_checkpoint.npz`. | The time fit is independently initialized and gives the stated approximate channel agreement. | The N=4 agreement is quantitative but not exact; early-time multimode content remains. |
-| A one-parameter local effective model has a controlled range of use. | Interior high-bare-coupling diagnostic. | `scripts/90_multipo_effective_model_limit.py`. | Equal target \(|g_m|\) in the interior requires large bare \(g\) and reorganizes the response. | Do not describe this as a successful three-position collapse. |
+| Order | Artifact | What to verify | Permitted conclusion | Explicit boundary |
+|---:|---|---|---|---|
+| 1 | [`results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/MANIFEST.json`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/MANIFEST.json) | Each of the 13 SHA-256 entries matches the committed JSON file. | The raw v3 numerical files are internally traceable. | Hash consistency is not an independent physical validation. |
+| 2 | [`GATE_A_V3_AUDIT.md`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_AUDIT.md) | Same-period matching, directional ratios, and stated failures. | The exact N=6 protocol gives drive-class-dependent and boundary-selective response. | It does not identify a unique invariant mechanism. |
+| 3 | [`GATE_A_V3_CONTROLS.png`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONTROLS.png) | Held-out OBC/PBC contrast and complete \(m=0,\ldots,5\) spatial profile. | The specified held-out drive exhibits a large finite-system OBC/PBC contrast and edge-to-interior profile. | Six sites do not provide a thermodynamic localization law. |
+| 4 | [`GATE_A_V3_CONVERGENCE.png`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Sampling and discard-window distances relative to frozen baseline. | The standard 20-period and longer 40-period windows are mutually compatible. | The 8-period-discard condition fails; results are early-window sensitive. |
+| 5 | [`GATE_B_C_ROUTE_DECISION.md`](gate_a_v2/GATE_B_C_ROUTE_DECISION.md) | Why the reduced model was not scaled further. | The pair/manifold model is preparation-conditional. | It must not be advertised as a general quantitative full-model reduction. |
 
-## What is intentionally included
+## Matched-control design
 
-The repository contains the minimal code and compact data required to inspect the positive results as well as the relevant negative boundary test. It also includes output-free notebooks so that a reader may trace the full model and production workflow. The check-point analyses are separated from expensive direct simulation so that evidence can be audited on ordinary hardware.
+No safe single constant-period line of the present two-step closed-chain classifier contains all \((0,0),(1,0),(0,1),(1,1)\) labels. Gate A v3 therefore makes two separate pairwise comparisons rather than masking the mismatch:
 
-## What is intentionally excluded
+| Pair | Invariants | Matching within pair | Purpose |
+|---|---|---|---|
+| \((1,1)\) versus \((0,1)\) | \(\nu_\pi=1\) in both drives | \(T\), \(\Omega\), \(gT\), \(\gamma_1T\), total time, readout grid, and common preparation | Change \(\nu_0\) at fixed \(\nu_\pi\). |
+| \((1,0)\) versus \((0,0)\) | \(\nu_\pi=0\) in both drives | The same set of dimensionless and physical-time controls | Change \(\nu_0\) at fixed \(\nu_\pi\). |
 
-The repository does not contain old manuscript drafts, obsolete figures, browser-renamed duplicate data files, temporary solver output, credentials, or environment-specific paths. It also does not claim that a limited set of higher-size open-system trajectories would establish a thermodynamic trend; such isolated curves are not part of the evidence hierarchy.
+The four-class data do **not** exhibit the predeclared normalized-shape grouping of the two \(\nu_\pi=1\) cases. A reviewer should regard this as a transparent negative inference test: it limits the manuscript claim rather than being discarded.
 
-## Figure conventions
+## Secondary mechanism evidence
 
-`results/manuscript_figures/` contains frozen images for reference. `results/reproduced/` contains the baseline output of the current scripts. A script rerun may overwrite files only in `results/reproduced/`, which makes direct figure comparisons straightforward. For any manuscript revision, preserve the prior generated results in a tagged commit before replacing a figure baseline.
+The original checkpoint scripts are retained as supplemental mechanism and diagnostic material. They do not supersede Gate A v3 for the common physical preparation.
 
-## Minimal reviewer checklist
+| Supplementary question | Artifact | Scope limit |
+|---|---|---|
+| Boundary response profile under the original checkpoint preparation | `scripts/10_double_boundary_localization.py` | Do not equate its fitted response length with a thermodynamic edge-mode length. |
+| Resolved doublet versus selected \(|gB_{0\pi}|\) | `scripts/20_effective_coupling_scaling.py` | An empirical prepared-pair resolved-regime relation, not a universal coupling theorem. |
+| N=4 channel/time comparison | `scripts/30_channel_time_validation.py` | A targeted channel mechanism test, not a general full-model reduction. |
+| Multichannel limits | `results/gate_a_v2/.../gate_b2/` and `gate_c1/` | Initial-support and micromotion extensions do not recover common-preparation full spectra. |
 
-| Check | Expected outcome |
-|---|---|
-| `git status --short` after cloning | No output before running scripts. |
-| `python scripts/10_double_boundary_localization.py` | Regenerates the A figure and Markdown/JSON summary. |
-| `python scripts/20_effective_coupling_scaling.py` | Regenerates the B figure and preserves the nonzero-intercept fit. |
-| `python scripts/30_channel_time_validation.py` | Regenerates the C figure and its channel/time comparison table. |
-| Inspect `docs/DATA_DICTIONARY.md` | Every compact checkpoint has an explicit intended use and scope boundary. |
+## Minimal integrity checklist
 
-> The scientific standard adopted here is transparency rather than overclaiming: each positive statement is paired with a clear computational provenance, and each known limitation is stated in the same repository.
+```bash
+git status --short
+sha256sum results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/*.json
+python scripts/gate_a_v3/20_audit_gate_a_v3.py
+```
+
+For the cited clean commit, `git status --short` should return no output before rerunning scripts. The audit script is read-only with respect to physical data; it recreates the figures and audit JSON from committed raw result files.
+
+> The appropriate high-level statement is: **in a specified finite Floquet–Lindblad protocol, common-preparation TLS response is boundary-selective and drive-class-dependent; the available controls do not isolate \(\nu_\pi\) as a unique causal label.**

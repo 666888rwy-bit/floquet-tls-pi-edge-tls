@@ -1,70 +1,59 @@
-# Local Dissipative Probing of Floquet \(\pi\)-Edge Modes by a Two-Level Defect
+# Local dissipative probing in a finite Floquet Ising chain
 
-> **Reviewer-facing research code, compact numerical checkpoints, and figure-regeneration scripts for a finite open Floquet-chain study.**
+> **Reviewer-facing exact finite-system controls, frozen numerical protocols, and reproducible code for a periodically driven Ising chain locally coupled to an amplitude-damped TLS.**
 
-This repository supports a manuscript in preparation on a dissipative two-level-system (TLS) defect locally coupled to a periodically driven Ising chain. The central question is not whether a thermodynamic time-crystal phase exists, but how a **finite Floquet \(\pi\)-edge response** is locally read out, loaded, and modified by a dissipative TLS.
+This repository supports a manuscript in preparation on finite Floquet–Lindblad spectroscopy. Its principal result is an **exact common-preparation full-model comparison**: the TLS response is strongly boundary-selective for specified closed-chain BDI-labelled drives, while the data do not justify a thermodynamic-limit, phase-boundary, universal-effective-theory, or uniquely \(\nu_\pi\)-controlled response claim.
 
-## Reviewer route
+## Start here: Gate A v3 reviewer route
 
-A reviewer can examine the evidence hierarchy without running the long production scans. The compact checkpoints are included, and the key analyses regenerate their own output files under `results/reproduced/`.
+Gate A v3 is the current evidence hierarchy. Its protocol was prospectively frozen in a public commit before new full-model responses were run. Every new JSON result carries protocol/script hashes, a Git commit, UTC timestamps, and a self-excluding content hash.
 
-| If you want to verify… | Run | Main input | Expected artifact |
+| Question | Primary artifact | What it establishes | Required limitation |
 |---|---|---|---|
-| A two-boundary response-localization fit and its distinction from closed-chain lengths | `python scripts/10_double_boundary_localization.py` | `floquet_tls_N6_position_frequency_checkpoint.npz` | `A_double_boundary_localization_fit.png` |
-| The resolved edge-response doublet versus local effective coupling | `python scripts/20_effective_coupling_scaling.py` | `floquet_tls_N6_g_frequency_checkpoint.npz` | `B_response_splitting_vs_geff.png` |
-| Independent channel–time-domain validation at \(N=4\) | `python scripts/30_channel_time_validation.py` | Exact channel construction | `C_N4_channel_time_validation.png` |
-| The limits of a single-parameter effective-coupling description away from the edge | `python scripts/90_multipo_effective_model_limit.py` | `multipo_center_coarse_checkpoint.npz` | `multipo_center_coarse_spectra.png` |
-| Formal PRB multichannel controls: matched N=6/N=8 convergence and N=8 strong-coupling counterexample | `python scripts/41_plot_prb_controls.py` | `data/prb_controls/*.json` | `PRB_F6_matched_positive_controls.png`, `PRB_three_control_K_convergence.png`, and a Markdown audit |
+| Are the new full-model responses traceable? | [`GATE_A_V3_AUDIT.md`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_AUDIT.md) and `MANIFEST.json` | The thirteen new result hashes match the frozen manifest. | The numerical protocol is **prospectively frozen**, not formally preregistered. |
+| Is there finite-system boundary selectivity without pair preparation? | [`GATE_A_V3_CONTROLS.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONTROLS.png) | A held-out \((1,1)\) OBC drive has \(W_{\rm OBC}/W_{\rm PBC}=9537.44\) for the declared finite protocol. | This does not prove a thermodynamic boundary law or isolate one invariant. |
+| Does the full common-preparation response have an edge-to-interior spatial profile? | Same control figure and `production_spatial_m*.json` | The exact N=6 profile is reflection symmetric, with \(W_r(0)/W_r(2)=981.45\). | No localization-length fit or asymptotic scaling is claimed from six sites. |
+| Do matched BDI drive controls identify \(\nu_\pi\) as the unique cause? | `nu01_OBC_m0.json`, `nu10_OBC_m0.json`, `nu00_OBC_m0.json` and the v3 audit | The controls are matched in \(T\), \(gT\), \(\gamma_1T\), and physical time within each pair. | The frozen \(\nu_\pi\)-grouping check fails; do **not** claim \(\nu_\pi\)-specific TLS spectroscopy. |
+| Are results stable to routine numerical choices? | [`GATE_A_V3_CONVERGENCE.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Two-versus-four-versus-eight samples per half step and a 40-period discard are stable. | An 8-period discard fails the frozen shape criterion; conclusions are window-sensitive to early readout. |
 
-The complete protocol, output checks, numerical conventions, and known boundaries of inference are in [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). The PRB-specific control documentation is in [docs/PRB_MULTICHANNEL_CONTROLS.md](docs/PRB_MULTICHANNEL_CONTROLS.md). The shortest manuscript-claim-to-file map is in [docs/REVIEWER_GUIDE.md](docs/REVIEWER_GUIDE.md).
+The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), and the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
+
+## Important interpretation boundary
+
+The repository also contains the earlier local Floquet-pair and multichannel analyses. They are retained because they document a useful deliberately prepared coherence mechanism and a transparent failed reduction route. They are **not** the primary evidence for the common-product-state full-model result.
+
+Gate B2 shows that the common \(|\uparrow_z\rangle^{\otimes N}\) preparation occupies many Floquet states, so an initial-support-aware \(K=16\) static manifold retains weight but not the exact full-model spectral shape. Gate C1 then shows that adding \(n=\pm1,\pm2\) micromotion harmonics converges within the truncated N=4 subspace but does not repair its discrepancy from the exact full model. Consequently, this repository does not claim a generally controlled minimal Floquet manifold for TLS spectroscopy from arbitrary physical preparations.
 
 ## Repository map
 
 | Path | Purpose |
 |---|---|
-| `scripts/` | Ordered, standalone analysis entry points. Prefixes `00`, `10`, `20`, `30`, `40`, `41`, and `90` indicate the recommended reading/execution order. |
-| `notebooks/` | Cleaned, output-free research notebooks retaining the full numerical workflow and model definitions. |
-| `data/checkpoints/` | Compact `.npz` checkpoints used by the original public scripts. See [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md). |
-| `data/prb_controls/` | Compact JSON/CSV records for the formal multichannel K-convergence controls. See [data/prb_controls/README.md](data/prb_controls/README.md). |
-| `results/manuscript_figures/` | Frozen reference images corresponding to the reviewed analysis state, including `prb_controls/`. |
-| `results/reproduced/` | Regenerated analysis products. These files are intentionally versioned so output comparisons are direct. |
-| `docs/` | Reproducibility protocol, reviewer guide, data dictionary, and public-release checklist. |
+| `protocols/gate_a_v3/` | Frozen Gate A v3 common-preparation and matched-control protocol. |
+| `scripts/gate_a_v3/` | Closed-chain BDI selection, exact full-model runner, and read-only audit scripts. |
+| `results/gate_a_v3/` | Versioned Gate A v3 raw JSON, manifest hashes, audit, and figures. |
+| `protocols/gate_a_v2/`, `scripts/gate_a_v2/`, `results/gate_a_v2/` | Gate A v2 controls plus Gate B/C reduction diagnostics and their limits. |
+| `scripts/`, `data/checkpoints/`, `notebooks/` | Earlier compact checkpoint analyses and original workflow records. |
+| `docs/` | Reviewer guide, reproducibility protocol, data dictionary, and evidence-boundary documents. |
 
-## Quick start
+## Re-running Gate A v3
 
-The supplied scripts have been tested with Python 3.11, NumPy, SciPy, and Matplotlib. Create an isolated environment and install the declared dependencies:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-To regenerate the three primary reviewer checks in the recommended order, run the single command below from the repository root:
+The production protocol and code are committed before running. The exact N=6 campaign is intentionally expensive. From a clean clone at the cited commit, the following commands reproduce the selection/audit path; the full runner is included for full recalculation rather than casual laptop use.
 
 ```bash
-python scripts/run_reviewer_checks.py
+python scripts/gate_a_v3/01_iso_period_bdi_control_search.py
+python scripts/gate_a_v3/02_common_period_fourclass_search.py
+python scripts/gate_a_v3/03_select_v3_controls.py
+python scripts/gate_a_v3/20_audit_gate_a_v3.py
 ```
 
-The scripts may also be run individually when auditing a specific conclusion:
+The full campaign command is:
 
 ```bash
-python scripts/10_double_boundary_localization.py
-python scripts/20_effective_coupling_scaling.py
-python scripts/30_channel_time_validation.py
-python scripts/41_plot_prb_controls.py
+python scripts/gate_a_v3/10_run_full_model_v3.py
 ```
 
-The first N=6 reference propagation may be added with `python scripts/run_reviewer_checks.py --include-reference`. The JSON-based PRB multichannel audit may be added with `python scripts/run_reviewer_checks.py --include-prb-controls`. The `90_` diagnostic may be added with `--include-limit`; it records an **effective-model limitation**, not a positive multi-position collapse claim.
+It must be launched from a clean working tree because each run records its source commit. The code uses Python 3.11, NumPy, SciPy, and Matplotlib; see `requirements.txt`.
 
-## What this repository establishes—and what it does not
+## Citation and availability
 
-The included evidence supports boundary-selective TLS spectroscopy, a resolved boundary-response doublet in the stated finite-window regime, a nonmonotonic dissipation crossover, targeted Floquet-channel evidence, and formal finite-system multichannel truncation controls. The new controls show that a single Floquet pair is insufficient at the stated predictive anchor, while a minimal resonance-weighted local manifold is predictive at matched N=6/N=8 controls and loses predictivity in the tested N=8 strong-coupling control. The repository does **not** establish a thermodynamic-limit time-crystal phase, a sharp dissipative phase boundary, a universal effective theory, or a size-independent minimum retained dimension. These scope boundaries are deliberate and are described in the reproducibility protocol.
-
-## Citation and data availability
-
-The compact numerical checkpoints required by the public analysis scripts are distributed in this repository. The earlier manuscript preprint is archived on [Zenodo](https://doi.org/10.5281/zenodo.20685212). Please cite the associated manuscript or Zenodo record when using this code, its checkpoints, or derived numerical results. A `CITATION.cff` file should be added once the definitive manuscript title and author list are finalized.
-
-## License
-
-This repository is released under the [MIT License](LICENSE). The license applies to the source code and documentation. The included numerical checkpoints are provided for reproducibility; please retain scientific attribution when reusing them.
+The earlier manuscript preprint is archived at [Zenodo](https://doi.org/10.5281/zenodo.20685212). Please cite the repository commit or release that you actually use, together with the Zenodo record until a final article is available. The repository is released under the [MIT License](LICENSE).

@@ -1,0 +1,36 @@
+{
+  "schema": "gate_a_v3_manifest_v1",
+  "protocol_sha256": "1b3dd5130c77050af93c03463f6302259b14816870cfee2229d71eb7bedd8a27",
+  "git_commit": "f13adfe868303587a97fd570a9b9b255693aad2f",
+  "results": [
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu01_OBC_m0.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu10_OBC_m0.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu00_OBC_m0.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m1.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m2.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m3.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m4.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m5.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s2_d20.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s8_d20.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d8.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d40.json",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/heldout_PBC_m0.json"
+  ],
+  "sha256": {
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu01_OBC_m0.json": "26bc4e9f864e928df95b1c49a784cc320f147a4ed4591df452b11f801bffe4e9",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu10_OBC_m0.json": "c61b9d97d1fe4df7f0bce7bb1f0c569bde43e93bef1cf814e838507667ee3fc1",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu00_OBC_m0.json": "44fe814d93425680fb43f46452b2c1467f9c03aa67be1958be8177c7bc9ce01e",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m1.json": "cec6f0d83a6298a7e817d5ae85c2af649a1098bd8eed46d7b37024e7f4b2ed22",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m2.json": "a859b6a7b7972ab9daf405db690d04fccb20714b3fc8b9816668987a69635d9b",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m3.json": "f6990828823f8f0762f3affa08c3cad25400bf62e4624d40ca7292080ed427b3",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m4.json": "17f2ed4118090d1b9146d8591819869c8bd889d76906c8ac77538f3cd5b8e6c2",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/production_spatial_m5.json": "3fed49016b756b42c1e732df559612849a399a87d4b5a432e798dc374d3bb329",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s2_d20.json": "b0fda64b1ca91db84e8dd2bc6aa4732d166faca35c809ffb213cfc8e74c641b3",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s8_d20.json": "ae8f425fbed8c8920270dbff2913c981a688f4d14fc03d39b31735d814d7ccea",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d8.json": "3098c293642ea1803b15a1354095751df3aed24a6ec3519bcd7da2fce5fd0bcc",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/convergence_s4_d40.json": "3fb49fc8e4ce85986f3941e53640aa2aa9a1648de3d9dbb5afa3f3215137ba1c",
+    "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/heldout_PBC_m0.json": "a20261202478d8dfa0ac90a2a99f7d2855f8abda7847662753dcfbcc13ffde8f"
+  },
+  "created_utc": "2026-08-21T13:43:24Z"
+}

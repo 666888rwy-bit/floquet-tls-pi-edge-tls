@@ -1,0 +1,87 @@
+{
+  "schema": "gate_a_v3_full_model_result_v1",
+  "task": {
+    "task_id": "nu10_OBC_m0",
+    "boundary": "OBC",
+    "contact": 0,
+    "samples_per_half_step": 4,
+    "alpha_over_pi": 0.3249625,
+    "beta_over_pi": 0.5000375,
+    "nu0": 1,
+    "nupi": 0,
+    "margin_rad": 0.5497792173941809,
+    "g": 0.16,
+    "gamma1": 0.16,
+    "periods": 160,
+    "discard_periods": 40
+  },
+  "preparation": {
+    "chain": "|up_z>^{tensor N}",
+    "TLS": "|0_d>",
+    "floquet_pair_selected_for_full_model": false,
+    "B0_constructed_for_full_model": false,
+    "independence_declaration": "No Floquet pair selection, B^(0) construction, numerical Floquet index, or phase convention is used in any full-model preparation."
+  },
+  "timing": {
+    "T1": 0.7854570682597031,
+    "T2": 0.5104499013460866,
+    "T": 1.2959069696057897,
+    "Omega": 4.848484848484849,
+    "Omega_over_2": 2.4242424242424243,
+    "gT": 0.20734511513692636,
+    "gamma1T": 0.20734511513692636,
+    "total_time": 207.34511513692635
+  },
+  "ratios": [
+    0.88,
+    0.904,
+    0.928,
+    0.952,
+    0.976,
+    1.0,
+    1.024,
+    1.048,
+    1.072,
+    1.096,
+    1.12
+  ],
+  "raw_A_TLS": [
+    0.0005239322104088017,
+    0.0007454764863191048,
+    0.0009238599419162848,
+    0.0009252713517496812,
+    0.0004803728616096802,
+    0.0005225371783408279,
+    0.0006105429846413627,
+    0.0009209298601564746,
+    0.0008225612725455871,
+    0.0006215733810368372,
+    0.0004281259946931301
+  ],
+  "normalized_shape": [
+    0.22318612982403407,
+    0.3175601891827978,
+    0.3935484798212144,
+    0.3941497161873953,
+    0.20463059480826254,
+    0.22259187010484532,
+    0.26008083321886044,
+    0.3923003152780767,
+    0.3503969851735957,
+    0.26477959277786917,
+    0.18237432617107038
+  ],
+  "W_r": 1.267659868791911e-07,
+  "provenance": {
+    "protocol_sha256": "1b3dd5130c77050af93c03463f6302259b14816870cfee2229d71eb7bedd8a27",
+    "script_sha256": "078cab8dd8f11b4458fe9514c07e80adc4eacf53918ca8596dd8f722be660af1",
+    "git_commit": "f13adfe868303587a97fd570a9b9b255693aad2f",
+    "run_started_utc": "2026-08-21T13:17:58Z",
+    "run_finished_utc": "2026-08-21T13:21:09Z",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/gate_a_v3/10_run_full_model_v3.py"
+    ]
+  },
+  "result_sha256_excluding_self": "dfeec5e16dc13ea2fb43f8f33fc7c339c327d5f703362301f37b1d48d7815784"
+}
