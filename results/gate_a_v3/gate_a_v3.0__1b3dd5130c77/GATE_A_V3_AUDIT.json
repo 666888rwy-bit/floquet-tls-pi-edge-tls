@@ -1,5 +1,5 @@
 {
-  "schema": "gate_a_v3_audit_v1",
+  "schema": "gate_a_v3_audit_v2",
   "v3_manifest_sha256": "e3564edd172c27ef7852ac7baf7255ea1504d23e42b29d8ea9847d52ce490ca1",
   "v3_integrity": {
     "results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/nu01_OBC_m0.json": {
@@ -143,7 +143,21 @@
     ],
     "cross_nupi_min": 0.15321670186942038,
     "qualitative_support_for_pi_grouping": false,
-    "note": "This is descriptive only: two matched-period pairs lie on different period lines, so it cannot by itself establish a universal pi-invariant response."
+    "frozen_interpretation": "The prospectively frozen normalized-lineshape grouping criterion fails. This rules out a universal nu_pi-determined spectral-shape claim for this data set.",
+    "note": "A failed lineshape grouping does not imply that nu_pi is physically irrelevant to every response metric."
+  },
+  "exploratory_weight_stratification": {
+    "status": "exploratory_descriptive_not_a_frozen_pass_fail_test",
+    "W_r_by_BDI_label": {
+      "nu11": 0.0033246564032931537,
+      "nu01": 0.03173173997601468,
+      "nu10": 1.267659868791911e-07,
+      "nu00": 2.800483007315479e-05
+    },
+    "nu11_over_nu10": 26226.722839002352,
+    "nu01_over_nu00": 1133.0809682874126,
+    "min_nupi1_over_max_nupi0": 118.7172496533069,
+    "interpretation": "Across the four sampled drives, both nupi=1 raw integrated weights exceed both nupi=0 weights. The nupi sectors lie on different equal-period control lines, so this amplitude separation is an exploratory observation that motivates, but does not establish, a systematic nupi-weight relation."
   },
   "protocol_interpretation": "All directional ratios use the declared numerator/denominator order. V3 resolves the unequal-period v2 trivial control, but has no single common-period line containing all four BDI classes; its two pairwise matched lines preserve gT, gamma1T and physical propagation time within each pair."
 }

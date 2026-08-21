@@ -2,7 +2,7 @@
 
 > **Reviewer-facing exact finite-system controls, frozen numerical protocols, and reproducible code for a periodically driven Ising chain locally coupled to an amplitude-damped TLS.**
 
-This repository supports a manuscript in preparation on finite Floquet–Lindblad spectroscopy. Its principal result is an **exact common-preparation full-model comparison**: the TLS response is strongly boundary-selective for specified closed-chain BDI-labelled drives, while the data do not justify a thermodynamic-limit, phase-boundary, universal-effective-theory, or uniquely \(\nu_\pi\)-controlled response claim.
+This repository supports a manuscript in preparation on finite Floquet–Lindblad spectroscopy. Its principal result is an **exact common-preparation full-model comparison**: the TLS response is strongly boundary-selective for specified closed-chain BDI-labelled drives. The data do not justify a thermodynamic-limit, phase-boundary, universal-effective-theory, or uniquely \(\nu_\pi\)-controlled response claim; however, the sampled raw weights display an explicitly exploratory \(\nu_\pi\)-sector separation that motivates a separately frozen multi-point test.
 
 ## Start here: Gate A v3 reviewer route
 
@@ -13,8 +13,8 @@ Gate A v3 is the current evidence hierarchy. Its protocol was prospectively froz
 | Are the new full-model responses traceable? | [`GATE_A_V3_AUDIT.md`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_AUDIT.md) and `MANIFEST.json` | The thirteen new result hashes match the frozen manifest. | The numerical protocol is **prospectively frozen**, not formally preregistered. |
 | Is there finite-system boundary selectivity without pair preparation? | [`GATE_A_V3_CONTROLS.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONTROLS.png) | A held-out \((1,1)\) OBC drive has \(W_{\rm OBC}/W_{\rm PBC}=9537.44\) for the declared finite protocol. | This does not prove a thermodynamic boundary law or isolate one invariant. |
 | Does the full common-preparation response have an edge-to-interior spatial profile? | Same control figure and `production_spatial_m*.json` | The exact N=6 profile is reflection symmetric, with \(W_r(0)/W_r(2)=981.45\). | No localization-length fit or asymptotic scaling is claimed from six sites. |
-| Do matched BDI drive controls identify \(\nu_\pi\) as the unique cause? | `nu01_OBC_m0.json`, `nu10_OBC_m0.json`, `nu00_OBC_m0.json` and the v3 audit | The controls are matched in \(T\), \(gT\), \(\gamma_1T\), and physical time within each pair. | The frozen \(\nu_\pi\)-grouping check fails; do **not** claim \(\nu_\pi\)-specific TLS spectroscopy. |
-| Are results stable to routine numerical choices? | [`GATE_A_V3_CONVERGENCE.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Two-versus-four-versus-eight samples per half step and a 40-period discard are stable. | An 8-period discard fails the frozen shape criterion; conclusions are window-sensitive to early readout. |
+| Do matched BDI drive controls identify \(\nu_\pi\) as the unique cause? | `nu01_OBC_m0.json`, `nu10_OBC_m0.json`, `nu00_OBC_m0.json` and the v3 audit | The controls are matched in \(T\), \(gT\), \(\gamma_1T\), and physical time within each pair; sampled \(\nu_\pi=1\) weights exceed sampled \(\nu_\pi=0\) weights. | The frozen \(\nu_\pi\)-lineshape grouping check fails. The weight separation is exploratory, not a passed invariant law. |
+| Are results stable to routine numerical choices? | [`GATE_A_V3_CONVERGENCE.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Two-versus-four-versus-eight samples per half step, and the 20T/40T late windows, are stable. | An 8-period discard changes the detailed early-transient lineshape, not the integrated response weight. |
 
 The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), and the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 

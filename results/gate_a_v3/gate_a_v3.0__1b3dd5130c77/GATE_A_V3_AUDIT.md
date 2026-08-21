@@ -4,7 +4,7 @@
 
 Gate A v3 resolves the main **unequal-period trivial-control** defect of Gate A v2. It provides two explicitly matched finite-system BDI comparisons, each preserving \(T\), \(\Omega\), \(gT\), \(\gamma_1T\), total physical propagation time, discard time, detuning-ratio grid, and common product preparation within the declared pair. It also adds an exact full-model six-site spatial profile and a held-out same-drive PBC comparison.
 
-However, the frozen four-class analysis **does not support a \(\nu_\pi\)-specific TLS-spectroscopy claim**. The two pairwise matched lines cannot be combined into a single four-class common-period test, and the proposed normalized-shape grouping of the \(\nu_\pi=1\) drives fails. In addition, the deliberately short 8-period discard variant exceeds the protocol's shape-stability acceptance threshold. Under the frozen rule, all Gate A v3 spectral conclusions must therefore be labelled **window-sensitive**, despite the ordinary 20- and 40-period windows and the sampling-density tests being mutually stable.
+However, the frozen four-class analysis **does not support a universal \(\nu_\pi\)-determined spectral-shape claim**. The two pairwise matched lines cannot be combined into a single four-class common-period test, and the prospectively declared normalized-shape grouping of the \(\nu_\pi=1\) drives fails. This does not imply that \(\nu_\pi\) is physically irrelevant to every response metric: the sampled raw spectral weights show a pronounced exploratory \(\nu_\pi\)-sector separation, documented below. In addition, the deliberately short 8-period discard variant exceeds the protocol's shape-stability acceptance threshold. The resulting limitation is sensitivity of the **detailed early-window lineshape**, not a collapse of late-window weight or timestep convergence.
 
 > The usable evidence is an exact finite-\(N=6\) **edge-selective OBC/PBC response** for specified closed-chain BDI-labelled drives. The data do not establish that a single invariant, especially \(\nu_\pi\), uniquely controls the response.
 
@@ -35,7 +35,20 @@ The matched data remove the previous factor-of-three period and bare-coupling mi
 
 The prospectively declared descriptive test compares normalized-shape proximity. The two \(\nu_\pi=1\) cases have \(D=0.68647\), whereas the smallest cross-\(\nu_\pi\) distance is 0.15322. The requested qualitative \(\nu_\pi\)-grouping condition is therefore **false**.
 
-This is not evidence against the closed-chain invariant calculation. It is evidence that, for the finite dissipative full-model response and this common product preparation, the TLS spectrum cannot be assigned to \(\nu_\pi\) alone from the available four-class pairwise matched data.
+This is not evidence against the closed-chain invariant calculation, nor is it evidence that \(\nu_\pi\) is unrelated to every response observable. It establishes only that the available finite dissipative full-model spectra cannot be assigned a **universal \(\nu_\pi\)-determined lineshape** from the four sampled pairwise-matched drives.
+
+## Exploratory raw-weight separation by sampled \(\nu_\pi\)
+
+The raw integrated spectral weights, evaluated on the protocol's fixed ratio grid, display a conspicuous descriptive hierarchy:
+
+| BDI label | \(W_r\) |
+|---|---:|
+| \((1,1)\) | \(3.3247\times10^{-3}\) |
+| \((0,1)\) | \(3.1732\times10^{-2}\) |
+| \((1,0)\) | \(1.2677\times10^{-7}\) |
+| \((0,0)\) | \(2.8005\times10^{-5}\) |
+
+Thus \(W_{11}/W_{10}=2.62\times10^{4}\), \(W_{01}/W_{00}=1.13\times10^{3}\), and even the smaller sampled \(\nu_\pi=1\) weight exceeds the larger sampled \(\nu_\pi=0\) weight by 118.7. This result is **exploratory and descriptive**, rather than a retroactively passed frozen test: the two \(\nu_\pi\) sectors lie on different equal-period control lines. It motivates a separately frozen multi-point \(\nu_\pi\)-weight test; it does not establish a general invariant law.
 
 ## Production spatial profile
 
@@ -61,13 +74,13 @@ This is a useful finite-chain edge-to-interior spatial profile. It must not be r
 | 4 samples per half step, 8 discard periods | 0.17688 | **Fail** |
 | 4 samples per half step, 40 discard periods | 0.04622 | Pass |
 
-The integration-density test is stable, as are the standard 20-period and a longer 40-period discard windows. The 8-period discard does not meet the frozen shape criterion. The prescribed conclusion is **window sensitivity to an early analysis window**, not numerical timestep failure. Nevertheless, the protocol explicitly requires all v3 spectral conclusions to carry this qualifier; no post hoc new discard sweep is authorized.
+The integration-density test is stable, as are the standard 20-period and longer 40-period discard windows. The 8-period discard does not meet the frozen **shape** criterion, but retains \(W_{8T}/W_{20T}=1.041\); the 40-period window retains \(W_{40T}/W_{20T}=0.932\). The correct conclusion is that inclusion of the early transient changes the detailed lineshape, whereas the late-window response weight and time discretization are stable at the reported level. No post hoc new discard sweep is authorized.
 
 ## Manuscript-safe and prohibited claims
 
 The manuscript may report exact finite-\(N=6\) common-preparation OBC/PBC boundary contrasts, a symmetric edge-to-interior spatial response profile, and the matched-period control data with their specified drive labels. It must call the procedure a **prospectively frozen numerical protocol**.
 
-It must not claim: a general quantitative reduced TLS model; a universal topological enhancement; a unique \(\nu_\pi\)-controlled response; a thermodynamic phase boundary; or a window-independent spectral statement. The appropriate wording is that the response is **drive-class-dependent and boundary-selective in a controlled finite system**, while its attribution to a single BDI invariant remains unresolved.
+It must not claim: a general quantitative reduced TLS model; a universal topological enhancement; a unique \(\nu_\pi\)-controlled response; a thermodynamic phase boundary; or a window-independent detailed spectral shape. The appropriate wording is that the response is **drive-class-dependent and boundary-selective in a controlled finite system**. The sampled raw weights show an explicitly exploratory \(\nu_\pi\)-sector separation, while their attribution to a single BDI invariant remains unresolved.
 
 ## References
 

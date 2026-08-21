@@ -42,11 +42,11 @@ The second line rescales bare \(g\) and \(\gamma_1\), and doubles periods, so th
 
 The Gate A v3 audit reports all directional ratios in the protocol-declared orientation. The held-out \((1,1)\) same-drive comparison yields \(W_{\rm OBC}/W_{\rm PBC}=9537.44\), while the production profile has \(W_r(0)/W_r(2)=W_r(0)/W_r(3)=981.45\). These are exact finite-N=6, common-preparation full-model observations.
 
-The four-class controls do not pass the declared descriptive \(\nu_\pi\)-grouping test: the two \(\nu_\pi=1\) spectra are not mutually closest in normalized shape. Thus the correct interpretation is **drive-class dependence and boundary selectivity**, not an isolated \(\nu_\pi\) causal response.
+The four-class controls do not pass the declared descriptive \(\nu_\pi\)-grouping test: the two \(\nu_\pi=1\) spectra are not mutually closest in normalized shape. This rules out a universal \(\nu_\pi\)-determined lineshape claim. Separately, the sampled raw weights show an exploratory hierarchy: both sampled \(\nu_\pi=1\) drives exceed both sampled \(\nu_\pi=0\) drives, with the smallest \(\nu_\pi=1\) weight 118.7 times the largest \(\nu_\pi=0\) weight. Because the two sectors belong to different equal-period lines, this is a descriptive observation that motivates a separately frozen multi-point weight test, not an isolated \(\nu_\pi\) causal law.
 
 ### 2.4 Sampling/window controls
 
-The 2-, 4-, and 8-samples-per-half-step calculations agree within a normalized-shape distance of 0.0011. A 40-period discard differs from the 20-period baseline by 0.0462, under the frozen 0.10 acceptance threshold. A deliberately early 8-period discard differs by 0.1769 and fails. The frozen stop rule therefore requires the manuscript to disclose early-window sensitivity; no unregistered discard scan was used to conceal that result.
+The 2-, 4-, and 8-samples-per-half-step calculations agree within a normalized-shape distance of 0.0011. A 40-period discard differs from the 20-period baseline by 0.0462, under the frozen 0.10 acceptance threshold, and retains \(W_{40T}/W_{20T}=0.932\). A deliberately early 8-period discard differs by 0.1769 in detailed shape and fails the frozen criterion, while retaining \(W_{8T}/W_{20T}=1.041\). The required disclosure is therefore sensitivity of **early-transient lineshape**, not instability of the late-window integrated response or time discretization. No unregistered discard scan was used to conceal that result.
 
 ## 3. Reproducing the audit
 

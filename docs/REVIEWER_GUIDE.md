@@ -11,7 +11,7 @@ Begin with the Gate A v3 audit, then inspect the two figures and the matching pr
 | 1 | [`results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/MANIFEST.json`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/MANIFEST.json) | Each of the 13 SHA-256 entries matches the committed JSON file. | The raw v3 numerical files are internally traceable. | Hash consistency is not an independent physical validation. |
 | 2 | [`GATE_A_V3_AUDIT.md`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_AUDIT.md) | Same-period matching, directional ratios, and stated failures. | The exact N=6 protocol gives drive-class-dependent and boundary-selective response. | It does not identify a unique invariant mechanism. |
 | 3 | [`GATE_A_V3_CONTROLS.png`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONTROLS.png) | Held-out OBC/PBC contrast and complete \(m=0,\ldots,5\) spatial profile. | The specified held-out drive exhibits a large finite-system OBC/PBC contrast and edge-to-interior profile. | Six sites do not provide a thermodynamic localization law. |
-| 4 | [`GATE_A_V3_CONVERGENCE.png`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Sampling and discard-window distances relative to frozen baseline. | The standard 20-period and longer 40-period windows are mutually compatible. | The 8-period-discard condition fails; results are early-window sensitive. |
+| 4 | [`GATE_A_V3_CONVERGENCE.png`](../results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Sampling and discard-window distances relative to frozen baseline. | The standard 20-period and longer 40-period windows, plus the sampling-density test, are mutually compatible. | The 8-period discard changes detailed early-transient lineshape, while its integrated weight remains close to baseline. |
 | 5 | [`GATE_B_C_ROUTE_DECISION.md`](gate_a_v2/GATE_B_C_ROUTE_DECISION.md) | Why the reduced model was not scaled further. | The pair/manifold model is preparation-conditional. | It must not be advertised as a general quantitative full-model reduction. |
 
 ## Matched-control design
@@ -23,7 +23,7 @@ No safe single constant-period line of the present two-step closed-chain classif
 | \((1,1)\) versus \((0,1)\) | \(\nu_\pi=1\) in both drives | \(T\), \(\Omega\), \(gT\), \(\gamma_1T\), total time, readout grid, and common preparation | Change \(\nu_0\) at fixed \(\nu_\pi\). |
 | \((1,0)\) versus \((0,0)\) | \(\nu_\pi=0\) in both drives | The same set of dimensionless and physical-time controls | Change \(\nu_0\) at fixed \(\nu_\pi\). |
 
-The four-class data do **not** exhibit the predeclared normalized-shape grouping of the two \(\nu_\pi=1\) cases. A reviewer should regard this as a transparent negative inference test: it limits the manuscript claim rather than being discarded.
+The four-class data do **not** exhibit the predeclared normalized-shape grouping of the two \(\nu_\pi=1\) cases. A reviewer should regard this as a transparent negative inference test: it rules out a universal \(\nu_\pi\)-determined lineshape claim rather than being discarded. Separately, the sampled raw weights exhibit a descriptive hierarchy in which both \(\nu_\pi=1\) points exceed both \(\nu_\pi=0\) points; see `GATE_A_V3_WEIGHT_STRATIFICATION.png`. Because those sectors lie on different matched-period lines, this amplitude separation is exploratory and motivates a new multi-point frozen test rather than a retrospective invariant claim.
 
 ## Secondary mechanism evidence
 
@@ -46,4 +46,4 @@ python scripts/gate_a_v3/20_audit_gate_a_v3.py
 
 For the cited clean commit, `git status --short` should return no output before rerunning scripts. The audit script is read-only with respect to physical data; it recreates the figures and audit JSON from committed raw result files.
 
-> The appropriate high-level statement is: **in a specified finite Floquet–Lindblad protocol, common-preparation TLS response is boundary-selective and drive-class-dependent; the available controls do not isolate \(\nu_\pi\) as a unique causal label.**
+> The appropriate high-level statement is: **in a specified finite Floquet–Lindblad protocol, common-preparation TLS response is boundary-selective and drive-class-dependent. The sampled raw weights display an exploratory \(\nu_\pi\)-sector separation, whereas the available controls do not establish a unique \(\nu_\pi\)-controlled lineshape or causal law.**
