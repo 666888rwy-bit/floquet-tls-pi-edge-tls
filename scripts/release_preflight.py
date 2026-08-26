@@ -25,6 +25,13 @@ REQUIRED_PATHS = (
     "docs/CLAIM_TO_ARTIFACT.md",
     "docs/ENVIRONMENT_AND_PROVENANCE.md",
     "docs/RESULT_SCHEMA.md",
+    "docs/gate_a_v3/GATE_D1_ROUTE_DECISION.md",
+    "docs/gate_a_v3/GATE_D2_LOCAL_RUN_INSTRUCTIONS.md",
+    "protocols/gate_d2/gate_d2_n6_nupi_weight_transfer_protocol.json",
+    "results/gate_d1/gate_d1.0__6d3a08047527/GATE_D1_N4_WEIGHT_AUDIT.json",
+    "scripts/gate_a_v3/gate_d2_validation.py",
+    "scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py",
+    "scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py",
     "scripts/run_submission_checks.py",
 )
 

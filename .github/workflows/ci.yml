@@ -22,7 +22,7 @@ jobs:
           python -m pip install -r requirements-lock.txt
 
       - name: Run static checks for submission infrastructure
-        run: ruff check scripts/gate_a_v3/result_validation.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
+        run: ruff check scripts/gate_a_v3/result_validation.py scripts/gate_a_v3/32_audit_gate_d1_n4_weight_screen.py scripts/gate_a_v3/gate_d2_validation.py scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
 
       - name: Run unit and committed-result regression tests
         run: python -m pytest -q

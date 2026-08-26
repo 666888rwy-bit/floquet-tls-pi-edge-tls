@@ -18,6 +18,12 @@ Gate A v3 is the current evidence hierarchy. Its protocol was prospectively froz
 
 The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), the manuscript-facing claim-to-artifact map is in [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md), the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the machine-checkable record contract is in [`docs/RESULT_SCHEMA.md`](docs/RESULT_SCHEMA.md).
 
+## Pending Gate D2 finite-size transfer test
+
+The response-blind Gate D1 N=4 screen passes its literal frozen rule: the factor-10 threshold applies to the two fixed-\(\nu_0\) median ratios, whereas the separate all-point condition requires only \(\min W_{\nu_\pi=1}>\max W_{\nu_\pi=0}\). The corrected D1 audit preserves the protocol, raw results, selected candidates and manifest while documenting the superseded audit threshold.
+
+Gate D2 source is frozen but no N=6 Gate D2 response has been calculated. Its runner validates the public freeze commit, corrected D1 evidence hashes and a field-by-field equality check of the eight tasks before propagation. See [`GATE_D2_LOCAL_RUN_INSTRUCTIONS.md`](docs/gate_a_v3/GATE_D2_LOCAL_RUN_INSTRUCTIONS.md). Until the campaign and its audit are complete, the N=4 hierarchy remains a passed candidate screen rather than a size-persistent result.
+
 ## Important interpretation boundary
 
 The repository also contains the earlier local Floquet-pair and multichannel analyses. They are retained because they document a useful deliberately prepared coherence mechanism and a transparent failed reduction route. They are **not** the primary evidence for the common-product-state full-model result.
@@ -29,6 +35,7 @@ Gate B2 shows that the common \(|\uparrow_z\rangle^{\otimes N}\) preparation occ
 | Path | Purpose |
 |---|---|
 | `protocols/gate_a_v3/` | Frozen Gate A v3 common-preparation and matched-control protocol. |
+| `protocols/gate_d1/`, `protocols/gate_d2/` | Corrected N=4 weight screen and source-frozen, pending N=6 transfer protocol. |
 | `scripts/gate_a_v3/` | Closed-chain BDI selection, exact full-model runner, and read-only audit scripts. |
 | `results/gate_a_v3/` | Versioned Gate A v3 raw JSON, manifest hashes, audit, and figures. |
 | `protocols/gate_a_v2/`, `scripts/gate_a_v2/`, `results/gate_a_v2/` | Gate A v2 controls plus Gate B/C reduction diagnostics and their limits. |

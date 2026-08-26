@@ -1,5 +1,5 @@
 {
-  "schema": "gate_d1_n4_weight_audit_v1",
+  "schema": "gate_d1_n4_weight_audit_v2",
   "manifest_integrity": {
     "results/gate_d1/gate_d1.0__6d3a08047527/nu00_a.json": {
       "expected": "6136c7670aee2f7ed6c294296e604b56d454809613e41a70f6cb90c7b059c84b",
@@ -143,8 +143,9 @@
     "nu0_1_median_ratio": 4276.672638359569,
     "min_nupi1_over_max_nupi0": 7.004279637968831,
     "frozen_condition_1_both_fixed_nu0_median_ratios_gt_10": true,
-    "frozen_condition_2_all_nupi1_weights_exceed_all_nupi0_by_factor_10": false,
-    "screen_pass": false
+    "frozen_condition_2_all_nupi1_weights_exceed_all_nupi0": true,
+    "screen_pass": true
   },
-  "interpretation": "This is a response-blind-selected N=4 stratified screen with common gT, gamma1T, common product state, 80-period readout and fixed ratio grid. It is a candidate-screen result, not a common-period four-class causal proof or universal nu_pi law."
+  "audit_correction": "The earlier v1 audit incorrectly imposed a factor-10 threshold on the all-point condition. The frozen protocol only requires min(W_nupi=1)>max(W_nupi=0); its factor-10 threshold applies to the two fixed-nu0 median ratios.",
+  "interpretation": "This is a response-blind-selected N=4 stratified screen with common gT, gamma1T, common product state, 80-period readout and fixed ratio grid. It passes the frozen candidate-screen rule and authorizes a separately frozen N=6 transfer test. It is not a common-period four-class causal proof or universal nu_pi law."
 }

@@ -24,12 +24,29 @@ A directional ratio, normalized-shape distance or shared-grid integral may only 
 
 The committed v2 baselines use the equivalent field name `detuning_ratios_omega_d_over_Omega_over_2` and are only used as explicitly declared inputs to the Gate A v3 audit. V2 baselines must not be rewritten in the v3 schema merely for convenience, because their original hashes and source provenance are part of the historical evidence chain.
 
+## Gate D2 N=6 result contract
+
+Gate D2 records use schema `gate_d2_n6_full_model_result_v1`. They are not present in the source-freeze release: that release contains only the immutable protocol, runner, audit and validation route. Once the locally executed campaign is complete, every record must satisfy the following additional rules.
+
+| Requirement | Validation rule |
+|---|---|
+| Frozen task identity | `task` must be field-by-field identical to one of the eight D1/D2 fixed tasks, after the runner has verified the anchored D1 protocol and corrected-audit hashes. |
+| Physical and timing data | The record must state N=6 OBC, contact zero, common product preparation, frozen couplings/readout grid, and timing values consistent with the selected drive. |
+| Spectrum and weight | The eleven-point `ratios`, `raw_A_TLS`, normalized shape and recomputed `W_r` must be finite and mutually consistent. |
+| Full provenance | Protocol, runner and full-model-helper hashes; public freeze commit; command; UTC bounds; Python/package/platform metadata; threading information; and NumPy BLAS/LAPACK report are required. |
+| Resume integrity | The canonical self hash, schema, task, protocol, runner, helper and public-freeze commit must all validate before a completed task may be skipped. |
+
+The final Gate D2 audit verifies the corrected D1 evidence hash, D1 protocol hash, exact N=4/N=6 ratio-grid equality, normalized-shape definition, recomputed weights, runner/helper hashes and the eight-drive final manifest. Its derived JSON and figure output belongs under `build/gate_d2_audit/`, not in the immutable campaign directory.
+
 ## Validation commands
 
 ```bash
 python -m pytest -q
 python scripts/gate_a_v3/20_audit_gate_a_v3.py --check-only
+python scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py --dry-run
+# After the frozen N=6 campaign is complete:
+python scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py --check-only
 python scripts/run_submission_checks.py --check-only
 ```
 
-The first command includes negative tests for self-hash corruption and mismatched ratio grids. The second validates the committed v3 manifest, v3 records and v2/v3 comparisons without writing output. The final command combines tests and the no-write audit route for continuous integration or release verification.
+The first command includes negative tests for self-hash corruption and mismatched ratio grids. The second validates the committed v3 manifest, v3 records and v2/v3 comparisons without writing output. The Gate D2 dry run validates source-freeze anchors without propagating any physical point; its audit is intentionally unavailable until a complete final manifest exists. The final command combines tests and all available no-write audit routes for continuous integration or release verification.

@@ -1,0 +1,54 @@
+{
+  "protocol_version": "gate_d2.0",
+  "status": "prospectively_frozen_public_commit_required_before_run",
+  "purpose": "Exact N=6 transfer test of the response-blind Gate D1 raw-weight hierarchy on the same eight preselected BDI-labelled drives. No N=6 response-informed replacement or retuning is permitted.",
+  "authorization": {
+    "source_gate_d1_protocol": "protocols/gate_d1/gate_d1_n4_nupi_weight_protocol.json",
+    "source_gate_d1_protocol_sha256": "6d3a08047527185fd951a0edeefca04722ba6842d57bc04f0f34eb38d1551d7d",
+    "source_corrected_gate_d1_audit": "results/gate_d1/gate_d1.0__6d3a08047527/GATE_D1_N4_WEIGHT_AUDIT.json",
+    "source_corrected_gate_d1_audit_sha256": "34961d819b8dd4cf1f1aaec519161e3d0a2674a5a043e660ad05d00770357f3a",
+    "authorization_statement": "The literal frozen Gate D1 rule passes: both fixed-nu0 median ratios exceed 10 and min(W_nupi=1)/max(W_nupi=0)=7.004>1. The earlier v1 audit's extra factor-10 all-point threshold was not present in the frozen protocol."
+  },
+  "common_physical_protocol": {
+    "N_chain": 6,
+    "J": 1.0,
+    "h": 1.0,
+    "boundary": "OBC",
+    "TLS_contact_site": 0,
+    "initial_chain_state": "|up_z>^{tensor 6}",
+    "initial_TLS_state": "|0_d>",
+    "full_model_pair_independence": "No Floquet pair, B^(0) matrix, numerical Floquet index, matrix-element ranking, or phase convention enters the full-model preparation.",
+    "gT_target": 0.20734511513692636,
+    "gamma1T_target": 0.20734511513692636,
+    "periods": 80,
+    "discard_periods": 20,
+    "samples_per_half_step": 4,
+    "detuning_ratios_omega_d_over_Omega_over_2": [0.88,0.904,0.928,0.952,0.976,1.0,1.024,1.048,1.072,1.096,1.12],
+    "readout": "A_TLS=|2/(t_f-t_dis) integral[c_d(t)-mean(c_d)] exp(+i Omega t/2) dt|; W_r=integral |A_TLS(r)|^2 dr on the fixed ratio grid."
+  },
+  "selected_drives": [
+    {"id":"nu00_a","nu0":0,"nupi":0,"alpha_over_pi":0.5106666666666667,"beta_over_pi":0.2613333333333333,"T":1.2126547642856602,"Omega":5.181347150259067,"bulk_margin_rad":0.7162886112549507},
+    {"id":"nu00_b","nu0":0,"nupi":0,"alpha_over_pi":0.6426666666666666,"beta_over_pi":0.12933333333333333,"T":1.21265476428566,"Omega":5.181347150259068,"bulk_margin_rad":0.7162857967218086},
+    {"id":"nu10_a","nu0":1,"nupi":0,"alpha_over_pi":0.2613333333333333,"beta_over_pi":0.5106666666666667,"T":1.2126547642856602,"Omega":5.181347150259067,"bulk_margin_rad":0.7162886112549507},
+    {"id":"nu10_b","nu0":1,"nupi":0,"alpha_over_pi":0.12933333333333333,"beta_over_pi":0.6426666666666666,"T":1.21265476428566,"Omega":5.181347150259068,"bulk_margin_rad":0.7162857967218086},
+    {"id":"nu01_a","nu0":0,"nupi":1,"alpha_over_pi":0.98,"beta_over_pi":0.496,"T":2.3184953783492674,"Omega":2.7100271002710024,"bulk_margin_rad":1.4953984132050866},
+    {"id":"nu01_b","nu0":0,"nupi":1,"alpha_over_pi":0.98,"beta_over_pi":0.6866666666666666,"T":2.617993877991494,"Omega":2.4000000000000004,"bulk_margin_rad":0.9215338450530058},
+    {"id":"nu11_a","nu0":1,"nupi":1,"alpha_over_pi":0.496,"beta_over_pi":0.98,"T":2.3184953783492674,"Omega":2.7100271002710024,"bulk_margin_rad":1.4953984132050866},
+    {"id":"nu11_b","nu0":1,"nupi":1,"alpha_over_pi":0.6866666666666666,"beta_over_pi":0.98,"T":2.617993877991494,"Omega":2.4000000000000004,"bulk_margin_rad":0.9215338450530058}
+  ],
+  "predeclared_analysis": {
+    "primary_endpoint": "W_r recomputed from each raw eleven-point spectrum",
+    "fixed_nu0_ratios": ["median(W_nu01)/median(W_nu00)", "median(W_nu11)/median(W_nu10)"],
+    "all_point_ordering": "min(W_nupi=1)/max(W_nupi=0)",
+    "confirmation_success_condition": "Both fixed-nu0 median ratios exceed 10 and min(W_nupi=1)>max(W_nupi=0).",
+    "confirmation_failure_condition": "If any primary condition fails, retain Gate A v3 boundary selectivity as the main result and report that the N=4 raw-weight hierarchy does not transfer under the frozen N=6 test.",
+    "secondary_descriptive_endpoints": ["N4-to-N6 W_r ratio for each fixed drive", "log-weight Pearson correlation across the eight fixed drives", "normalized spectral shape distance between N4 and N6 for each fixed drive", "raw peak height and grid peak location"],
+    "interpretation_if_successful": "A pass supports a sampled, finite-size-persistent nupi-associated raw-weight hierarchy for the fixed stratified protocol. It does not establish a common-period causal law, thermodynamic invariant spectroscopy, or universal lineshape.",
+    "interpretation_if_failed": "A fail establishes size sensitivity or within-class heterogeneity of the exploratory weight hierarchy and prohibits further response-informed point replacement."
+  },
+  "stop_rule": "After these eight N=6 drives, do not add replacement points, N=8/N=10 runs, or a response-informed parameter search under Gate D2.",
+  "provenance": {
+    "before_run": "Publicly commit this unchanged protocol and the Gate D2 runner/audit scripts before calculating any N=6 response. Run only from a clean committed tree.",
+    "language": "Prospectively frozen numerical protocol after public commit; never formal preregistration."
+  }
+}

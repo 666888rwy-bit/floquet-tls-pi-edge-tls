@@ -6,8 +6,9 @@ This repository is public and released under the [MIT License](../LICENSE).  It 
 |---|---|---|
 | Repository visibility and license | Public GitHub repository with `LICENSE` | Keep the repository public unless a journal or coauthor agreement requires a temporary change; do not change the license without coauthor approval. |
 | Evidence hierarchy | Gate A v3 is the primary common-preparation full-model route; older prepared-pair and reduced-model routes are retained with explicit limitations | Keep README, reviewer guide, manuscript and release notes consistent about this hierarchy. |
-| Numerical validation | Unit tests, N=4 benchmark regression checks, static checks, committed-result regression checks and `scripts/run_submission_checks.py` are provided | Run `ruff check scripts/gate_a_v3/result_validation.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests` and `python scripts/run_submission_checks.py --check-only` from a clean clone before every tag. |
+| Numerical validation | Unit tests, N=4 benchmark regression checks, Gate D2 source-freeze checks, static checks, committed-result regression checks and `scripts/run_submission_checks.py` are provided | Run `ruff check scripts/gate_a_v3/result_validation.py scripts/gate_a_v3/gate_d2_validation.py scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests` and `python scripts/run_submission_checks.py --check-only` from a clean clone before every tag. |
 | Claim mapping | `docs/CLAIM_TO_ARTIFACT.md` maps each manuscript statement to source records and deterministic scripts | Verify that the manuscript contains no claim broader than the map permits, and retain the map in the tagged archive. |
+| Gate D2 source freeze | Protocol, corrected D1 audit, validator, runner and read-only audit are present; no N=6 Gate D2 response is committed | Push this set as a standalone public commit before any N=6 D2 propagation. Verify the D2 dry run from its clean commit and retain the resulting commit hash in all later D2 result provenance. |
 | Derived figures | Audits and the committed-data N=4 mechanism renderer write reproducible files to `build/`, which is ignored by Git | Generate final manuscript figures from the tagged commit and retain the emitted `SUBMISSION_CHECKS_MANIFEST.json` with the submission package. |
 | Environment | `requirements-lock.txt`, `environment.yml`, and `pyproject.toml` specify the submission test environment | Recreate the Python 3.11 environment in a clean location and record any approved dependency update in release notes. |
 | Citation metadata | `CITATION.cff` references the current Zenodo DOI and existing Git author identity | Before final article submission, replace the Git alias with verified scholarly author names, ORCIDs, affiliations, the final software version and the final article DOI when available. |
@@ -21,7 +22,7 @@ From a clean checkout at the intended tag, run:
 
 ```bash
 python -m pip install -r requirements-lock.txt
-ruff check scripts/gate_a_v3/result_validation.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
+ruff check scripts/gate_a_v3/result_validation.py scripts/gate_a_v3/gate_d2_validation.py scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
 python scripts/run_submission_checks.py --check-only
 python scripts/release_preflight.py
 python scripts/run_submission_checks.py --output-dir build/submission_checks

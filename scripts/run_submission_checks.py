@@ -19,6 +19,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 AUDIT = REPO / "scripts/gate_a_v3/20_audit_gate_a_v3.py"
 MECHANISM_FIGURES = REPO / "scripts/submission/10_generate_mechanism_figures.py"
+D2_AUDIT = REPO / "scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py"
+D2_MANIFEST = REPO / "results/gate_d2/gate_d2.0__e615217fa606/MANIFEST.json"
 DEFAULT_OUTPUT = REPO / "build/submission_checks"
 
 
@@ -55,6 +57,16 @@ def main() -> None:
         mechanism_command.extend(["--output-dir", str(output / "mechanism_figures")])
     run(audit_command)
     run(mechanism_command)
+
+    if D2_MANIFEST.exists():
+        d2_command = [sys.executable, str(D2_AUDIT.relative_to(REPO))]
+        if args.check_only:
+            d2_command.append("--check-only")
+        else:
+            d2_command.extend(["--output-dir", str(args.output_dir.resolve() / "gate_d2_audit")])
+        run(d2_command)
+    else:
+        print("Gate D2 final manifest is absent; validated the frozen source route only.")
 
     if args.check_only:
         print("Submission checks completed without writing outputs.")
