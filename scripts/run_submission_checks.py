@@ -13,11 +13,12 @@ import hashlib
 import json
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 AUDIT = REPO / "scripts/gate_a_v3/20_audit_gate_a_v3.py"
+MECHANISM_FIGURES = REPO / "scripts/submission/10_generate_mechanism_figures.py"
 DEFAULT_OUTPUT = REPO / "build/submission_checks"
 
 
@@ -44,12 +45,16 @@ def main() -> None:
         run([sys.executable, "-m", "pytest", "-q"])
 
     audit_command = [sys.executable, str(AUDIT.relative_to(REPO))]
+    mechanism_command = [sys.executable, str(MECHANISM_FIGURES.relative_to(REPO))]
     if args.check_only:
         audit_command.append("--check-only")
+        mechanism_command.append("--check-only")
     else:
         output = args.output_dir.resolve()
         audit_command.extend(["--output-dir", str(output / "gate_a_v3_audit")])
+        mechanism_command.extend(["--output-dir", str(output / "mechanism_figures")])
     run(audit_command)
+    run(mechanism_command)
 
     if args.check_only:
         print("Submission checks completed without writing outputs.")
@@ -60,7 +65,7 @@ def main() -> None:
     artifacts = sorted(path for path in output.rglob("*") if path.is_file())
     manifest = {
         "schema": "floquet_tls_submission_checks_v1",
-        "generated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "generated_utc": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "source_git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip(),
         "artifacts": {str(path.relative_to(REPO)): sha256(path) for path in artifacts},
     }

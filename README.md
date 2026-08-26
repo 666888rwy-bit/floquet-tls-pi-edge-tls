@@ -16,7 +16,7 @@ Gate A v3 is the current evidence hierarchy. Its protocol was prospectively froz
 | Do matched BDI drive controls identify \(\nu_\pi\) as the unique cause? | `nu01_OBC_m0.json`, `nu10_OBC_m0.json`, `nu00_OBC_m0.json` and the v3 audit | The controls are matched in \(T\), \(gT\), \(\gamma_1T\), and physical time within each pair; sampled \(\nu_\pi=1\) weights exceed sampled \(\nu_\pi=0\) weights. | The frozen \(\nu_\pi\)-lineshape grouping check fails. The weight separation is exploratory, not a passed invariant law. |
 | Are results stable to routine numerical choices? | [`GATE_A_V3_CONVERGENCE.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Two-versus-four-versus-eight samples per half step, and the 20T/40T late windows, are stable. | An 8-period discard changes the detailed early-transient lineshape, not the integrated response weight. |
 
-The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the machine-checkable record contract is in [`docs/RESULT_SCHEMA.md`](docs/RESULT_SCHEMA.md).
+The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), the manuscript-facing claim-to-artifact map is in [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md), the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the machine-checkable record contract is in [`docs/RESULT_SCHEMA.md`](docs/RESULT_SCHEMA.md).
 
 ## Important interpretation boundary
 
@@ -69,7 +69,17 @@ To regenerate deterministic audit figures and a hash manifest outside the versio
 python scripts/run_submission_checks.py --output-dir build/submission_checks
 ```
 
-The generated files are intentionally placed in the ignored `build/` directory. See [`docs/ENVIRONMENT_AND_PROVENANCE.md`](docs/ENVIRONMENT_AND_PROVENANCE.md) for the environment policy and [`docs/PUBLIC_RELEASE_CHECKLIST.md`](docs/PUBLIC_RELEASE_CHECKLIST.md) for the release procedure.
+The generated files are intentionally placed in the ignored `build/` directory. This build now includes a deterministic N=4 channel--time mechanism figure generated solely from committed benchmark data. See [`docs/ENVIRONMENT_AND_PROVENANCE.md`](docs/ENVIRONMENT_AND_PROVENANCE.md) for the environment policy, [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md) for manuscript evidence boundaries, and [`docs/PUBLIC_RELEASE_CHECKLIST.md`](docs/PUBLIC_RELEASE_CHECKLIST.md) for the release procedure.
+
+## Release preflight
+
+Before creating a tagged submission release, verify the clean-tree policy, required metadata and all no-write checks:
+
+```bash
+python scripts/release_preflight.py
+```
+
+The preflight does not create a release. To require an exact Git tag after tagging, append `--require-tag`.
 
 ## Citation and availability
 

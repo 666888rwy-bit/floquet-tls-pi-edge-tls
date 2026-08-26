@@ -7,3 +7,4 @@ dependencies:
   - scipy=1.18.1
   - matplotlib=3.11.1
   - pytest=9.1.1
+  - ruff=0.16.4
