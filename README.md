@@ -16,7 +16,7 @@ Gate A v3 is the current evidence hierarchy. Its protocol was prospectively froz
 | Do matched BDI drive controls identify \(\nu_\pi\) as the unique cause? | `nu01_OBC_m0.json`, `nu10_OBC_m0.json`, `nu00_OBC_m0.json` and the v3 audit | The controls are matched in \(T\), \(gT\), \(\gamma_1T\), and physical time within each pair; sampled \(\nu_\pi=1\) weights exceed sampled \(\nu_\pi=0\) weights. | The frozen \(\nu_\pi\)-lineshape grouping check fails. The weight separation is exploratory, not a passed invariant law. |
 | Are results stable to routine numerical choices? | [`GATE_A_V3_CONVERGENCE.png`](results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/GATE_A_V3_CONVERGENCE.png) | Two-versus-four-versus-eight samples per half step, and the 20T/40T late windows, are stable. | An 8-period discard changes the detailed early-transient lineshape, not the integrated response weight. |
 
-The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), and the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
+The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the machine-checkable record contract is in [`docs/RESULT_SCHEMA.md`](docs/RESULT_SCHEMA.md).
 
 ## Important interpretation boundary
 
@@ -52,8 +52,25 @@ The full campaign command is:
 python scripts/gate_a_v3/10_run_full_model_v3.py
 ```
 
-It must be launched from a clean working tree because each run records its source commit. The code uses Python 3.11, NumPy, SciPy, and Matplotlib; see `requirements.txt`.
+It must be launched from a clean working tree because each run records its source commit. The full campaign is separate from the inexpensive submission verification route. The repository targets Python 3.11; use the exact package versions in `requirements-lock.txt` or `environment.yml` for submission checks.
+
+## Submission-check route
+
+From a clean checkout, validate every committed result and run the unit/regression tests without creating derived files:
+
+```bash
+python -m pip install -r requirements-lock.txt
+python scripts/run_submission_checks.py --check-only
+```
+
+To regenerate deterministic audit figures and a hash manifest outside the versioned result directory, run:
+
+```bash
+python scripts/run_submission_checks.py --output-dir build/submission_checks
+```
+
+The generated files are intentionally placed in the ignored `build/` directory. See [`docs/ENVIRONMENT_AND_PROVENANCE.md`](docs/ENVIRONMENT_AND_PROVENANCE.md) for the environment policy and [`docs/PUBLIC_RELEASE_CHECKLIST.md`](docs/PUBLIC_RELEASE_CHECKLIST.md) for the release procedure.
 
 ## Citation and availability
 
-The earlier manuscript preprint is archived at [Zenodo](https://doi.org/10.5281/zenodo.20685212). Please cite the repository commit or release that you actually use, together with the Zenodo record until a final article is available. The repository is released under the [MIT License](LICENSE).
+The earlier manuscript preprint is archived at [Zenodo](https://doi.org/10.5281/zenodo.20685212). Please cite the repository commit or release that you actually use, together with the Zenodo record until a final article is available. Formal software citation metadata are provided in [`CITATION.cff`](CITATION.cff); the author list and DOI should be finalized when the submission release is tagged. The repository is released under the [MIT License](LICENSE).

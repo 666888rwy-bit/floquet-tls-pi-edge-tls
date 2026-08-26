@@ -1,0 +1,6 @@
+# Locked environment used for the submission reproducibility checks.
+# Install with: python -m pip install -r requirements-lock.txt
+numpy==2.5.1
+scipy==1.18.1
+matplotlib==3.11.1
+pytest==9.1.1

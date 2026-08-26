@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "floquet-tls-pi-edge-tls"
+version = "0.1.0"
+description = "Reproducible finite-system Floquet--Lindblad calculations for a locally damped TLS probe."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { file = "LICENSE" }
+dependencies = [
+  "numpy==2.5.1",
+  "scipy==1.18.1",
+  "matplotlib==3.11.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

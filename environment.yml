@@ -1,0 +1,9 @@
+name: floquet-tls-submission
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=2.5.1
+  - scipy=1.18.1
+  - matplotlib=3.11.1
+  - pytest=9.1.1

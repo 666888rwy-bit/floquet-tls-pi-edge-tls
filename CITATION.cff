@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code or its committed numerical results, please cite the archived release and the associated manuscript."
+type: software
+title: "Floquet--TLS finite-system reproducibility suite"
+version: "0.1.0"
+date-released: "2026-08-26"
+license: MIT
+repository-code: "https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20685212"
+authors:
+  - family-names: "666888rwy-bit"
+keywords:
+  - Floquet dynamics
+  - open quantum systems
+  - Lindblad equation
+  - two-level systems
+  - numerical reproducibility
+abstract: "Exact finite-system Floquet--Lindblad calculations for a periodically driven Ising chain locally coupled to an amplitude-damped two-level system."

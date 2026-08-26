@@ -19,3 +19,7 @@ venv/
 # Do not commit manuscript drafts or PDFs here
 manuscript/
 *.pdf
+
+# Reproducible local build and test artifacts
+build/
+.pytest_cache/

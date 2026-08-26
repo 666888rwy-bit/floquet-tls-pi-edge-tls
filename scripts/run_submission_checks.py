@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+"""Run the reproducibility checks required for the Floquet--TLS submission build.
+
+The command validates committed numerical records without rerunning the expensive
+N=6 campaign.  In normal mode it writes derived audit figures and an integrity
+manifest to ``build/submission_checks``; ``--check-only`` performs no writes and
+is suitable for continuous integration.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+AUDIT = REPO / "scripts/gate_a_v3/20_audit_gate_a_v3.py"
+DEFAULT_OUTPUT = REPO / "build/submission_checks"
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def run(command: list[str]) -> None:
+    print("+", " ".join(command), flush=True)
+    subprocess.run(command, cwd=REPO, check=True)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT, help="Directory for derived figures and manifest")
+    parser.add_argument("--check-only", action="store_true", help="Run tests and record validation without writing any output")
+    parser.add_argument("--skip-tests", action="store_true", help="Skip pytest; intended only for a local figure-refresh after tests have passed")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    if not args.skip_tests:
+        run([sys.executable, "-m", "pytest", "-q"])
+
+    audit_command = [sys.executable, str(AUDIT.relative_to(REPO))]
+    if args.check_only:
+        audit_command.append("--check-only")
+    else:
+        output = args.output_dir.resolve()
+        audit_command.extend(["--output-dir", str(output / "gate_a_v3_audit")])
+    run(audit_command)
+
+    if args.check_only:
+        print("Submission checks completed without writing outputs.")
+        return
+
+    output = args.output_dir.resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    artifacts = sorted(path for path in output.rglob("*") if path.is_file())
+    manifest = {
+        "schema": "floquet_tls_submission_checks_v1",
+        "generated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "source_git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip(),
+        "artifacts": {str(path.relative_to(REPO)): sha256(path) for path in artifacts},
+    }
+    manifest_path = output / "SUBMISSION_CHECKS_MANIFEST.json"
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"Submission checks completed. Derived artifacts: {output.relative_to(REPO)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Exact Gate A v3 common-preparation full-model production runner with safe resume."""
 from __future__ import annotations
-import argparse, hashlib, importlib.util, json, subprocess, sys
+import argparse, hashlib, importlib.util, json, platform, subprocess, sys
+from importlib import metadata
 from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
@@ -15,6 +16,16 @@ def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def utc(): return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z')
 def canonical_sha(payload): return hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def load_json(path): return json.loads(Path(path).read_text())
+
+def runtime_environment():
+    """Record enough information to rebuild future protocol-specific runs."""
+    packages = {}
+    for package in ("numpy", "scipy", "matplotlib"):
+        try:
+            packages[package] = metadata.version(package)
+        except metadata.PackageNotFoundError:
+            packages[package] = "not-installed"
+    return {"python": sys.version.replace("\n", " "), "platform": platform.platform(), "packages": packages}
 
 def load_helper():
     spec = importlib.util.spec_from_file_location('fullv2', HELPER)
@@ -103,7 +114,7 @@ def main():
             value=full.response_at_ratio(system,timing,ratio=float(ratio),g=task['g'],periods=task['periods'],samples_per_half=task['samples_per_half_step'],discard_periods=task['discard_periods'])
             values.append(value); print(f"[{task['task_id']}] {number}/{len(ratios)} r={ratio:.3f} A={value:.9g}",flush=True)
         raw=np.asarray(values,float)
-        payload={'schema':'gate_a_v3_full_model_result_v1','task':task,'preparation':{'chain':protocol['common_model']['initial_chain_state'],'TLS':protocol['common_model']['initial_TLS_state'],'floquet_pair_selected_for_full_model':False,'B0_constructed_for_full_model':False,'independence_declaration':protocol['common_model']['full_model_declaration']},'timing':{'T1':timing.t1,'T2':timing.t2,'T':timing.period,'Omega':timing.omega,'Omega_over_2':timing.omega_over_2,'gT':task['g']*timing.period,'gamma1T':task['gamma1']*timing.period,'total_time':task['periods']*timing.period},'ratios':ratios.tolist(),'raw_A_TLS':raw.tolist(),'normalized_shape':(raw/max(float(np.linalg.norm(raw)),1e-15)).tolist(),'W_r':float(np.trapezoid(raw**2,ratios)),'provenance':{'protocol_sha256':protocol_sha,'script_sha256':sha(Path(__file__)),'git_commit':commit,'run_started_utc':start,'run_finished_utc':utc(),'command':[sys.executable,str(Path(__file__).relative_to(REPO)),*sys.argv[1:]]}}
+        payload={'schema':'gate_a_v3_full_model_result_v1','task':task,'preparation':{'chain':protocol['common_model']['initial_chain_state'],'TLS':protocol['common_model']['initial_TLS_state'],'floquet_pair_selected_for_full_model':False,'B0_constructed_for_full_model':False,'independence_declaration':protocol['common_model']['full_model_declaration']},'timing':{'T1':timing.t1,'T2':timing.t2,'T':timing.period,'Omega':timing.omega,'Omega_over_2':timing.omega_over_2,'gT':task['g']*timing.period,'gamma1T':task['gamma1']*timing.period,'total_time':task['periods']*timing.period},'ratios':ratios.tolist(),'raw_A_TLS':raw.tolist(),'normalized_shape':(raw/max(float(np.linalg.norm(raw)),1e-15)).tolist(),'W_r':float(np.trapezoid(raw**2,ratios)),'provenance':{'protocol_sha256':protocol_sha,'script_sha256':sha(Path(__file__)),'git_commit':commit,'run_started_utc':start,'run_finished_utc':utc(),'command':[sys.executable,str(Path(__file__).relative_to(REPO)),*sys.argv[1:]],'environment':runtime_environment()}}
         payload['result_sha256_excluding_self']=canonical_sha(payload)
         destination=out/f"{task['task_id']}.json"; destination.write_text(json.dumps(payload,indent=2)); written.append(str(destination.relative_to(REPO)))
     all_result_paths=[]
