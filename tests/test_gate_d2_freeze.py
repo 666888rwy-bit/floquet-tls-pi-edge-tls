@@ -151,7 +151,20 @@ def test_invalid_gate_d2_records_are_rejected(mutation: str) -> None:
         validate(bad, task, protocol)
 
 
+def output_snapshot(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    return {
+        str(candidate.relative_to(path)): sha256_path(candidate)
+        for candidate in sorted(path.rglob("*"))
+        if candidate.is_file()
+    }
+
+
 def test_gate_d2_dry_run_lists_only_frozen_ids_and_writes_nothing() -> None:
+    protocol = load_protocol()
+    output = REPO / "results/gate_d2" / f"{protocol['protocol_version']}__{sha256_path(PROTOCOL_PATH)[:12]}"
+    before = output_snapshot(output)
     completed = subprocess.run(
         [sys.executable, str(RUNNER.relative_to(REPO)), "--dry-run"],
         cwd=REPO,
@@ -160,6 +173,6 @@ def test_gate_d2_dry_run_lists_only_frozen_ids_and_writes_nothing() -> None:
         text=True,
     )
     plan = json.loads(completed.stdout)
-    assert plan["requested"] == [task["id"] for task in load_protocol()["selected_drives"]]
+    assert plan["requested"] == [task["id"] for task in protocol["selected_drives"]]
     assert plan["authorization"]["selected_drives_exact_match"] is True
-    assert not (REPO / plan["output_dir"]).exists()
+    assert output_snapshot(REPO / plan["output_dir"]) == before

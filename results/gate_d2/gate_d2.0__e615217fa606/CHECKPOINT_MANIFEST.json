@@ -1,0 +1,58 @@
+{
+  "schema": "gate_d2_checkpoint_manifest_v2",
+  "protocol_sha256": "e615217fa6063ff9c2d400cb927f9d1963d4a29386047fa3c6ae1c40335cd72e",
+  "script_sha256": "2056baf9faa69271f6f94d5b53ca2a468ec2f3199e97b0ed3d168e1125ea847f",
+  "helper_sha256": "43ecb788a271a78b737fc4747ddd9d60ea51b539cdea6b2c4f04a3ace402fa05",
+  "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19",
+  "authorization": {
+    "source_gate_d1_protocol_sha256": "6d3a08047527185fd951a0edeefca04722ba6842d57bc04f0f34eb38d1551d7d",
+    "source_corrected_gate_d1_audit_sha256": "34961d819b8dd4cf1f1aaec519161e3d0a2674a5a043e660ad05d00770357f3a",
+    "selected_drives_exact_match": true,
+    "gate_d1_screen_pass": true
+  },
+  "valid_completed": {
+    "nu00_a": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu00_a.json",
+      "sha256": "7367d361038244a74ec45517c6056e16560165c068905e56f55d1320a7f4a9a8",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu00_b": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu00_b.json",
+      "sha256": "bb7f2463a57a51b1ba73fd6198cbba75f0b07ed0e92a86c73d150d20bb7ebc81",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu10_a": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu10_a.json",
+      "sha256": "0cc7cc01605d3d6fac3326c465c1a4afdac86dd7b72c2158fe8b7d279d0342ea",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu10_b": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu10_b.json",
+      "sha256": "568f9366e36ed2f12add6add66c512fa26460ceeb3e78fa237d7e8fe179f14a8",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu01_a": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu01_a.json",
+      "sha256": "d4ba8aa6eba526cbb815056496ddac8e0965f900c15752a41726223bcc679a55",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu01_b": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu01_b.json",
+      "sha256": "24ce5d5c82690c5fe476d1148ceeb38e5a60a710de18396206667cf382a7656b",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu11_a": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu11_a.json",
+      "sha256": "069f1d3b42c801d7b7f02e0858a4c630c4ef2021741a4ff380af05c977615403",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    },
+    "nu11_b": {
+      "path": "results/gate_d2/gate_d2.0__e615217fa606/nu11_b.json",
+      "sha256": "c9697c4c950e58497e21bd0a430795ecab6fa1d4e8f8e38542044e094fdc4f14",
+      "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19"
+    }
+  },
+  "missing": [],
+  "invalid": {},
+  "updated_utc": "2026-08-26T04:37:54Z"
+}

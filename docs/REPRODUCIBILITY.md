@@ -11,7 +11,7 @@ This repository studies a **finite** periodically driven Ising chain locally exc
 | Exact Gate A v3 controls | `protocols/gate_a_v3/`, `scripts/gate_a_v3/`, `results/gate_a_v3/` | Primary common-preparation full-model evidence. |
 | Gate A v2 | `protocols/gate_a_v2/`, `results/gate_a_v2/` | Earlier exact OBC/PBC/trivial controls and held-out OBC source data. |
 | Gate B2 and Gate C1 | `results/gate_a_v2/.../gate_b2/`, `gate_c1/` | Negative tests defining the limits of the local reduced model. |
-| Gate D1 and pending Gate D2 | `protocols/gate_d1/`, `protocols/gate_d2/`, `results/gate_d1/` | Corrected response-blind N=4 weight screen and source-frozen N=6 transfer protocol. No Gate D2 N=6 response is committed. |
+| Gate D1 and Gate D2 | `protocols/gate_d1/`, `protocols/gate_d2/`, `results/gate_d1/`, `results/gate_d2/` | Corrected response-blind N=4 screen and completed eight-drive N=6 finite-size transfer result. |
 | Original checkpoint analyses | `scripts/`, `data/checkpoints/`, `notebooks/` | Supplemental prepared-pair mechanism and diagnostic studies. |
 
 ## 2. Gate A v3: exact full-model route
@@ -74,11 +74,11 @@ The pair-plus-channel construction remains part of the scientific record but is 
 
 Therefore, no N=6/N=8/N=10 extension of the present \(K\)-state or Fourier/Sambe truncation is presented as a solution. The supplemental reduced model may only be discussed as a deliberately prepared local coherence mechanism, with this limitation cited alongside it.
 
-## 5. Gate D1 correction and pending Gate D2
+## 5. Gate D1 correction and completed Gate D2
 
 The frozen Gate D1 protocol assigns the factor-10 threshold only to its two fixed-\(\nu_0\) median ratios. Its separate all-point condition is directional: \(\min W_{\nu_\pi=1}>\max W_{\nu_\pi=0}\). The corrected audit reports 239.10, 4276.67 and 7.004, so the unchanged protocol, selected candidates, raw results and manifest satisfy the literal candidate-screen rule.
 
-Gate D2 is the sole authorized follow-up: an exact N=6 transfer test on the same eight response-blind-selected drives. Before propagation, the runner verifies the anchored D1 protocol/audit hashes, exact field-by-field task equality, a clean work tree and the public source-freeze commit. It records package, platform, threading and BLAS/LAPACK information in every new result. See [`GATE_D2_LOCAL_RUN_INSTRUCTIONS.md`](gate_a_v3/GATE_D2_LOCAL_RUN_INSTRUCTIONS.md). Gate A v3 remains the principal N=6 evidence until the complete D2 manifest and audit exist.
+Gate D2 propagated exactly those eight response-blind-selected drives at N=6 from the public source-freeze commit. The final manifest and audit validate all result hashes, self hashes, task fields, N=4/N=6 grids, normalized shapes, recomputed weights, runner and helper hashes. The frozen transfer decision passes: the fixed-\(\nu_0\) median ratios are 409.536 and 5633.720, and the all-point ordering ratio is 12.048. The detailed decision and result boundary are in [`GATE_D2_RESULT_DECISION.md`](gate_a_v3/GATE_D2_RESULT_DECISION.md). This supports finite, sampled hierarchy persistence for the specified cross-period protocol, not a common-period causal law or thermodynamic invariant.
 
 ## 6. Supplemental checkpoint route
 

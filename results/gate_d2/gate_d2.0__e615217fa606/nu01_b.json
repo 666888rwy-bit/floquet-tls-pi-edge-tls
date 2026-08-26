@@ -1,0 +1,114 @@
+{
+  "schema": "gate_d2_n6_full_model_result_v1",
+  "task": {
+    "id": "nu01_b",
+    "nu0": 0,
+    "nupi": 1,
+    "alpha_over_pi": 0.98,
+    "beta_over_pi": 0.6866666666666666,
+    "T": 2.617993877991494,
+    "Omega": 2.4000000000000004,
+    "bulk_margin_rad": 0.9215338450530058
+  },
+  "common_protocol": {
+    "N_chain": 6,
+    "boundary": "OBC",
+    "TLS_contact_site": 0,
+    "initial_chain_state": "|up_z>^{tensor 6}",
+    "initial_TLS_state": "|0_d>",
+    "floquet_pair_selected": false,
+    "B0_constructed": false,
+    "gT_target": 0.20734511513692636,
+    "gamma1T_target": 0.20734511513692636,
+    "periods": 80,
+    "discard_periods": 20,
+    "samples_per_half_step": 4
+  },
+  "timing": {
+    "T": 2.617993877991494,
+    "Omega": 2.4000000000000004,
+    "g": 0.0792,
+    "gamma1": 0.0792,
+    "gT": 0.20734511513692633,
+    "gamma1T": 0.20734511513692633,
+    "total_time": 209.43951023931953
+  },
+  "ratios": [
+    0.88,
+    0.904,
+    0.928,
+    0.952,
+    0.976,
+    1.0,
+    1.024,
+    1.048,
+    1.072,
+    1.096,
+    1.12
+  ],
+  "raw_A_TLS": [
+    0.1844272954768643,
+    0.22316741824102151,
+    0.282552917533809,
+    0.3777940026152381,
+    0.49815271565380376,
+    0.5487813471121927,
+    0.46553245313211034,
+    0.34569072910991566,
+    0.260611320629392,
+    0.2076263199572274,
+    0.17135367358666373
+  ],
+  "normalized_shape": [
+    0.15978003514962674,
+    0.19334284460770068,
+    0.24479193808296684,
+    0.3273047997645953,
+    0.43157851559468136,
+    0.47544102788215176,
+    0.40331769509720755,
+    0.2994918767597033,
+    0.22578266336817018,
+    0.1798786921153711,
+    0.14845360020002776
+  ],
+  "W_r": 0.031214939997840148,
+  "provenance": {
+    "protocol_sha256": "e615217fa6063ff9c2d400cb927f9d1963d4a29386047fa3c6ae1c40335cd72e",
+    "script_sha256": "2056baf9faa69271f6f94d5b53ca2a468ec2f3199e97b0ed3d168e1125ea847f",
+    "helper_sha256": "43ecb788a271a78b737fc4747ddd9d60ea51b539cdea6b2c4f04a3ace402fa05",
+    "repository_url": "https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls.git",
+    "git_commit": "216b0791c224da446fc6530224c3dfc2cff54f19",
+    "public_commit_refs": [
+      "HEAD",
+      "refs/heads/main"
+    ],
+    "run_started_utc": "2026-08-26T04:35:34Z",
+    "run_finished_utc": "2026-08-26T04:36:19Z",
+    "command": [
+      "/usr/bin/python",
+      "scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py"
+    ],
+    "environment": {
+      "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+      "python_implementation": "CPython",
+      "platform": "Linux-6.1.102-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "package_versions": {
+        "numpy": "2.5.1",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.1"
+      },
+      "blas_lapack_configuration": "{\n  \"Compilers\": {\n    \"c\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"cc\"\n    },\n    \"cython\": {\n      \"name\": \"cython\",\n      \"linker\": \"cython\",\n      \"version\": \"3.2.8\",\n      \"commands\": \"cython\"\n    },\n    \"c++\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"c++\"\n    }\n  },\n  \"Machine Information\": {\n    \"host\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    },\n    \"build\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    }\n  },\n  \"Build Dependencies\": {\n    \"blas\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.33.112.0\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.12.13/lib/python3.12/site-packages/scipy_openblas64/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.12.13/lib/python3.12/site-packages/scipy_openblas64/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.33.112.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/.openblas\"\n    },\n    \"lapack\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.33.112.0\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.12.13/lib/python3.12/site-packages/scipy_openblas64/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.12.13/lib/python3.12/site-packages/scipy_openblas64/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.33.112.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/.openblas\"\n    }\n  },\n  \"Python Information\": {\n    \"path\": \"/tmp/build-env-kd0sw37v/bin/python\",\n    \"version\": \"3.12\"\n  },\n  \"SIMD Extensions\": {\n    \"baseline\": [\n      \"X86_V2\"\n    ],\n    \"found\": [\n      \"X86_V3\",\n      \"X86_V4\",\n      \"AVX512_ICL\"\n    ],\n    \"not found\": [\n      \"AVX512_SPR\"\n    ]\n  }\n}",
+      "thread_environment": {
+        "OMP_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "MKL_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null
+      }
+    }
+  },
+  "result_sha256_excluding_self": "7326e64429b8aa617dffd72c537c41394970f6b4bfea5952d9b9811332cc8555"
+}

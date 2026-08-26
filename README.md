@@ -18,11 +18,11 @@ Gate A v3 is the current evidence hierarchy. Its protocol was prospectively froz
 
 The concise claim-to-file map is in [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md), the manuscript-facing claim-to-artifact map is in [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md), the complete reproducibility conventions are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the machine-checkable record contract is in [`docs/RESULT_SCHEMA.md`](docs/RESULT_SCHEMA.md).
 
-## Pending Gate D2 finite-size transfer test
+## Completed Gate D2 finite-size transfer test
 
 The response-blind Gate D1 N=4 screen passes its literal frozen rule: the factor-10 threshold applies to the two fixed-\(\nu_0\) median ratios, whereas the separate all-point condition requires only \(\min W_{\nu_\pi=1}>\max W_{\nu_\pi=0}\). The corrected D1 audit preserves the protocol, raw results, selected candidates and manifest while documenting the superseded audit threshold.
 
-Gate D2 source is frozen but no N=6 Gate D2 response has been calculated. Its runner validates the public freeze commit, corrected D1 evidence hashes and a field-by-field equality check of the eight tasks before propagation. See [`GATE_D2_LOCAL_RUN_INSTRUCTIONS.md`](docs/gate_a_v3/GATE_D2_LOCAL_RUN_INSTRUCTIONS.md). Until the campaign and its audit are complete, the N=4 hierarchy remains a passed candidate screen rather than a size-persistent result.
+Gate D2 then propagated the same eight field-by-field-matched drives at N=6 from the public source-freeze commit. Its final audit validates every result and passes both median-ratio conditions (409.536 and 5633.720) plus the all-point ordering ratio (12.048). The result therefore supports finite-size persistence of the sampled, \(\nu_\pi\)-associated raw-weight hierarchy for this fixed response-blind, cross-period protocol. See [`GATE_D2_RESULT_DECISION.md`](docs/gate_a_v3/GATE_D2_RESULT_DECISION.md). It does not establish a common-period causal law, a thermodynamic invariant, universal \(\pi\)-edge spectroscopy or a universal lineshape.
 
 ## Important interpretation boundary
 
@@ -35,7 +35,8 @@ Gate B2 shows that the common \(|\uparrow_z\rangle^{\otimes N}\) preparation occ
 | Path | Purpose |
 |---|---|
 | `protocols/gate_a_v3/` | Frozen Gate A v3 common-preparation and matched-control protocol. |
-| `protocols/gate_d1/`, `protocols/gate_d2/` | Corrected N=4 weight screen and source-frozen, pending N=6 transfer protocol. |
+| `protocols/gate_d1/`, `protocols/gate_d2/` | Corrected N=4 weight screen, frozen N=6 transfer protocol, and completed eight-drive N=6 evidence route. |
+| `results/gate_d1/`, `results/gate_d2/` | Versioned N=4 candidate-screen records and completed N=6 transfer records with manifests. |
 | `scripts/gate_a_v3/` | Closed-chain BDI selection, exact full-model runner, and read-only audit scripts. |
 | `results/gate_a_v3/` | Versioned Gate A v3 raw JSON, manifest hashes, audit, and figures. |
 | `protocols/gate_a_v2/`, `scripts/gate_a_v2/`, `results/gate_a_v2/` | Gate A v2 controls plus Gate B/C reduction diagnostics and their limits. |

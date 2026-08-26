@@ -26,7 +26,7 @@ The committed v2 baselines use the equivalent field name `detuning_ratios_omega_
 
 ## Gate D2 N=6 result contract
 
-Gate D2 records use schema `gate_d2_n6_full_model_result_v1`. They are not present in the source-freeze release: that release contains only the immutable protocol, runner, audit and validation route. Once the locally executed campaign is complete, every record must satisfy the following additional rules.
+Gate D2 records use schema `gate_d2_n6_full_model_result_v1` and are stored beneath `results/gate_d2/gate_d2.0__e615217fa606/`. The completed campaign contains exactly the eight response-blind-selected drives and `MANIFEST.json`; the original source-freeze remains separately identifiable by its public commit. Every completed record satisfies the following additional rules.
 
 | Requirement | Validation rule |
 |---|---|
@@ -36,17 +36,15 @@ Gate D2 records use schema `gate_d2_n6_full_model_result_v1`. They are not prese
 | Full provenance | Protocol, runner and full-model-helper hashes; public freeze commit; command; UTC bounds; Python/package/platform metadata; threading information; and NumPy BLAS/LAPACK report are required. |
 | Resume integrity | The canonical self hash, schema, task, protocol, runner, helper and public-freeze commit must all validate before a completed task may be skipped. |
 
-The final Gate D2 audit verifies the corrected D1 evidence hash, D1 protocol hash, exact N=4/N=6 ratio-grid equality, normalized-shape definition, recomputed weights, runner/helper hashes and the eight-drive final manifest. Its derived JSON and figure output belongs under `build/gate_d2_audit/`, not in the immutable campaign directory.
+The final Gate D2 audit verifies the corrected D1 evidence hash, D1 protocol hash, exact N=4/N=6 ratio-grid equality, normalized-shape definition, recomputed weights, runner/helper hashes and the eight-drive final manifest. Its derived JSON and figure output belongs under `build/gate_d2_audit/`, not in the immutable campaign directory. The frozen pass requires both fixed-\(\nu_0\) median ratios above ten and all sampled \(\nu_\pi=1\) weights above all sampled \(\nu_\pi=0\) weights; see `GATE_D2_RESULT_DECISION.md` for the computed values and limitations.
 
 ## Validation commands
 
 ```bash
 python -m pytest -q
 python scripts/gate_a_v3/20_audit_gate_a_v3.py --check-only
-python scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py --dry-run
-# After the frozen N=6 campaign is complete:
 python scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py --check-only
 python scripts/run_submission_checks.py --check-only
 ```
 
-The first command includes negative tests for self-hash corruption and mismatched ratio grids. The second validates the committed v3 manifest, v3 records and v2/v3 comparisons without writing output. The Gate D2 dry run validates source-freeze anchors without propagating any physical point; its audit is intentionally unavailable until a complete final manifest exists. The final command combines tests and all available no-write audit routes for continuous integration or release verification.
+The first command includes negative tests for self-hash corruption and mismatched ratio grids. The second validates the committed v3 manifest, v3 records and v2/v3 comparisons without writing output. The Gate D2 audit validates the completed eight-result manifest without propagating any physical point. The final command combines tests and all available no-write audit routes for continuous integration or release verification.
