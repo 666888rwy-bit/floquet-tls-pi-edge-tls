@@ -2,11 +2,21 @@
 
 > **Reviewer-facing exact finite-system controls, frozen numerical protocols, and reproducible code for a periodically driven Ising chain locally coupled to an amplitude-damped TLS.**
 
-This repository supports a manuscript in preparation on finite Floquet–Lindblad spectroscopy. Its principal result is an **exact common-preparation full-model comparison**: the TLS response is strongly boundary-selective for specified closed-chain BDI-labelled drives. The data do not justify a thermodynamic-limit, phase-boundary, universal-effective-theory, or uniquely \(\nu_\pi\)-controlled response claim; however, the sampled raw weights display an explicitly exploratory \(\nu_\pi\)-sector separation that motivates a separately frozen multi-point test.
+This repository supports a manuscript in preparation on finite Floquet–Lindblad spectroscopy. Its principal result is an **exact common-preparation full-model comparison**: the frequency-resolved TLS response is strongly boundary selective for the specified finite protocol. Same-period BDI-labelled controls then limit the interpretation, and a separately frozen response-blind eight-drive campaign tests only whether one sampled raw-weight hierarchy persists from N=4 to N=6. Coupling, damping, channel, and multichannel calculations are retained as mechanism or validity diagnostics; they do not replace the geometry evidence. The data do not justify a thermodynamic-limit, phase-boundary, universal-effective-theory, uniquely \(\nu_\pi\)-controlled, or many-body time-crystal claim.
 
-## Start here: Gate A v3 reviewer route
+## Manuscript evidence hierarchy
 
-Gate A v3 is the current evidence hierarchy. Its protocol was prospectively frozen in a public commit before new full-model responses were run. Every new JSON result carries protocol/script hashes, a Git commit, UTC timestamps, and a self-excluding content hash.
+| Layer | Primary question | Evidence role |
+|---|---|---|
+| 1. Common protocol | Are the preparation, detector grid, windows, and comparisons fixed and traceable? | Establishes the common physical contract and numerical provenance. |
+| 2. Boundary-selective response | Does the exact TLS response change between OBC/PBC and from edge to interior contacts? | Primary finite-system result. |
+| 3. Interpretive limits | Is the normalized response fixed by \(\nu_\pi\) alone? | No for the sampled same-period controls; the spectra remain drive dependent. |
+| 4. Frozen size transfer | Does the response-blind N=4 raw-weight hierarchy persist for the same eight drives at N=6? | Gate D2 passes this finite cross-period transfer test, without becoming a causal topological law. |
+| 5. Mechanism and validity | How does the TLS hybridize, load the boundary response, and where do reduced descriptions fail? | Secondary coupling, damping, channel, and multichannel diagnostics. |
+
+## Start here: primary Gate A v3 route
+
+Gate A v3 is the starting point of the current evidence hierarchy. Its protocol was prospectively frozen in a public commit before new full-model responses were run. Every new JSON result carries protocol/script hashes, a Git commit, UTC timestamps, and a self-excluding content hash.
 
 | Question | Primary artifact | What it establishes | Required limitation |
 |---|---|---|---|
@@ -41,6 +51,7 @@ Gate B2 shows that the common \(|\uparrow_z\rangle^{\otimes N}\) preparation occ
 | `results/gate_a_v3/` | Versioned Gate A v3 raw JSON, manifest hashes, audit, and figures. |
 | `protocols/gate_a_v2/`, `scripts/gate_a_v2/`, `results/gate_a_v2/` | Gate A v2 controls plus Gate B/C reduction diagnostics and their limits. |
 | `scripts/`, `data/checkpoints/`, `notebooks/` | Earlier compact checkpoint analyses and original workflow records. |
+| `manuscript/` | Current evidence-first LaTeX manuscript, Supplementary Material, and submission figures. |
 | `docs/` | Reviewer guide, reproducibility protocol, data dictionary, and evidence-boundary documents. |
 
 ## Re-running Gate A v3
@@ -77,7 +88,7 @@ To regenerate deterministic audit figures and a hash manifest outside the versio
 python scripts/run_submission_checks.py --output-dir build/submission_checks
 ```
 
-The generated files are intentionally placed in the ignored `build/` directory. This build now includes a deterministic N=4 channel--time mechanism figure generated solely from committed benchmark data. See [`docs/ENVIRONMENT_AND_PROVENANCE.md`](docs/ENVIRONMENT_AND_PROVENANCE.md) for the environment policy, [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md) for manuscript evidence boundaries, and [`docs/PUBLIC_RELEASE_CHECKLIST.md`](docs/PUBLIC_RELEASE_CHECKLIST.md) for the release procedure.
+The generated files are intentionally placed in the ignored `build/` directory. This build includes deterministic N=4 channel--time and N=6 damping/backaction figures generated solely from committed records, in addition to the Gate A v3 and Gate D2 audits. See [`docs/ENVIRONMENT_AND_PROVENANCE.md`](docs/ENVIRONMENT_AND_PROVENANCE.md) for the environment policy, [`docs/CLAIM_TO_ARTIFACT.md`](docs/CLAIM_TO_ARTIFACT.md) for manuscript evidence boundaries, and [`docs/PUBLIC_RELEASE_CHECKLIST.md`](docs/PUBLIC_RELEASE_CHECKLIST.md) for the release procedure.
 
 ## Release preflight
 

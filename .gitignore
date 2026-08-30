@@ -16,9 +16,16 @@ venv/
 *.temporary.npz
 *.tmp
 
-# Do not commit manuscript drafts or PDFs here
-manuscript/
+# Do not commit generated manuscript build products
 *.pdf
+manuscript/**/*.aux
+manuscript/**/*.bbl
+manuscript/**/*.blg
+manuscript/**/*.fdb_latexmk
+manuscript/**/*.fls
+manuscript/**/*.log
+manuscript/**/*.out
+manuscript/**/*.xdv
 
 # Reproducible local build and test artifacts
 build/
