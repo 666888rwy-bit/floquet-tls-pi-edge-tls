@@ -9,7 +9,7 @@ python -m pip install -r requirements-lock.txt
 python scripts/run_submission_checks.py --check-only
 ```
 
-The repository intentionally separates this inexpensive verification route from an exact N=6 production rerun. The latter remains computationally more expensive and must be launched only from a clean, tagged work tree after reviewing the frozen protocol.
+The repository intentionally separates this inexpensive verification route from an exact N=6 production rerun. The check-only route validates Gate A v3 and Gate D2 records plus the committed N=4 channel/time and N=6 damping figure sources without writing derived files. An exact production rerun remains computationally more expensive and must be launched only from a clean, tagged work tree after reviewing the frozen protocol.
 
 ## Result-level provenance
 

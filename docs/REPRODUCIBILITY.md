@@ -8,11 +8,12 @@ This repository studies a **finite** periodically driven Ising chain locally exc
 
 | Evidence tier | Location | Role |
 |---|---|---|
-| Exact Gate A v3 controls | `protocols/gate_a_v3/`, `scripts/gate_a_v3/`, `results/gate_a_v3/` | Primary common-preparation full-model evidence. |
-| Gate A v2 | `protocols/gate_a_v2/`, `results/gate_a_v2/` | Earlier exact OBC/PBC/trivial controls and held-out OBC source data. |
-| Gate B2 and Gate C1 | `results/gate_a_v2/.../gate_b2/`, `gate_c1/` | Negative tests defining the limits of the local reduced model. |
-| Gate D1 and Gate D2 | `protocols/gate_d1/`, `protocols/gate_d2/`, `results/gate_d1/`, `results/gate_d2/` | Corrected response-blind N=4 screen and completed eight-drive N=6 finite-size transfer result. |
-| Original checkpoint analyses | `scripts/`, `data/checkpoints/`, `notebooks/` | Supplemental prepared-pair mechanism and diagnostic studies. |
+| Exact Gate A v3 geometry controls | `protocols/gate_a_v3/`, `scripts/gate_a_v3/`, `results/gate_a_v3/` | Primary common-preparation OBC/PBC and contact-position evidence. |
+| Same-period BDI-labelled controls | Same Gate A v3 records and audits | Limits the interpretation: the sampled normalized line shapes are not fixed by \(\nu_\pi\) alone. |
+| Gate D1 and Gate D2 | `protocols/gate_d1/`, `protocols/gate_d2/`, `results/gate_d1/`, `results/gate_d2/` | Corrected response-blind N=4 screen and completed eight-drive N=6 finite-size hierarchy transfer. |
+| Coupling and damping checkpoints | `data/checkpoints/`, `results/reproduced/`, `scripts/20_effective_coupling_scaling.py`, `scripts/submission/20_generate_damping_figure.py` | Secondary hybridization and dissipative-backaction diagnostics. |
+| Channel and multichannel diagnostics | `results/reproduced/`, `data/prb_controls/`, Gate B2/C1 records | Prepared-mechanism benchmarks and explicit validity/breakdown tests, not primary full-model evidence. |
+| Gate A v2 | `protocols/gate_a_v2/`, `results/gate_a_v2/` | Earlier exact controls and source data retained for provenance. |
 
 ## 2. Gate A v3: exact full-model route
 
@@ -43,7 +44,7 @@ The second line rescales bare \(g\) and \(\gamma_1\), and doubles periods, so th
 
 The Gate A v3 audit reports all directional ratios in the protocol-declared orientation. The held-out \((1,1)\) same-drive comparison yields \(W_{\rm OBC}/W_{\rm PBC}=9537.44\), while the production profile has \(W_r(0)/W_r(2)=W_r(0)/W_r(3)=981.45\). These are exact finite-N=6, common-preparation full-model observations.
 
-The four-class controls do not pass the declared descriptive \(\nu_\pi\)-grouping test: the two \(\nu_\pi=1\) spectra are not mutually closest in normalized shape. This rules out a universal \(\nu_\pi\)-determined lineshape claim. Separately, the sampled raw weights show an exploratory hierarchy: both sampled \(\nu_\pi=1\) drives exceed both sampled \(\nu_\pi=0\) drives, with the smallest \(\nu_\pi=1\) weight 118.7 times the largest \(\nu_\pi=0\) weight. Because the two sectors belong to different equal-period lines, this is a descriptive observation that motivates a separately frozen multi-point weight test, not an isolated \(\nu_\pi\) causal law.
+The four-class controls do not pass the declared descriptive \(\nu_\pi\)-grouping test: the two \(\nu_\pi=1\) spectra are not mutually closest in normalized shape. This rules out a universal \(\nu_\pi\)-determined lineshape claim. Separately, the sampled raw weights show a descriptive hierarchy: both sampled \(\nu_\pi=1\) drives exceed both sampled \(\nu_\pi=0\) drives, with the smallest \(\nu_\pi=1\) weight 118.7 times the largest \(\nu_\pi=0\) weight. Because the two sectors belong to different equal-period lines, Gate A v3 alone does not turn this observation into a causal invariant claim. The later response-blind Gate D1/D2 route tests only the finite N=4-to-N=6 persistence of a separately selected eight-drive hierarchy; its completed result is recorded in section 5.
 
 ### 2.4 Sampling/window controls
 
@@ -68,11 +69,13 @@ python scripts/gate_a_v3/10_run_full_model_v3.py
 
 The runner refuses to start from a dirty Git working tree because the source commit is part of each result's provenance. Recalculation of the full campaign should be done only after reviewing the frozen protocol; it is not necessary for a reviewer to verify the committed manifest and audit.
 
-## 4. Gate B/C reduced-model limitation
+## 4. Mechanism scans and reduced-model limitations
+
+The coupling and damping campaigns answer mechanism questions only after the geometry result and interpretive controls are fixed. The resolved coupling scan establishes approximately linear response-doublet splitting over its accepted interval. At fixed contact and harmonic, the plotted \(g|B_{0\pi}|\) axis is a constant rescaling of bare \(g\); it does not independently validate an absolute projected matrix element or an all-coupling perturbative law. The damping checkpoint records a nonmonotonic loading--recovery crossover versus \(\gamma_1T\). Its interpretation as fast-defect elimination or Zeno-like decoupling is qualitative, not a fitted phase boundary.
 
 The pair-plus-channel construction remains part of the scientific record but is not a general reduction for the common product state. Gate B2 shows that adding initial-support states can raise retained state weight above 0.94 while leaving a large full-spectrum shape error. Gate C1 shows that M=1 Fourier micromotion agrees closely with exact within-manifold micromotion but does not repair disagreement with the exact N=4 full model.
 
-Therefore, no N=6/N=8/N=10 extension of the present \(K\)-state or Fourier/Sambe truncation is presented as a solution. The supplemental reduced model may only be discussed as a deliberately prepared local coherence mechanism, with this limitation cited alongside it.
+The formal N=6/N=8 \(K=2,4,6,8\) records use a Floquet-pair-prepared projected state, not the common-product Gate A v3 contract. They show one restricted \(g=0.08\) window in which the dominant numerical correction occurs from \(K=2\) to \(K=4\), together with an N=8, \(g=0.12\) counterexample in which all tested \(K=4\)--8 spaces remain nonpredictive. These records are validity diagnostics, not a second positive size-scaling claim. No N=8/N=10 extension of the common-preparation response is inferred from them.
 
 ## 5. Gate D1 correction and completed Gate D2
 
@@ -88,6 +91,7 @@ The original compact scripts remain usable for the historical prepared-pair evid
 python scripts/10_double_boundary_localization.py
 python scripts/20_effective_coupling_scaling.py
 python scripts/30_channel_time_validation.py
+python scripts/submission/20_generate_damping_figure.py --check-only
 ```
 
 Their limitations are unchanged: a finite six-site response fit is not a thermodynamic localization length; a resolved-regime line in \(|gB_{0\pi}|\) is not a zero-coupling theorem; and an N=4 channel/time agreement is not a universal dissipative reduction. See [`REVIEWER_GUIDE.md`](REVIEWER_GUIDE.md) for the current claim boundaries.

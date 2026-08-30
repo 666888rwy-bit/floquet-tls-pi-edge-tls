@@ -25,7 +25,7 @@ No safe single constant-period line of the present two-step closed-chain classif
 | \((1,1)\) versus \((0,1)\) | \(\nu_\pi=1\) in both drives | \(T\), \(\Omega\), \(gT\), \(\gamma_1T\), total time, readout grid, and common preparation | Change \(\nu_0\) at fixed \(\nu_\pi\). |
 | \((1,0)\) versus \((0,0)\) | \(\nu_\pi=0\) in both drives | The same set of dimensionless and physical-time controls | Change \(\nu_0\) at fixed \(\nu_\pi\). |
 
-The four-class data do **not** exhibit the predeclared normalized-shape grouping of the two \(\nu_\pi=1\) cases. A reviewer should regard this as a transparent negative inference test: it rules out a universal \(\nu_\pi\)-determined lineshape claim rather than being discarded. Separately, the sampled raw weights exhibit a descriptive hierarchy in which both \(\nu_\pi=1\) points exceed both \(\nu_\pi=0\) points; see `GATE_A_V3_WEIGHT_STRATIFICATION.png`. Because those sectors lie on different matched-period lines, this amplitude separation motivates a separate multi-point frozen test rather than a retrospective invariant claim.
+The four-class data do **not** exhibit the predeclared normalized-shape grouping of the two \(\nu_\pi=1\) cases. A reviewer should regard this as a transparent negative inference test: it rules out a universal \(\nu_\pi\)-determined lineshape claim rather than being discarded. Separately, the sampled raw weights exhibit a descriptive hierarchy in which both \(\nu_\pi=1\) points exceed both \(\nu_\pi=0\) points; see `GATE_A_V3_WEIGHT_STRATIFICATION.png`. Because those sectors lie on different matched-period lines, Gate A v3 does not establish a retrospective invariant claim. The separately frozen D1/D2 route below tests only whether an eight-drive response-blind hierarchy persists from N=4 to N=6.
 
 The separate Gate D1 N=4 screen uses two response-blind-selected points per BDI class. Its literal rule passes: the two fixed-\(\nu_0\) median ratios exceed 10 and the all-point ordering ratio is 7.004, above the protocol's directional threshold of one. Gate D2 transferred exactly those eight drives to N=6 without replacement or retuning. Its final frozen conditions pass with fixed-\(\nu_0\) median ratios 409.536 and 5633.720 and an all-point ordering ratio 12.048. This is a finite, cross-period hierarchy-persistence result, not a universal or causal topological law.
 
@@ -37,8 +37,11 @@ The original checkpoint scripts are retained as supplemental mechanism and diagn
 |---|---|---|
 | Boundary response profile under the original checkpoint preparation | `scripts/10_double_boundary_localization.py` | Do not equate its fitted response length with a thermodynamic edge-mode length. |
 | Resolved doublet versus selected \(|gB_{0\pi}|\) | `scripts/20_effective_coupling_scaling.py` | An empirical prepared-pair resolved-regime relation, not a universal coupling theorem. |
+| Damping-controlled loading and recovery | `data/checkpoints/floquet_tls_N6_gamma_checkpoint.npz` and `scripts/submission/20_generate_damping_figure.py` | A finite checkpoint crossover versus \(\gamma_1T\); the elimination/Zeno language is interpretive and no phase boundary is fitted. |
 | N=4 channel/time comparison | `scripts/30_channel_time_validation.py` | A targeted channel mechanism test, not a general full-model reduction. |
-| Multichannel limits | `results/gate_a_v2/.../gate_b2/` and `gate_c1/` | Initial-support and micromotion extensions do not recover common-preparation full spectra. |
+| N=6 targeted channel records | `data/checkpoints/floquet_tls_N6_edge_seeded_pi_arnoldi_v2_checkpoint.npz` | Residual-qualified edge-seeded Ritz pairs near -1, not an exhaustive channel spectrum or an N=6 channel/time lifetime-equality test. |
+| Formal \(K\)-truncation audit | `data/prb_controls/` and `scripts/40_formal_k_convergence.py` | Pair-prepared validity/breakdown diagnostics; they are not common-product Gate A evidence or a second positive size-scaling result. |
+| Common-preparation multichannel limits | `results/gate_a_v2/.../gate_b2/` and `gate_c1/` | Initial-support and micromotion extensions do not recover common-preparation full spectra. |
 
 ## Minimal integrity checklist
 

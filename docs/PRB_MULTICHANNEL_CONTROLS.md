@@ -1,10 +1,10 @@
-# PRB multichannel Floquet controls
+# Legacy formal multichannel diagnostics
 
-This document records the formal numerical controls added after the initial reviewer-facing release. They test a precise finite-system statement:
+This document records formal numerical diagnostics added after the initial reviewer-facing release. They delimit one pair-prepared projected representation; they are not the common-product-state evidence route used for the manuscript's boundary-selective response claim.
 
-> A single Floquet edge-state pair is insufficient for the stated local dissipative TLS response, while a minimal resonance-weighted local multichannel manifold can be predictive in a controlled coupling window and loses predictivity at stronger coupling.
+> For the stated Floquet-pair-prepared contract, a single selected pair is insufficient, the dominant improvement can occur after adding two locally ranked channels in one tested weak-coupling window, and the same ranking can lose predictivity at stronger coupling.
 
-The calculations are **not** a thermodynamic-limit analysis, a phase-boundary calculation, or a proof that every possible effective theory must fail outside the displayed window.
+The calculations use a different preparation contract from Gate A v3. They are **not** a second positive size-scaling result, a validation of the common-product full-model response, a thermodynamic-limit analysis, a phase-boundary calculation, or a proof that every possible effective theory must fail outside the displayed window.
 
 ## 1. Fast reviewer route
 
@@ -39,12 +39,12 @@ The frozen figure references are retained under `results/manuscript_figures/prb_
 
 The threshold bands are predeclared modeling criteria. They are not thermodynamic phase boundaries.
 
-## 3. Matched cross-size positive controls and N=8 counterexample
+## 3. Matched cross-size diagnostics and N=8 counterexample
 
 | Control | \(K=2\) | \(K=4\) | \(K=6\) | \(K=8\) | Interpretation |
 |---|---:|---:|---:|---:|---|
-| N=6, \(g=0.08\), \(\gamma_1=0.08\) | 0.3646 | 0.1467 | 0.1442 | 0.1610 | Pair-only is nonpredictive; the minimal \(K=4\) manifold enters the predictive window. The K=8 residual is nonmonotonic but remains predictive. |
-| N=8, \(g=0.08\), \(\gamma_1=0.08\) | 0.3466 | 0.1452 | 0.1413 | 0.1384 | A representative larger finite system exhibits the same dominant \(K=2\rightarrow4\) correction. |
+| N=6, \(g=0.08\), \(\gamma_1=0.08\) | 0.3646 | 0.1467 | 0.1442 | 0.1610 | Pair-only is nonpredictive; the tested \(K=4\) manifold enters the predeclared error window. The K=8 residual is nonmonotonic but remains below the threshold. |
+| N=8, \(g=0.08\), \(\gamma_1=0.08\) | 0.3466 | 0.1452 | 0.1413 | 0.1384 | The matched pair-prepared diagnostic exhibits the same dominant \(K=2\rightarrow4\) correction; this is not common-product size scaling. |
 | N=8, \(g=0.12\), \(\gamma_1=0.08\) | 0.2950 | 0.6287 | 0.6220 | 0.6133 | Tested resonance-weighted \(K=4\)–8 local manifolds form a high-error plateau. |
 
 The first two rows use an exactly matched protocol. The third row changes only the coupling relative to the N=8 positive anchor and supplies a controlled strong-coupling counterexample. Its conclusion is deliberately limited to the tested local ranking and \(K\leq8\) manifold sizes.
@@ -82,8 +82,8 @@ The N=8 commands are intentionally expensive full Liouville-space calculations. 
 
 | Public file | Provenance | Role |
 |---|---|---|
-| `data/prb_controls/N6_g0p08_matched_k_convergence.json` | Formal N=6 matched run | Positive anchor data |
-| `data/prb_controls/N8_g0p08_matched_k_convergence.json` | Formal N=8 matched run | Cross-size positive control |
+| `data/prb_controls/N6_g0p08_matched_k_convergence.json` | Formal N=6 matched run | Restricted-window diagnostic data |
+| `data/prb_controls/N8_g0p08_matched_k_convergence.json` | Formal N=8 matched run | Pair-prepared cross-size diagnostic |
 | `data/prb_controls/N8_g0p12_strong_coupling_k_convergence.json` | Formal N=8 second-coupling run | Strong-coupling counterexample |
 | `data/prb_controls/N6_K4_model_error_anchors.json` | N=6 31-detuning production anchors | Finite-system error-window context |
 | `scripts/40_formal_k_convergence.py` | Direct sparse Floquet--Lindblad calculation | High-cost independent recomputation |
