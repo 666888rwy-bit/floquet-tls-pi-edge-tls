@@ -1,6 +1,6 @@
-% Boundary-selective Floquet--TLS manuscript
+% Physical Review A Regular Article: finite Floquet--TLS response
 % Compile locally with: latexmk -xelatex main.tex
-% Evidence-first Floquet--TLS manuscript.
+% Review manuscript; APS accepts a review PDF without REVTeX formatting.
 \documentclass[12pt]{article}
 
 \usepackage[a4paper,margin=2.35cm]{geometry}
@@ -42,7 +42,7 @@
 \newcommand{\Wraw}{W_{\mathrm r}}
 \graphicspath{{figures/}{supplementary/figures/}{}}
 
-\title{Boundary-Selective Response of a Dissipative Two-Level Probe in a Finite Floquet Ising Chain}
+\title{Boundary-Selective Readout and Dissipative Backaction of a Two-Level Probe in a Finite Floquet Ising Chain}
 \author{\textbf{Weiyu Ruan}\\
 \small ShanghaiTech University, Shanghai, China\\
 \small \texttt{ruanwy2023@shanghaitech.edu.cn}}
@@ -52,21 +52,21 @@
 \maketitle
 
 \begin{abstract}
-A local dissipative two-level system (TLS) can act both as a spectroscopic probe and as a load on the dynamics it measures. We study this dual role for a finite two-step Floquet Ising chain using exact sparse Floquet--Lindblad propagation, with every principal comparison initialized in the same product state. A same-drive open-versus-periodic-boundary comparison and a six-contact scan show that the frequency-resolved transverse TLS response is strongly concentrated at the open-chain boundary. Same-period BDI-labelled controls further show that the sampled normalized line shapes are not determined by $\nu_\pi$ alone, excluding a universal topological-spectroscopy interpretation of this response. In a separate, prospectively specified eight-drive test, the raw-weight hierarchy observed at $N=4$ is reproduced at $N=6$. Coupling and damping scans reveal resolved hybridization and nonmonotonic backaction: intermediate TLS loss suppresses the boundary response, whereas rapid relaxation restores it. These results establish a drive-dependent, boundary-selective finite-system readout whose probe and backaction roles can be tuned independently of any thermodynamic time-crystal claim.
+A local dissipative probe can reveal the response of a driven quantum chain while modifying the dynamics that it measures. We study this interplay in a finite two-step Floquet Ising chain coupled to a lossy two-level system (TLS). Full sparse Floquet--Lindblad propagation starts from the same product state in every principal comparison. At fixed drive, the transverse TLS response is strongly enhanced for open rather than periodic boundaries; moving the contact through the open chain confines the largest response to its edges. Matched same-period controls show that the closed-chain $\nu_\pi$ label alone does not specify the normalized TLS spectrum. In a separate eight-drive test fixed before the $N=6$ calculations, the $\nu_\pi$-associated raw-weight hierarchy seen at $N=4$ persists at $N=6$, subject to its cross-period design. Coupling-resolved doublets and a nonmonotonic damping response show that the TLS also hybridizes with and loads the finite boundary response. The resulting readout is boundary selective and drive dependent, without constituting a universal topological measurement.
 \end{abstract}
 
-\noindent\textbf{Keywords:} Floquet systems; two-level systems; open quantum dynamics; Lindblad dynamics; finite-size response; superconducting circuits
+\noindent\textbf{Keywords:} Floquet Ising chain; local quantum probe; open quantum dynamics; boundary response; dissipative backaction
 
 \section{Introduction}
 \label{sec:introduction}
 
-Local TLS defects are a ubiquitous microscopic source of coherent structure and loss in superconducting quantum devices \citep{martinis2005decoherence,muller2019tls,lisenfeld2019electric,abdurakhimov2022identification}. An engineered lossy two-level ancilla can play the complementary role of a controllable local sensor; related devices use dissipation as a sensing resource \citep{wolski2020dissipation}. In either realization, the same locality that enables readout also allows the TLS to load the dynamics that it measures. Here ``spectroscopic'' refers operationally to the frequency-resolved response of this local two-level degree of freedom; it does not mean that one dissipative response curve directly measures a bulk invariant. This raises a finite open-system question: which TLS response features are genuinely boundary selective, and which are artifacts of initial-state choice, geometry, finite-time analysis, or drive selection?
+Local probes provide access to quantum dynamics without requiring a spatially resolved measurement of every constituent. Probe-qubit synchronization has been used to infer an environment's spectral density \citep{giorgi2016probing}, while quench spectroscopy has been extended to dissipative lattice models \citep{despres2025quench}. Here we instead scan the splitting of an explicitly local lossy TLS and compare its response at different chain contacts and boundary conditions under one preparation. The coupling that makes this signal visible can also change the system being interrogated. We ask whether the frequency-resolved response distinguishes the edge of a driven chain from its interior and from a closed geometry, and how probe loss modifies that distinction. ``Spectroscopy'' denotes the measured dependence of finite-time TLS coherence on its splitting, rather than a direct measurement of a bulk topological invariant.
 
-The two-step Ising drive provides a controlled setting within standard Floquet theory \citep{shirley1965solution,sambe1973steady,bukov2015universal}. Its closed free-fermion representation can carry candidate boundary zero and $\pi$ structures \citep{kitagawa2010topological,jiang2011majorana,thakurathi2013floquet}, including long-lived period-doubled edge response and experimentally accessible Floquet symmetry-protected regimes \citep{yates2021strong,yates2022longlived,zhang2022digital}. Boundary lifetime and bulk absorption have also been studied in undriven chains, and noise can modify the decay of driven edge states \citep{kemp2020boundary,rieder2018localization}. Here we address the local measurement problem with a geometry-controlled calculation in which the probe is initialized physically, propagated with the complete open-system dynamics, and treated as a possible source of backaction. A local observable requires both such a preparation and a nonzero local matrix element; a closed-chain label does not by itself generate a dissipative response. Moreover, in a finite passive Lindblad system, a near-$-1$ channel mode is metastable rather than the persistent spatiotemporal order required of a time-crystalline phase \citep{else2016floquet,keyserlingk2016absolute,macieszczak2016metastability,chen2024spectral}.
+The two-step Ising drive offers a tractable setting for this question within Floquet theory \citep{shirley1965solution,sambe1973steady,bukov2015universal}. In the closed-chain free-fermion description, zero and $\pi$ boundary structures can be characterized by drive-dependent invariants \citep{kitagawa2010topological,jiang2011majorana,thakurathi2013floquet}. Period-doubled edge response and Floquet symmetry-protected dynamics have been studied in spin chains \citep{yates2021strong,yates2022longlived,zhang2022digital}; Floquet edge states have also been considered as resources for qubit-state transfer \citep{tan2020transfer}. Those studies motivate a local readout, but neither an invariant nor an isolated-chain edge mode fixes a TLS signal. The signal additionally depends on preparation, the local coupling, the probe frequency, and dissipation. Boundary qubits and noisy Floquet edges provide related precedents \citep{kemp2020boundary,rieder2018localization}. Our calculation therefore retains the full chain--TLS Lindblad dynamics while controlling preparation and geometry.
 
-The model is intentionally platform independent. It can describe an uncontrolled microscopic TLS defect, but the frequency, contact, and coupling scans are most directly interpreted as an engineered lossy ancilla coupled to a programmable spin chain, including circuit-QED-compatible implementations. Auxiliary loss has also been used to stabilize selected Floquet states in a distinct setting \citep{ritter2025autonomous}. We do not quantize a resonator or derive transmon circuit parameters, so the results should not be read as a device-specific circuit-QED model.
+This open-system setting should be distinguished from a persistent many-body time crystal: a near-$-1$ eigenvalue of a finite dissipative Floquet channel is evidence of a long-lived mode, not thermodynamic spatiotemporal order \citep{else2016floquet,keyserlingk2016absolute,macieszczak2016metastability,chen2024spectral}. The TLS can be viewed as an engineered lossy ancilla. Defect TLSs in superconducting devices and dissipation-assisted qubit sensing provide possible physical context \citep{martinis2005decoherence,muller2019tls,lisenfeld2019electric,abdurakhimov2022identification,wolski2020dissipation}; dissipative stabilization of Floquet states addresses a different task \citep{ritter2025autonomous}. Our Hamiltonian is platform independent: it does not include a resonator or calibrated circuit parameters, and we do not claim an experimental implementation.
 
-Here we use exact sparse Floquet--Lindblad propagation of an $N=6$ Ising chain coupled to one amplitude-damped TLS. The argument proceeds from phenomenon to interpretation and then mechanism. A movable-contact scan and a held-out OBC/PBC comparison first establish boundary selectivity under one physical preparation. Same-period BDI-labelled controls then delimit what that observation does \emph{not} imply: the sampled normalized line shapes are not fixed by $\nu_\pi$ alone. A prospectively specified eight-drive test asks separately whether a raw-weight hierarchy transfers from $N=4$ to $N=6$. Coupling- and damping-dependent scans finally identify local hybridization and backaction, while channel and multichannel calculations delimit the validity of a reduced description. This ordering keeps the finite response result distinct from any universal topological law.
+We address three related questions with exact sparse propagation of the finite Floquet--Lindblad model. First, does a TLS initialized together with the chain in one product state show a boundary-dependent response under controlled changes of contact and boundary condition? Second, how much of the observed spectrum or integrated weight can be predicted from closed-chain BDI labels, including when the system size changes under a fixed test? Third, at what coupling and damping does the TLS cease to behave like a passive probe? The geometry comparison supplies the principal boundary evidence; matched drive controls and the fixed eight-drive $N=4\to6$ test delimit its interpretation; coupling, damping, and reduced-channel analyses address the mechanism and its range of validity.
 
 \section{Floquet Ising chain and dissipative TLS}
 \label{sec:model}
@@ -107,12 +107,12 @@ The stroboscopic map is therefore
 \end{equation}
 All response data in the main text are generated from this complete Floquet--Lindblad model in sparse Liouville space. No reduced edge--TLS Hamiltonian, bare edge wavefunction, or projected coupling is used to create the principal response curves.
 
-The projected edge--TLS equations, sideband convention, and phase convention are given in the Supplementary Material. They are used only to interpret the coupling and damping trends. In particular, no projected matrix element, fitted edge linewidth, or topology-selected state is used to generate the response data reported below.
+The projected edge--TLS equations, sideband convention, and phase convention are given in the Supplemental Material. They are used only to interpret the coupling and damping trends. In particular, no projected matrix element, fitted edge linewidth, or topology-selected state is used to generate the response data reported below.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{fig1_model_common_preparation_workflow.png}
-\caption{Model, common preparation, readout, and matched-control workflow. A two-step Ising chain is coupled at a movable contact $x$ to an amplitude-damped TLS. Every full-model trajectory starts from the same physical product state and yields a transverse TLS phasor on a predefined detector grid. The same-period controls, held-out OBC/PBC comparison, spatial contacts, and numerical-window variants are specified before comparison. Closed-chain BDI labels organize drive controls but never select a state or Floquet pair for the full dissipative propagation.}
+\includegraphics[width=\textwidth]{fig1_model_common_preparation_workflow.pdf}
+\caption{Local probe and controlled readout. (a) A two-step Ising chain is coupled at contact $x$ to an amplitude-damped TLS. (b) The same product preparation is used for each principal full-model comparison. (c) Varying the TLS splitting produces a frequency-resolved coherence and its raw integrated weight. (d) Contact, boundary condition, and matched-drive controls test which features of the signal are specific to the open-chain boundary. Closed-chain BDI labels organize drives; they do not set the dissipative initial state.}
 \label{fig:workflow}
 \end{figure}
 
@@ -148,12 +148,12 @@ and the reported TLS emission proxy is $P_{\rm em}=\gamma_1\overline{\expect{n_d
 \section{Boundary-selective exact full-model response}
 \label{sec:boundary-response}
 
-\Cref{fig:boundary} presents the two primary geometry tests. The held-out same-drive comparison gives $W_{\mathrm r}^{\mathrm{OBC}}=2.5261\times10^{-3}$ and $W_{\mathrm r}^{\mathrm{PBC}}=2.6486\times10^{-7}$, hence $W_{\mathrm r}^{\mathrm{OBC}}/W_{\mathrm r}^{\mathrm{PBC}}=9.54\times10^3$ in its declared direction. Independently, the common-preparation production scan moves the same TLS interaction from contact $x=0$ to $5$. It gives $\Wraw(0)=3.3247\times10^{-3}$, $\Wraw(1)=6.3759\times10^{-4}$, and $\Wraw(3)=3.3875\times10^{-6}$, corresponding to edge-to-neighbor and edge-to-interior ratios of $5.214$ and $9.81\times10^2$. No denominator floor or clipping enters these ratios; the small denominators are retained finite values. The response is therefore concentrated at the open-chain contacts under one physical preparation and with the full Liouvillian unchanged apart from the contact or boundary condition. Numerical-window and sampling-density checks are reported in the Supplementary Material.
+\Cref{fig:boundary} tests geometry without tailoring the preparation to a particular Floquet mode. At the held-out drive, changing only the chain boundary condition reduces the integrated TLS response from $W_{\mathrm r}^{\mathrm{OBC}}=2.5261\times10^{-3}$ to $W_{\mathrm r}^{\mathrm{PBC}}=2.6486\times10^{-7}$, a directional OBC/PBC ratio of $9.54\times10^3$. Independently, moving the TLS along the open chain gives $\Wraw(0)=3.3247\times10^{-3}$, $\Wraw(1)=6.3759\times10^{-4}$, and $\Wraw(3)=3.3875\times10^{-6}$: the edge exceeds its neighbor by $5.214$ and this interior contact by $9.81\times10^2$. These ratios use the stored nonzero denominators without a floor. Together, the boundary-condition and position changes establish a strong finite-system boundary contrast in the local readout. They do not, by themselves, identify the microscopic source of the signal as topological. Sampling and retained-window checks are detailed in the Supplemental Material.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig2_boundary_geometry_response.png}
-\caption{Boundary-selective response in the exact finite full model. (a) Held-out same-drive OBC/PBC detector response and declared raw-weight ratio. (b) Common-preparation all-contact spatial profile $x=0,\ldots,5$ with the same local TLS exchange moved through the chain. The result is a finite boundary-selective response: it is not an asymptotic localization-length fit or a thermodynamic invariant.}
+\caption{Geometry dependence of the full-model TLS response at $N=6$. (a) The same-drive open-chain and periodic-chain spectra, with raw integrated weights in the declared OBC/PBC order. (b) The spectral weight for contacts $x=0,\ldots,5$ under the same product preparation. The observed contrast is a finite-chain readout; no localization length or thermodynamic invariant is extracted.}
 \label{fig:boundary}
 \end{figure}
 
@@ -162,14 +162,14 @@ and the reported TLS emission proxy is $P_{\rm em}=\gamma_1\overline{\expect{n_d
 \section{Matched controls and limits of the topological interpretation}
 \label{sec:bdi-controls}
 
-The control set separates the boundary observation from possible topological interpretations. It contains two strictly same-period comparisons: $(1,1)$ versus $(0,1)$ at $T=2.591813939212$, and $(1,0)$ versus $(0,0)$ at $T=1.295906969606$. Each pair changes $\nu_0$ at fixed $\nu_\pi$; no single common-period line contains all four BDI classes. The full numerical contract, analysis windows, and deterministic sensitivity checks are given in the Supplementary Material.
+The geometry contrast motivates asking whether a closed-chain BDI label predicts the measured spectrum. We compare two same-period drive pairs: $(1,1)$ versus $(0,1)$ at $T=2.591813939212$, and $(1,0)$ versus $(0,0)$ at $T=1.295906969606$. Each pair changes $\nu_0$ at fixed $\nu_\pi$. The four drives do not form a single common-period four-class experiment; the comparison tests the response within each matched line and checks for an empirical grouping across the sampled spectra. Numerical settings and window checks are in the Supplemental Material.
 
-The response data do not support a universal four-class line-shape classification. \Cref{fig:matched-controls} displays the two same-period control lines, their TLS spectra, directional raw weights, and normalized-shape distances. In the completed data, the within-$\nu_\pi$ distances are $0.6865$ and $0.4661$, while the cross-$\nu_\pi$ distances range from $0.1532$ to $0.7114$. The within- and cross-class distances therefore overlap, so the sampled normalized spectra do not cluster by $\nu_\pi$. The appropriate conclusion is drive dependence, not a universal $\nu_\pi$-determined response line shape or a common-period causal law.
+\Cref{fig:matched-controls} shows that drives sharing $\nu_\pi$ can still produce distinct normalized responses: their within-label shape distances are $0.6865$ and $0.4661$. Cross-label distances range from $0.1532$ to $0.7114$, overlapping the within-label values. Thus the tested spectra do not group by $\nu_\pi$ alone. This observation constrains a label-only interpretation of local TLS spectroscopy without claiming that these four drives isolate a causal effect of $\nu_\pi$ at one common period.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig3_matched_controls_shape_distance.png}
-\caption{Two strictly same-period BDI-labelled control lines. (a,b) TLS spectra and directional raw integrated weights for $(1,1)$ versus $(0,1)$ and $(1,0)$ versus $(0,0)$. (c) All pairwise normalized-shape distances, with within- and cross-$\nu_\pi$ values visibly overlapping. The panels make the directional comparisons and the failed universal line-shape grouping criterion explicit.}
+\caption{Drive dependence of the local spectrum. (a,b) TLS spectra and directional integrated weights for two same-period pairs, $(1,1)$ versus $(0,1)$ and $(1,0)$ versus $(0,0)$. (c) Pairwise distances between normalized spectra. Within- and cross-$\nu_\pi$ distances overlap in this four-drive sample.}
 \label{fig:matched-controls}
 \end{figure}
 
@@ -178,7 +178,7 @@ The response data do not support a universal four-class line-shape classificatio
 \section{Finite-size transfer of the response-weight hierarchy}
 \label{sec:gate-d2}
 
-A prospectively specified finite-size test transfers an eight-drive stratified raw-weight table from $N=4$ to the same tasks at $N=6$. All three predefined conditions are satisfied, and no drive was replaced, added, or retuned after inspection of the $N=6$ response. The internal protocol identifier, task-level values, hashes, and read-only validation record are retained in the Supplementary Material and public repository.
+The preceding shape test and a size-transfer test address distinct questions. We ask whether the ordering of raw integrated weights observed in an eight-drive $N=4$ table survives when the same drives and detector grids are evaluated at $N=6$. The drives and three pass conditions were specified before inspecting the $N=6$ results; all eight points are retained. The exact tasks, thresholds, and validation record are given in the Supplemental Material.
 
 \begin{figure}[t]
 \centering
@@ -187,7 +187,7 @@ A prospectively specified finite-size test transfers an eight-drive stratified r
 \label{fig:d2-transfer}
 \end{figure}
 
-\Cref{fig:d2-transfer} displays every transferred point. In this response-blind, cross-period, eight-drive protocol, the raw-weight hierarchy associated with $\nu_\pi$ at $N=4$ is reproduced at $N=6$: the two fixed-$\nu_0$ median ratios are $409.54$ and $5633.72$ (predefined threshold $>10$), and the all-point ordering ratio is $12.05$ (threshold $>1$). This result does not contradict the failed line-shape grouping above. The two analyses concern different observables and different questions: the matched controls compare normalized spectral shapes at fixed period, whereas the transfer test compares raw integrated weights across a stratified set of periods. Persistence of the latter neither makes the former universal nor establishes a common-period causal effect of $\nu_\pi$. It is a finite persistence statement for the sampled hierarchy, not a thermodynamic invariant, a phase boundary, or a universal TLS line-shape experiment.
+\Cref{fig:d2-transfer} shows that the frozen raw-weight ordering passes at $N=6$. At fixed $\nu_0=0$ and $1$, the ratios of the $\nu_\pi=1$ to $\nu_\pi=0$ class medians are $409.54$ and $5633.72$ (threshold $>10$); the minimum $\nu_\pi=1$ weight divided by the maximum $\nu_\pi=0$ weight is $12.05$ (threshold $>1$). This is evidence that the sampled weight hierarchy persists across the two finite sizes. Because the two label strata include different periods, it is not a same-period causal test of $\nu_\pi$. Raw weight can retain a hierarchy even when normalized line shapes fail to group by that label; neither result is a thermodynamic invariant.
 
 \FloatBarrier
 
@@ -196,25 +196,25 @@ A prospectively specified finite-size test transfers an eight-drive stratified r
 
 \subsection{Coupling-resolved response doublets}
 
-After the geometry result, interpretive controls, and finite-size transfer test are fixed, we use separate scans to ask how the local TLS participates in and loads the response. In the internally resolved interval $g/J=0.06$--$0.12$, the transverse TLS response develops two features around nominal ratio one, as shown in \cref{fig:tls-spectroscopy}. For the four accepted points, a free-intercept fit gives $\Delta\omega/J=3.4527(g/J)-0.07333$ with $R^2=0.9982$. Constraining the intercept to zero gives a slope of $2.6852$ and $R^2=0.9459$. The nonzero fitted intercept and the limited resolved range rule out extrapolating either line to a zero-coupling law. At this fixed contact and harmonic, $g_{\rm eff}=g|B_{0\pi}(0,0)|$ is only a constant rescaling of $g$; the scan does not independently verify the absolute projected matrix element. The four residuals and conditional fit errors are reported in the Supplementary Material. Unresolved points remain visible and are not silently incorporated into the fit.
+The TLS is not merely a readout channel: changing its exchange coupling changes the spectrum. In the four internally resolved spectra at $g/J=0.06$--$0.12$, the TLS response develops a coupling-dependent doublet near detector ratio one [\cref{fig:tls-spectroscopy}]. A free-intercept fit over this finite interval gives $\Delta\omega/J=3.4527(g/J)-0.07333$ and $R^2=0.9982$. Its nonzero intercept and the unresolved weaker-coupling points prevent extrapolation to a zero-coupling law. At fixed contact and harmonic, $g_{\rm eff}=g|B_{0\pi}(0,0)|$ is a constant rescaling of $g$, so this fit alone does not test the absolute projected matrix element. The alternative origin-constrained fit, residuals, and window dependence are reported in the Supplemental Material.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig3_theory_tested_tls_spectroscopy.png}
-\caption{Coupling-resolved Floquet--TLS response. (a) Four representative $N=6$ transverse TLS spectra show coupling-dependent response doublets. (b) The full splitting against bare $g/J$ for four internally resolved points, with free-intercept and origin-constrained lines shown only over that interval. Vertical bars show the deterministic standard deviation across the $8T$, $20T$, and $40T$ discard-window extractions; they are not statistical error bars. Crosses placed near the baseline identify unresolved or excluded scan settings and do not encode a measured zero splitting. The detuning-dependent edge/TLS amplitudes and visibility-masked relative phase are shown in the Supplementary Material.}
+\caption{Coupling-resolved Floquet--TLS response. (a) Four representative $N=6$ transverse TLS spectra show coupling-dependent response doublets. (b) The full splitting against bare $g/J$ for four internally resolved points, with free-intercept and origin-constrained lines shown only over that interval. Vertical bars show the deterministic standard deviation across the $8T$, $20T$, and $40T$ discard-window extractions; they are not statistical error bars. Crosses placed near the baseline identify unresolved or excluded scan settings and do not encode a measured zero splitting. The detuning-dependent edge/TLS amplitudes and visibility-masked relative phase are shown in the Supplemental Material.}
 \label{fig:tls-spectroscopy}
 \end{figure}
 
 \subsection{Loading followed by fast-loss recovery}
 
-The $N=6$ damping scan contains 31 completed rates at fixed $g/J=0.08$, detector ratio one, 80 periods, and a $20T$ discard. With $JT=2.591813939212$, its range is $0.01296\lesssim\gamma_1T\lesssim7.775$. The edge amplitude and stroboscopic edge $\pi$ component are most strongly suppressed near $\gamma_1/J\simeq0.12$ ($\gamma_1T\simeq0.317$), while the TLS emission proxy reaches its broad maximum at weaker damping. At larger damping, the TLS transverse amplitude decreases but the edge response recovers, reaching $A_{\rm edge}=0.641$ and $M_{\pi,\rm edge}=0.541$ at $\gamma_1/J=3.0$.
+Varying only the TLS relaxation rate gives a nonmonotonic boundary response. At $N=6$, $g/J=0.08$, and detector ratio one, the edge amplitude and alternating stroboscopic edge component are most strongly suppressed near $\gamma_1T\simeq0.317$. At larger rates the TLS transverse amplitude decreases while the edge signal recovers, reaching $A_{\rm edge}=0.641$ and $M_{\pi,\rm edge}=0.541$ at $\gamma_1T\simeq7.775$. These values come from 31 completed rates over 80 periods with a $20T$ discard; the emission proxy reaches a broad maximum at weaker damping [\cref{fig:damping-backaction}].
 
 For interpretation, eliminating a rapidly relaxing TLS gives the induced edge-decay scale
 \begin{equation}
 \Gamma_{\rm TLS}(\Delta_\ell)=\frac{4|g_{x,\ell}|^2\gamma_1}{\gamma_1^2+4\Delta_\ell^2},
 \label{eq:induced-decay}
 \end{equation}
-which decreases as $4|g_{x,\ell}|^2/\gamma_1$ on resonance at large $\gamma_1$. This scaling motivates, but is not fitted to, the observed recovery.
+which decreases as $4|g_{x,\ell}|^2/\gamma_1$ on resonance at large $\gamma_1$.
 
 \FloatBarrier
 \begin{figure}[t]
@@ -224,33 +224,36 @@ which decreases as $4|g_{x,\ell}|^2/\gamma_1$ on resonance at large $\gamma_1$. 
 \label{fig:damping-backaction}
 \end{figure}
 
-The nonmonotonic response is consistent with the projected self-energy in \cref{eq:induced-decay}: the TLS loads the finite boundary response at intermediate loss but effectively decouples under rapid relaxation. This attribution is interpretive rather than a quantitative fit, and the crossovers are not phase boundaries.
+The falloff in \cref{eq:induced-decay} is consistent with the observed recovery under rapid relaxation. This fast-defect or Zeno-like interpretation has not been quantitatively fitted to the full response; the finite-rate crossovers are not phase transitions. Together with the doublet, the scan shows that the probe changes the very boundary dynamics whose spectrum it records.
 
 \FloatBarrier
 
 \section{Reduced multichannel diagnostics and limitations}
 \label{sec:limitations}
 
-A projected edge--TLS or multichannel description can organize sidebands, near-$\pi$ channel structure, and local hybridization intuition, but it is not the primary evidence of this paper. The exact $N=4$ channel/time benchmark provides a controlled bridge between one conjugate channel pair and an independently initialized late-time fit. At $N=6$, the available channel records are edge-seeded, residual-qualified conjugate Ritz pairs near $-1$ with nonzero edge visibility; they are not an exhaustive channel spectrum or a channel/time lifetime-equality test.
+A projection onto edge-related Floquet channels offers a physical language for local sidebands and hybridization, provided its range of validity is checked. The exact $N=4$ channel/time benchmark compares one conjugate channel pair with an independently initialized late-time fit. At $N=6$, the available evidence consists of edge-seeded, residual-qualified conjugate Ritz pairs near $-1$ with nonzero edge visibility; it does not give the exhaustive spectrum or a channel/time lifetime-equality test.
 
-The legacy $K$-truncation and $N=6$/$N=8$ comparisons are therefore retained as diagnostics of the projected representation, not promoted to a second positive size-scaling claim. They were generated with a Floquet-pair preparation rather than the common product state, and their strong-coupling and branch-selection sensitivity prevents them from validating the full dissipative response by themselves. The sharper failure occurs in the multi-position continuation: matching one edge dressed scale required bare couplings $g=0.08$, $1.60461$, and $27.0097$ at contacts $x=0$, $1$, and $2$, respectively, while the interior spectra did not retain a stable near-resonant two-peak structure across the checked windows. Thus the reduced picture is useful as local mechanism language within a resolved window, but it does not furnish a universal multichannel collapse across contact, coupling, and size. The supporting prepared-pair benchmark, targeted Ritz records, $K/N$ diagnostics, and internal validation records are retained in the Supplementary Material.
+The $K$-channel and $N=6$/$N=8$ comparisons test a different, Floquet-pair-prepared representation and cannot independently validate the common-product full-model response. In a more direct spatial stress test, matching one edge dressed scale required bare couplings $g=0.08$, $1.60461$, and $27.0097$ at $x=0$, $1$, and $2$; the interior spectra then failed to retain a stable near-resonant doublet across the checked windows. The projected picture is consequently useful near the resolved edge-contact regime but does not yield a contact-independent multichannel collapse. Channel benchmarks, truncation audits, and the failed continuation appear in the Supplemental Material.
 
 \section{Discussion and conclusion}
 \label{sec:discussion}
 
-The complete Floquet--Lindblad response supplies a focused finite-system result. Under one physical product preparation, a local dissipative TLS has a transverse response that is much stronger at the open-chain contacts than in the interior and is sharply altered when a held-out comparison changes OBC to PBC. That geometry evidence is the primary claim. The BDI-labelled controls then set its interpretive boundary: they are directional same-period comparisons, not a common-period four-class experiment, and their normalized shapes do not supply a universal $\nu_\pi$ classification. The independent eight-drive finite-size test adds an $N=4$-to-$N=6$ raw-weight persistence statement without changing those causal limits. Coupling-dependent splitting and nonmonotonic dissipative backaction provide a separate mechanism layer for how the TLS participates in and loads the finite response. Finally, the multichannel diagnostics identify a restricted window in which projected language is useful and make its preparation, coupling, contact, and size limitations explicit.
+The central result is a geometry-dependent local observable of a finite driven open system. With the same product preparation, the TLS sees a strong open-boundary response that weakens at interior contacts and in the periodic chain. This is a useful operational distinction: a probe can reveal a boundary without its signal being a direct meter of the closed-chain invariant. Indeed, the tested normalized spectra depend on the drive within a fixed $\nu_\pi$ class. The frozen eight-drive comparison does establish that a separate raw-weight hierarchy persists from $N=4$ to $N=6$, but its periods differ across the label strata. The two results can coexist because spectral shape and integrated power are different observables.
 
-This organization makes the method and the physics serve different roles. The exact full-model response answers the empirical question. Common preparation, predefined controls, and deterministic validation constrain alternative explanations and prevent response-informed selection. Further size scaling, an experimentally calibrated microscopic bath, and a broader common-period control ensemble would be required before elevating the present evidence to a universal spectroscopy rule, a thermodynamic invariant, or a many-body time-crystal phase claim.
+The probe's influence is part of that interpretation. Its coupling produces a resolved doublet over a finite interval, and intermediate loss suppresses the edge response before rapid loss allows recovery. A projected edge--TLS model rationalizes these trends but fails as a general description of the prepared full response across all contacts and couplings. The calculation thus identifies a finite, drive-dependent readout and an active source of backaction. It does not establish a universal $\pi$-edge spectroscopy, a thermodynamic invariant, or a persistent time-crystalline phase. A larger common-period drive ensemble, controlled size scaling, and a platform-specific bath model would be needed to test those broader possibilities.
 
-\section*{Supplementary Material}
+\section*{Supplemental Material}
 
-The Supplementary Material contains complete coupling spectra, the prepared-pair channel--time benchmark, the formal $K$-truncation audit at $N=6$ and $8$, damping and finite-size slices, Gate B2/C1 limitations, Gate A v3 and Gate D2 audit summaries, provenance hashes, and reproduction commands. The complete immutable task records remain in the versioned repository.
+See Supplemental Material for the detailed analysis contract, numerical-window checks, complete coupling and damping scans, the channel/time benchmark, the reduced-model failure tests, and the fixed eight-drive transfer table. Provenance and reproduction commands are included there; immutable task records are maintained in the versioned repository.
 
 \section*{Data availability}
-The versioned protocols, numerical checkpoints, result records, figure generators, and read-only audits are available in the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls}{public GitHub repository}. The frozen $N=6$ transfer records and their manifest were committed separately from the source freeze (result commit \texttt{a3d9dc3}); the figure sources are on the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls/tree/manuscript-alignment-a3d9dc3}{manuscript branch}. An archival DOI specific to these results has not yet been assigned.
+The versioned protocols, numerical checkpoints, result records, figure generators, and read-only audits are available in the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls}{public GitHub repository}. The frozen $N=6$ transfer records and their manifest were committed separately from the source freeze (result commit \texttt{a3d9dc3}); the figure sources are on the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls/tree/manuscript-pra-regular-article}{PRA manuscript branch}. An archival DOI specific to these results has not yet been assigned.
 
 \section*{Code availability}
 The exact sparse Floquet--Lindblad propagation, deterministic figure generators, channel analyses, and submission checks are available under the MIT License in the repository listed above.
+
+\section*{Acknowledgments}
+OpenAI ChatGPT (Codex, GPT-6) assisted with restructuring and drafting parts of the manuscript under the author's stated scientific claim boundaries. Numerical claims were checked against versioned result records, and the newly added references against publisher records. The author remains responsible for independently reviewing the final text, references, and interpretation before submission.
 
 \bibliographystyle{unsrtnat}
 \bibliography{references}

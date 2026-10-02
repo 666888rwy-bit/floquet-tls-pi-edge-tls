@@ -1,7 +1,7 @@
-% Supplementary Material for theory-driven Floquet--TLS manuscript
+% Supplemental Material for Physical Review A Regular Article
 % Compile locally with: latexmk -xelatex supplement.tex
 \documentclass[11pt]{article}
-\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage[a4paper,margin=2.1cm]{geometry}
 \usepackage{fontspec}
 \usepackage{unicode-math}
 \IfFontExistsTF{TeX Gyre Termes}{
@@ -24,7 +24,7 @@
 \newcommand{\expect}[1]{\langle #1\rangle}
 \graphicspath{{figures/}{../figures/}{}}
 
-\title{Supplementary Material:\\ Boundary-Selective Response of a Dissipative Two-Level Probe in a Finite Floquet Ising Chain}
+\title{Supplemental Material:\\ Boundary-Selective Readout and Dissipative Backaction of a Two-Level Probe in a Finite Floquet Ising Chain}
 \author{Weiyu Ruan}
 \date{}
 
@@ -33,7 +33,7 @@
 
 \section*{Scope}
 
-This Supplementary Material expands the finite-system physics reported in the main text. It first gives the detailed numerical and analysis contract underlying the main-text methods, then displays the complete coupling, damping, and finite-size response slices behind the edge--TLS susceptibility and dissipation-crossover interpretation. It finally summarizes the common-preparation Gate A v3 and frozen Gate D1/D2 controls, channel/time benchmark, provenance hashes, and reproduction commands; the complete immutable task records remain in the versioned repository. No supplementary figure adds a drive, system size, propagation, or fit beyond the committed numerical artifacts.
+This Supplemental Material supplies the full numerical contract and retained-window checks for the main-text response, then displays the coupling, damping, and finite-size slices used to interpret the local TLS signal. It also documents the common-preparation geometry and matched-drive controls, the fixed eight-drive transfer test, channel/time diagnostics, hashes, and reproduction commands. The complete immutable task records remain in the versioned repository. No supplemental figure adds a drive, system size, propagation, or fit beyond the committed numerical artifacts.
 
 \section{Detailed numerical and analysis contract}
 \label{sec:supp-protocol}
@@ -253,9 +253,9 @@ The exact benchmark is prepared at $N=4$, $g=\gamma_1=0.08$, $\omega_d=\Omega/2$
 \begin{equation}
 \lambda_\pm=-0.939373778674\mp\ii\,0.097672201737,
 \end{equation}
-whose modulus is $0.944437904286$, lifetime is $17.4931177$ periods, and absolute phase offset is $0.1036036$ rad per period. The selected modes have equal edge-readout visibility $0.2110623$ and conjugacy residual $9.94\times10^{-15}$.
+The pair has modulus $0.944437904286$ and lifetime $17.4931177$ periods. Its absolute phase offset is $0.1036036$ rad per period. Each mode has edge-readout visibility $0.2110623$; the conjugacy residual is $9.94\times10^{-15}$.
 
-The independent stroboscopic time-domain fit begins at period $n=8$ and gives $\tau_{\rm fit}/T=16.0915858$, $|\delta_{\rm fit}|=0.1167385$ rad per period, and RMSE $0.0299413$. It is not initialized with channel spectral information. The sensitivity of this conclusion to the discarded transient is listed in \cref{tab:supp-window}; it motivates the main-text language of quantitative compatibility rather than exact one-pole dynamics.
+An independent stroboscopic time-domain fit starts at period $n=8$. It gives $\tau_{\rm fit}/T=16.0915858$, $|\delta_{\rm fit}|=0.1167385$ rad per period, and RMSE $0.0299413$. It is not initialized with channel spectral information. The sensitivity to the discarded transient is listed in \cref{tab:supp-window}; it motivates the main-text language of quantitative compatibility rather than exact one-pole dynamics.
 
 \begin{table}[ht]
 \centering
@@ -362,26 +362,10 @@ All three frozen conditions pass. The result establishes a finite, response-blin
 \section{Reproduction commands and artifact policy}
 \label{sec:supp-reproduction}
 
-Validate the committed submission evidence without an expensive production propagation with
+The repository checks the committed evidence without repeating the production propagation:
 \begin{verbatim}
 python scripts/run_submission_checks.py --check-only
-python scripts/gate_a_v3/20_audit_gate_a_v3.py --check-only
-python scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py --check-only
-python scripts/submission/10_generate_mechanism_figures.py --check-only
-python scripts/submission/30_generate_d2_transfer_figure.py --check-only
-python scripts/submission/40_generate_coupling_figure.py --check-only
-python scripts/submission/20_generate_damping_figure.py --check-only
 \end{verbatim}
-The dimensionless damping figure in the main text can be rebuilt from the committed checkpoint with
-\begin{verbatim}
-python scripts/submission/20_generate_damping_figure.py \
-  --output-dir manuscript/figures
-python scripts/submission/30_generate_d2_transfer_figure.py \
-  --output manuscript/figures/fig4_d2_weight_transfer.png
-python scripts/submission/40_generate_coupling_figure.py \
-  --main-output manuscript/figures/fig3_theory_tested_tls_spectroscopy.png \
-  --phase-output manuscript/figures/figS5_detuning_phase.png
-\end{verbatim}
-The exact source is maintained in the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls}{public repository}. The frozen protocols, raw-result manifests and hashes are retained in the Gate D2 result commit \texttt{a3d9dc3}; the figure scripts above are available on branch \texttt{manuscript-alignment-a3d9dc3}. A version-specific archival DOI for the present manuscript has not yet been assigned.
+This check includes the independent Gate A v3 and D2 audits and figure-record checks. Individual commands for regenerating figures from committed records are documented in the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls}{public repository}'s \texttt{manuscript/README.md}. The frozen protocols, raw-result manifests, and hashes are retained in the D2 result commit \texttt{a3d9dc3}. A version-specific archival DOI for the present manuscript has not yet been assigned.
 
 \end{document}
