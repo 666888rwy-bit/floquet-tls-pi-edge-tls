@@ -19,6 +19,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 AUDIT = REPO / "scripts/gate_a_v3/20_audit_gate_a_v3.py"
 MECHANISM_FIGURES = REPO / "scripts/submission/10_generate_mechanism_figures.py"
+DAMPING_FIGURE = REPO / "scripts/submission/20_generate_damping_figure.py"
+D2_FIGURE = REPO / "scripts/submission/30_generate_d2_transfer_figure.py"
+COUPLING_FIGURE = REPO / "scripts/submission/40_generate_coupling_figure.py"
 D2_AUDIT = REPO / "scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py"
 D2_MANIFEST = REPO / "results/gate_d2/gate_d2.0__e615217fa606/MANIFEST.json"
 DEFAULT_OUTPUT = REPO / "build/submission_checks"
@@ -58,6 +61,21 @@ def main() -> None:
     run(audit_command)
     run(mechanism_command)
 
+    damping_command = [sys.executable, str(DAMPING_FIGURE.relative_to(REPO))]
+    if args.check_only:
+        damping_command.append("--check-only")
+    else:
+        damping_command.extend(["--output-dir", str(output / "damping_figure")])
+    run(damping_command)
+
+    coupling_command = [sys.executable, str(COUPLING_FIGURE.relative_to(REPO))]
+    if args.check_only:
+        coupling_command.append("--check-only")
+    else:
+        coupling_command.extend(["--main-output", str(output / "coupling_figure" / "fig5_coupling_bare_g.png"),
+                                 "--phase-output", str(output / "coupling_figure" / "figS5_detuning_phase.png")])
+    run(coupling_command)
+
     if D2_MANIFEST.exists():
         d2_command = [sys.executable, str(D2_AUDIT.relative_to(REPO))]
         if args.check_only:
@@ -65,6 +83,12 @@ def main() -> None:
         else:
             d2_command.extend(["--output-dir", str(args.output_dir.resolve() / "gate_d2_audit")])
         run(d2_command)
+        d2_figure_command = [sys.executable, str(D2_FIGURE.relative_to(REPO))]
+        if args.check_only:
+            d2_figure_command.append("--check-only")
+        else:
+            d2_figure_command.extend(["--output", str(output / "gate_d2_audit" / "fig4_d2_weight_transfer.png")])
+        run(d2_figure_command)
     else:
         print("Gate D2 final manifest is absent; validated the frozen source route only.")
 

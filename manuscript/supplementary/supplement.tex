@@ -38,7 +38,7 @@ This Supplementary Material expands the finite-system physics reported in the ma
 \section{Detailed numerical and analysis contract}
 \label{sec:supp-protocol}
 
-The primary response data are generated from the complete finite chain--TLS density operator, not from the projected edge--TLS equations. In all principal $N=6$ calculations, $J=h=1$, the TLS is explicitly exchanged with one chain contact and amplitude-damped during both drive steps, and stroboscopic propagation applies the full one-period Floquet--Lindblad map. The projected model enters only as an interpretation whose spatial, spectral, channel, and damping consequences are tested against those full-model trajectories.
+The primary response data are generated from the complete finite chain--TLS density operator, not from the projected edge--TLS equations. In all principal $N=6$ calculations, $J=h=1$, the TLS is explicitly exchanged with one chain contact and amplitude-damped during both drive steps, and propagation applies the exact action of each piecewise-constant Liouvillian exponential through sparse matrix-exponential action. The reported two, four, or eight samples per half step control the continuous-time Fourier quadrature and phasor resolution; they are not Trotter integration steps. The chain has no additional relaxation or dephasing channel in the reported model. The projected model enters only as an interpretation whose spatial, spectral, channel, and damping consequences are tested against those full-model trajectories.
 
 \begin{table}[ht]
 \centering
@@ -60,6 +60,40 @@ Sensitivity & Temporal grids of 2, 4, and 8 samples per half step and discards o
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Separation of numerical campaigns}
+
+The datasets used for the central claim and for the mechanism discussion were produced under different analysis contracts and are not pooled. The common-product matched controls and geometry comparisons provide the primary finite-system evidence. Denser legacy scans are retained only where they resolve coupling, damping, or projected-model behavior.
+
+\begin{table}[ht]
+\centering
+\caption{Preparation, grid, and evidentiary role of the completed numerical campaigns. Internal protocol names are included only for repository traceability.}
+\label{tab:supp-campaigns}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}}
+\toprule
+Campaign & State, grid, and window & Observable and role \\
+\midrule
+Common-product matched controls (Gate A v3) & Explicit product state; 11 ratios $0.880$--$1.120$; pair-specific declared discard & $A_{\rm TLS}(r)$, $\Wraw$, and normalized distance; primary interpretive controls. \\
+Common-product geometry controls (Gate A v3) & Same product state; six contacts or held-out OBC/PBC; same 11 ratios & Per-contact $\Wraw(x)$ and boundary-condition contrast; primary boundary evidence. \\
+Dense spatial mechanism scan & Checkpoint scan; six contacts; 61 ratios $0.75$--$1.25$; discards $8T$, $20T$, $40T$ & $A_{\rm TLS}(x,r)$ and root-integrated-power profile; supplementary mechanism context only. \\
+Coupling--frequency scan & Seven $g$ values; 61 ratios; discards $8T$, $20T$, $40T$ & Resolved TLS peak separation and its finite fitting window. \\
+Damping scan & 31 rates at $g=0.08$, $r=1$; 80 periods; three discard windows & Edge/TLS phasors, emission proxy, and stroboscopic $\pi$ component versus $\gamma_1T$. \\
+Channel diagnostics & Exact $N=4$ benchmark; targeted $N=6$ edge-seeded Ritz records & Exact $N=4$ channel/time comparison and residual-qualified near-$-1$ evidence at $N=6$. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sampling and transient-window sensitivity}
+
+The production-drive baseline uses four continuous-time samples per half step and discards the first $20T$. Relative to this baseline, two and eight samples per half step give normalized-shape distances $0.00106$ and $0.000311$ and raw-weight ratios $1.00187$ and $0.99911$. Changing only the discard to $8T$ and $40T$ gives distances $0.176876$ and $0.046216$ and raw-weight ratios $1.04122$ and $0.93229$, respectively. The intentionally early window therefore retains visible transient contamination, whereas the later window preserves the reported spectral shape within the predefined $D\le0.10$ tolerance. These are deterministic numerical checks, not confidence intervals.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig4_window_validation.png}
+\caption{Sampling-density and transient-window sensitivity of the production response. Because propagation uses matrix-exponential action, the sampling variants test Fourier/quadrature resolution rather than time-integration error. The early $8T$ discard diagnoses transient sensitivity; the $40T$ window provides a later-time comparison.}
+\label{fig:supp-window-validation}
+\end{figure}
 
 \section{Full response scans behind the projected edge--TLS theory}
 \label{sec:supp-physics}
@@ -99,13 +133,47 @@ The available open-chain size checkpoint compares $N=4$, $5$, and $6$ at a finit
 
 \subsection{Complete coupling--frequency spectra}
 
-The main text selects four representative spectra to make the resolved-doublet evolution legible. \Cref{fig:supp-coupling-spectra} gives all committed N=6 coupling--frequency curves. The splitting fit in the main text is deliberately restricted to the internally resolved points. The excluded/unresolved points are not dropped from the evidence record; they delimit the range in which the response can be summarized by a single resolved splitting.
+The main text selects four representative spectra to make the resolved-doublet evolution legible. \Cref{fig:supp-coupling-spectra} gives all committed N=6 coupling--frequency curves. The splitting fit is restricted to the internally resolved points. The excluded/unresolved points are not dropped from the evidence record; they delimit the range in which the response can be summarized by a single resolved splitting.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.72\textwidth]{figS3_all_coupling_frequency_spectra.png}
 \caption{All committed N=6 coupling--frequency spectra used to identify the internally resolved hybridization range. The full set prevents the accepted linear scaling from being mistaken for a global all-coupling law.}
 \label{fig:supp-coupling-spectra}
+\end{figure}
+
+\subsection{Fit diagnostics and detuning phase}
+
+For the four accepted $20T$ scan settings, the full splitting is the mean of the extracted $8T$, $20T$, and $40T$ values; the vertical bars in the main-text figure are their sample standard deviations. An ordinary unweighted fit to bare $g/J$ gives
+\begin{equation}
+\frac{\Delta\omega}{J} = 3.452673\frac{g}{J}-0.0733333,
+\qquad R^2=0.998248.
+\end{equation}
+The conditional ordinary-least-squares standard errors of the slope and intercept are $0.10227$ and $0.00948$, respectively, computed from the four point residuals with two residual degrees of freedom. They are descriptive fit errors, not experimental confidence intervals or a measure of systematic uncertainty in peak extraction. The fit constrained through the origin gives $\Delta\omega/J=2.685231(g/J)$ and $R^2=0.945884$. A fixed-contact re-expression using $|B_{0\pi}(0,0)|=0.2726796705$ rescales the horizontal axis without providing an independent matrix-element test. The nonzero intercept is therefore not interpreted as a nonzero splitting at $g=0$.
+
+\begin{table}[ht]
+\centering
+\caption{Accepted coupling points and residuals of the free-intercept fit. All frequency quantities are in units of $J$; the window spread is deterministic.}
+\label{tab:supp-coupling-residuals}
+\begin{tabular}{rrrr}
+\toprule
+$g/J$ & Full splitting $\Delta\omega/J$ & Window s.d. & Fit residual \\
+\midrule
+0.06 & 0.137343 & 0.012414 & $+0.003516$ \\
+0.08 & 0.198515 & 0.010949 & $-0.004365$ \\
+0.10 & 0.270116 & 0.013492 & $-0.001818$ \\
+0.12 & 0.343655 & 0.011486 & $+0.002667$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{fig:supp-detuning-phase} shows the separate production detuning sweep. The complex relative phase is displayed only where both edge and TLS phasor magnitudes exceed $0.02$; no phase is inferred at vanishing visibility.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.78\textwidth]{figS5_detuning_phase.png}
+\caption{Normalized TLS and edge amplitudes versus detector ratio, with the visibility-masked relative phase. The amplitudes are normalized separately for display; the phase points are not a fitted susceptibility.}
+\label{fig:supp-detuning-phase}
 \end{figure}
 
 \subsection{Closed-chain gap parity and local sideband convention}
@@ -268,6 +336,27 @@ Strict ordering $\min W_{\nu_\pi=1}/\max W_{\nu_\pi=0}$ & $>1$ & $12.04802230301
 \end{tabular}
 \end{table}
 
+\begin{table}[ht]
+\centering
+\caption{All eight task-level raw weights used in the finite-size transfer figure. Drive IDs are the exact frozen task identifiers; no interpolation or point replacement is performed.}
+\label{tab:supp-d2-points}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Drive ID & Period $T$ & $W_{\rm r}(N=4)$ & $W_{\rm r}(N=6)$ \\
+\midrule
+\texttt{nu00\_a} & 1.212655 & $2.797244\times10^{-4}$ & $1.632143\times10^{-4}$ \\
+\texttt{nu00\_b} & 1.212655 & $3.686111\times10^{-7}$ & $3.109834\times10^{-7}$ \\
+\texttt{nu10\_a} & 1.212655 & $1.175303\times10^{-6}$ & $8.937595\times10^{-7}$ \\
+\texttt{nu10\_b} & 1.212655 & $1.065398\times10^{-7}$ & $7.593314\times10^{-8}$ \\
+\texttt{nu01\_a} & 2.318495 & $3.575519\times10^{-2}$ & $3.575451\times10^{-2}$ \\
+\texttt{nu01\_b} & 2.617994 & $3.121586\times10^{-2}$ & $3.121494\times10^{-2}$ \\
+\texttt{nu11\_a} & 2.318495 & $1.959268\times10^{-3}$ & $1.966410\times10^{-3}$ \\
+\texttt{nu11\_b} & 2.617994 & $3.522754\times10^{-3}$ & $3.496567\times10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 All three frozen conditions pass. The result establishes a finite, response-blind, cross-period persistence statement for this eight-drive hierarchy. It does not establish a common-period causal $\nu_\pi$ law, a universal TLS line shape, a thermodynamic invariant, or a phase boundary.
 
 \section{Reproduction commands and artifact policy}
@@ -279,12 +368,19 @@ python scripts/run_submission_checks.py --check-only
 python scripts/gate_a_v3/20_audit_gate_a_v3.py --check-only
 python scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py --check-only
 python scripts/submission/10_generate_mechanism_figures.py --check-only
+python scripts/submission/30_generate_d2_transfer_figure.py --check-only
+python scripts/submission/40_generate_coupling_figure.py --check-only
 python scripts/submission/20_generate_damping_figure.py --check-only
 \end{verbatim}
 The dimensionless damping figure in the main text can be rebuilt from the committed checkpoint with
 \begin{verbatim}
 python scripts/submission/20_generate_damping_figure.py \
   --output-dir manuscript/figures
+python scripts/submission/30_generate_d2_transfer_figure.py \
+  --output manuscript/figures/fig4_d2_weight_transfer.png
+python scripts/submission/40_generate_coupling_figure.py \
+  --main-output manuscript/figures/fig3_theory_tested_tls_spectroscopy.png \
+  --phase-output manuscript/figures/figS5_detuning_phase.png
 \end{verbatim}
 The exact source is maintained in the \href{https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls}{public repository}. A final submission must cite a tagged release and archival DOI containing the frozen protocols, manifests, hashes, portable figure scripts, and derived figures.
 
