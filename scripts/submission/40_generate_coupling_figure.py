@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Render coupling/phase panels from committed checkpoints and fit records."""
 from __future__ import annotations
 
@@ -8,7 +7,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 REPO = Path(__file__).resolve().parents[2]
 SCAN = REPO / "data/checkpoints/floquet_tls_N6_g_frequency_checkpoint.npz"

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Validate the committed N=6 damping sweep and draw its submission panel."""
 from __future__ import annotations
 
@@ -8,7 +7,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 REPO = Path(__file__).resolve().parents[2]
 CHECKPOINT = REPO / "data/checkpoints/floquet_tls_N6_gamma_checkpoint.npz"

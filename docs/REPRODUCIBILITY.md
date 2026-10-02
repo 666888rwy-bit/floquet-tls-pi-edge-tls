@@ -107,4 +107,4 @@ git status --short
 sha256sum results/gate_a_v3/gate_a_v3.0__1b3dd5130c77/*.json
 ```
 
-The earlier manuscript version is archived at [Zenodo, DOI: 10.5281/zenodo.20685212](https://doi.org/10.5281/zenodo.20685212). Cite the Zenodo record and the specific repository commit/release used for analysis until a final article is available.
+The [earlier manuscript version](https://doi.org/10.5281/zenodo.20685212) remains a historical preprint, not an archive of the common-product Gate A v3 controls or completed Gate D2 results. Cite the exact repository commit used for the current analysis; a version-specific Zenodo archive for the present manuscript has not yet been published.

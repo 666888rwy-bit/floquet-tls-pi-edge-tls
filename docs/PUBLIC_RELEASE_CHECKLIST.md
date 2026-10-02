@@ -12,7 +12,7 @@ This repository is public and released under the [MIT License](../LICENSE).  It 
 | Derived figures | Audits plus the committed-data N=4 channel/time and N=6 damping renderers write reproducible files to `build/`, which is ignored by Git | Generate final manuscript figures from the tagged commit and retain the emitted `SUBMISSION_CHECKS_MANIFEST.json` with the submission package. |
 | Manuscript source | The current evidence-first LaTeX source and Supplementary Material are tracked under `manuscript/` | Compile both documents from a clean clone and ensure their claims remain within `docs/CLAIM_TO_ARTIFACT.md` before tagging. |
 | Environment | `requirements-lock.txt`, `environment.yml`, and `pyproject.toml` specify the submission test environment | Recreate the Python 3.11 environment in a clean location and record any approved dependency update in release notes. |
-| Citation metadata | `CITATION.cff` references the current Zenodo DOI and existing Git author identity | Before final article submission, replace the Git alias with verified scholarly author names, ORCIDs, affiliations, the final software version and the final article DOI when available. |
+| Citation metadata | `CITATION.cff` names Weiyu Ruan and omits the historical preprint DOI, which is not a software archive of these results | Confirm the complete author list and ORCIDs; align the version with the final tag and add only the new version-specific archive DOI when available. |
 | Zenodo record | DOI `10.5281/zenodo.20685212` is linked as the earlier archive | Create a new versioned Zenodo record from the exact `v1.0-submission` GitHub release; do not overwrite or silently repurpose the earlier archive. |
 | Data redistribution | Compact checkpoints and versioned JSON results are committed | Confirm with all authors that the data are suitable for public redistribution, and include the manifest hashes in the release notes. |
 | Authorship and disclosures | Not represented in code metadata beyond the existing Git identity | Confirm manuscript authorship, affiliations, funding, CRediT roles and conflict-of-interest statements independently of this repository. |
@@ -23,7 +23,7 @@ From a clean checkout at the intended tag, run:
 
 ```bash
 python -m pip install -r requirements-lock.txt
-ruff check scripts/gate_a_v3/result_validation.py scripts/gate_a_v3/gate_d2_validation.py scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
+ruff check scripts/gate_a_v3/result_validation.py scripts/gate_a_v3/32_audit_gate_d1_n4_weight_screen.py scripts/gate_a_v3/gate_d2_validation.py scripts/gate_a_v3/33_run_gate_d2_n6_weight_transfer.py scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py scripts/run_submission_checks.py scripts/release_preflight.py scripts/submission tests
 python scripts/run_submission_checks.py --check-only
 python scripts/release_preflight.py
 python scripts/run_submission_checks.py --output-dir build/submission_checks

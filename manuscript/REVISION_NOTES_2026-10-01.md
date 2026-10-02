@@ -1,4 +1,4 @@
-# Manuscript revision notes — 2026-10-01
+# Manuscript revision notes — 2026-10-01 to 2026-10-02
 
 This revision changes presentation and evidence ordering without changing any
 committed physical result, drive selection, or acceptance threshold.
@@ -38,6 +38,11 @@ committed physical result, drive selection, or acceptance threshold.
 - Restored the checkpoint-based damping-figure generator referenced by the
   manuscript, and included it, the D2 figure, and the coupling diagnostics in
   the read-only submission checks.
+- Corrected the software citation author and removed the DOI of the historical
+  preprint, which is not an archive of the present evidence. The manuscript now
+  identifies the public result commit and figure-source branch explicitly.
+- Repaired executable-mode/import-style mismatches in the new figure scripts;
+  the full 25-test suite, static checks, and no-write submission audit pass.
 
 ## Items intentionally left for a later submission pass
 

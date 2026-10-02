@@ -1,16 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this code or its committed numerical results, please cite the archived release and the associated manuscript."
+message: "If you use this code or its committed numerical results, cite the exact repository commit; add the version-specific archive DOI once published."
 type: software
 title: "Floquet--TLS finite-system reproducibility suite"
 version: "0.1.0"
-date-released: "2026-08-26"
 license: MIT
 repository-code: "https://github.com/666888rwy-bit/floquet-tls-pi-edge-tls"
-identifiers:
-  - type: doi
-    value: "10.5281/zenodo.20685212"
 authors:
-  - family-names: "666888rwy-bit"
+  - family-names: "Ruan"
+    given-names: "Weiyu"
 keywords:
   - Floquet dynamics
   - open quantum systems

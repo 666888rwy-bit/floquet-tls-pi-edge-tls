@@ -102,4 +102,4 @@ The preflight does not create a release. To require an exact Git tag after taggi
 
 ## Citation and availability
 
-The earlier manuscript preprint is archived at [Zenodo](https://doi.org/10.5281/zenodo.20685212). Please cite the repository commit or release that you actually use, together with the Zenodo record until a final article is available. Formal software citation metadata are provided in [`CITATION.cff`](CITATION.cff); the author list and DOI should be finalized when the submission release is tagged. The repository is released under the [MIT License](LICENSE).
+An [earlier manuscript preprint](https://doi.org/10.5281/zenodo.20685212) is retained as a historical record. It predates the common-product Gate A v3 controls and completed Gate D2 transfer, and its DOI does not archive the present manuscript or numerical evidence. For the current results, cite the exact repository commit used. [`CITATION.cff`](CITATION.cff) names the manuscript author but intentionally omits an archival DOI until a version-specific submission release exists. The repository is released under the [MIT License](LICENSE).

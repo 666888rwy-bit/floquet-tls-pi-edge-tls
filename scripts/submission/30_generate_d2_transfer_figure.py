@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Render the eight-drive N=4 to N=6 transfer from validated immutable records.
 
 This submission figure imports the existing read-only Gate D2 audit and does not
@@ -9,12 +8,11 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-
 
 REPO = Path(__file__).resolve().parents[2]
 AUDIT_PATH = REPO / "scripts/gate_a_v3/34_audit_gate_d2_n6_weight_transfer.py"
